@@ -29,3 +29,11 @@ void Indirizzo::setProvincia(string s){
 void Indirizzo::setCap(string s){
     cap = s;
 }
+
+ostream& operator<<(ostream &os, const Indirizzo &i) {
+    return os << "Via:" << i.getVia() << endl << "Città: " << i.getCittà() << endl << "Provincia: " << i.getProvincia() << endl << "Cap:" << i.getCap() << endl;
+}
+
+bool Indirizzo::operator==(const Indirizzo& i) const {
+    return via==i.via && città==i.città && provincia==i.provincia && cap==i.cap;
+}

@@ -4,6 +4,8 @@
 #include<iostream>
 
 using std::string;
+using std::ostream;
+using std::endl;
 
 class Indirizzo{
 private:
@@ -26,6 +28,10 @@ public:
     void setCittà(string);
     void setProvincia(string);
     void setCap(string);
+
+    bool operator==(const Indirizzo&) const;
 };
+
+ostream& operator<< (const ostream&, const Indirizzo&);
 
 #endif // INDIRIZZO_H
