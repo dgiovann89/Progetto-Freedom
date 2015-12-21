@@ -29,6 +29,8 @@ public:
     string getFax() const;
     string getPIva() const;
     Indirizzo getIndirizzo() const;
+    vector<SalaCompressori>& getSala() const; // ritorna il vector
+    SalaCompressori& getSala(int) const; // ritorna l'oggetto di indice i
 
     //set
     void setRagioneSociale(string);

@@ -21,6 +21,13 @@ string Cliente::getPIva() const {
 Indirizzo Cliente::getIndirizzo() const {
     return ind;
 }
+vector<SalaCompressori> & Cliente::getSala() const {
+    return const_cast<vector<SalaCompressori>&>(sala);
+}
+SalaCompressori& Cliente::getSala(int i) const{
+    return const_cast<SalaCompressori&>(sala[i]);
+}
+
 
 // set
 void Cliente::setRagioneSociale(string s){
