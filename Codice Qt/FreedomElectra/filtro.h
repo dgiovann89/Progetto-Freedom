@@ -1,9 +1,12 @@
 #ifndef FILTRO_H
 #define FILTRO_H
 
-class Filtro{
+#include<componente.h>
+
+class Filtro : public Componente{
+
 public:
-    Filtro();
+    Filtro(string, string, int, int, int, Cliente*, SalaCompressori*);
 };
 
 #endif // FILTRO_H

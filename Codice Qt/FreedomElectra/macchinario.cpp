@@ -1,4 +1,3 @@
 #include "macchinario.h"
 
-Macchinario::Macchinario(){
-}
+Macchinario::Macchinario(){}

@@ -1,9 +1,11 @@
 #ifndef SERBATOIO_H
 #define SERBATOIO_H
 
-class Serbatoio{
+#include<componente.h>
+
+class Serbatoio : public Componente{
 public:
-    Serbatoio();
+    Serbatoio(string, string, int, int, int, Cliente*, SalaCompressori*);
 };
 
 #endif // SERBATOIO_H

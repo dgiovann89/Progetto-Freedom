@@ -1,7 +1,9 @@
 #ifndef MACCHINARIO_H
 #define MACCHINARIO_H
 
-class Macchinario{
+#include<componente.h>
+
+class Macchinario : public Componente{
 public:
     Macchinario();
 };

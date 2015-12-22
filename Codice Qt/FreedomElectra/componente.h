@@ -1,9 +1,44 @@
 #ifndef COMPONENTE_H
 #define COMPONENTE_H
 
+#include<iostream>
+#include<cliente.h>
+
+using std::string;
+
 class Componente{
+private:
+    string marca;
+    string modello;
+    int anno;
+    int pressione;
+    int portata_capacità;
+    Cliente* proprietario;
+    SalaCompressori* sala;
 public:
-    Componente();
+    Componente(string, string, int, int, int, Cliente*, SalaCompressori*);
+    // distruttore virtuale
+    virtual ~Componente();
+
+    //get
+    string getMarca() const;
+    string getModello() const;
+    int getAnno() const;
+    int getPressione() const;
+    int getPortata_capacità() const;
+    Cliente* getCliente() const;
+    SalaCompressori* getSala() const;
+    virtual string getTipo() const=0;
+
+    //set
+    void setMarca(string);
+    void setModello(string);
+    void setAnno(int);
+    void setPressione(int);
+    void setPortata_capacità(int);
+    void setProprietario(Cliente*);
+    void setSala(SalaCompressori*);
+//    void setTipo(string);
 };
 
 #endif // COMPONENTE_H
