@@ -1,9 +1,11 @@
 #ifndef ONOFF_H
 #define ONOFF_H
 
-class OnOff{
+#include<macchinario.h>
+
+class OnOff : public Macchinario{
 public:
-    OnOff();
+    OnOff(string, string, int, int, int, Cliente*, SalaCompressori*,int);
 };
 
 #endif // ONOFF_H

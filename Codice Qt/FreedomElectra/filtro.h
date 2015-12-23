@@ -7,6 +7,7 @@ class Filtro : public Componente{
 
 public:
     Filtro(string, string, int, int, int, Cliente*, SalaCompressori*);
+    string getTipo() const;
 };
 
 #endif // FILTRO_H

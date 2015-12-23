@@ -52,7 +52,6 @@ SOURCES       = ../FreedomElectra/cliente.cpp \
 		../FreedomElectra/databasecomponenti.cpp \
 		../FreedomElectra/main.cpp \
 		../FreedomElectra/macchinario.cpp \
-		../FreedomElectra/essiccatore.cpp \
 		../FreedomElectra/filtro.cpp \
 		../FreedomElectra/serbatoio.cpp \
 		../FreedomElectra/impianto.cpp \
@@ -66,7 +65,6 @@ OBJECTS       = cliente.o \
 		databasecomponenti.o \
 		main.o \
 		macchinario.o \
-		essiccatore.o \
 		filtro.o \
 		serbatoio.o \
 		impianto.o \
@@ -195,7 +193,6 @@ DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../FreedomElectra/databasecomponenti.cpp \
 		../FreedomElectra/main.cpp \
 		../FreedomElectra/macchinario.cpp \
-		../FreedomElectra/essiccatore.cpp \
 		../FreedomElectra/filtro.cpp \
 		../FreedomElectra/serbatoio.cpp \
 		../FreedomElectra/impianto.cpp \
@@ -501,7 +498,7 @@ FreedomElectra.app/Contents/Info.plist:
 	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@ICON@,,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.FreedomElectra,g" -e "s,@EXECUTABLE@,FreedomElectra,g" -e "s,@TYPEINFO@,????,g" /Applications/Qt/5.3/clang_64/mkspecs/macx-clang/Info.plist.app >FreedomElectra.app/Contents/Info.plist
 dist: 
 	@test -d .tmp/FreedomElectra1.0.0 || mkdir -p .tmp/FreedomElectra1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.h ../FreedomElectra/componente.h ../FreedomElectra/salacompressori.h ../FreedomElectra/databaseclienti.h ../FreedomElectra/databasecomponenti.h ../FreedomElectra/macchinario.h ../FreedomElectra/essiccatore.h ../FreedomElectra/filtro.h ../FreedomElectra/serbatoio.h ../FreedomElectra/impianto.h ../FreedomElectra/onoff.h ../FreedomElectra/velocitavariabile.h ../FreedomElectra/indirizzo.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.cpp ../FreedomElectra/componente.cpp ../FreedomElectra/salacompressori.cpp ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/main.cpp ../FreedomElectra/macchinario.cpp ../FreedomElectra/essiccatore.cpp ../FreedomElectra/filtro.cpp ../FreedomElectra/serbatoio.cpp ../FreedomElectra/impianto.cpp ../FreedomElectra/onoff.cpp ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/indirizzo.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.h ../FreedomElectra/componente.h ../FreedomElectra/salacompressori.h ../FreedomElectra/databaseclienti.h ../FreedomElectra/databasecomponenti.h ../FreedomElectra/macchinario.h ../FreedomElectra/filtro.h ../FreedomElectra/serbatoio.h ../FreedomElectra/impianto.h ../FreedomElectra/onoff.h ../FreedomElectra/velocitavariabile.h ../FreedomElectra/indirizzo.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.cpp ../FreedomElectra/componente.cpp ../FreedomElectra/salacompressori.cpp ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/main.cpp ../FreedomElectra/macchinario.cpp ../FreedomElectra/filtro.cpp ../FreedomElectra/serbatoio.cpp ../FreedomElectra/impianto.cpp ../FreedomElectra/onoff.cpp ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/indirizzo.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
 
 
 clean:compiler_clean 
@@ -542,10 +539,15 @@ compiler_clean:
 
 ####### Compile
 
-cliente.o: ../FreedomElectra/cliente.cpp ../FreedomElectra/cliente.h
+cliente.o: ../FreedomElectra/cliente.cpp ../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cliente.o ../FreedomElectra/cliente.cpp
 
-componente.o: ../FreedomElectra/componente.cpp ../FreedomElectra/componente.h
+componente.o: ../FreedomElectra/componente.cpp ../FreedomElectra/componente.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o componente.o ../FreedomElectra/componente.cpp
 
 salacompressori.o: ../FreedomElectra/salacompressori.cpp ../FreedomElectra/salacompressori.h
@@ -560,25 +562,48 @@ databasecomponenti.o: ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra
 main.o: ../FreedomElectra/main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../FreedomElectra/main.cpp
 
-macchinario.o: ../FreedomElectra/macchinario.cpp ../FreedomElectra/macchinario.h
+macchinario.o: ../FreedomElectra/macchinario.cpp ../FreedomElectra/macchinario.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o macchinario.o ../FreedomElectra/macchinario.cpp
 
-essiccatore.o: ../FreedomElectra/essiccatore.cpp ../FreedomElectra/essiccatore.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o essiccatore.o ../FreedomElectra/essiccatore.cpp
-
-filtro.o: ../FreedomElectra/filtro.cpp ../FreedomElectra/filtro.h
+filtro.o: ../FreedomElectra/filtro.cpp ../FreedomElectra/filtro.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filtro.o ../FreedomElectra/filtro.cpp
 
-serbatoio.o: ../FreedomElectra/serbatoio.cpp ../FreedomElectra/serbatoio.h
+serbatoio.o: ../FreedomElectra/serbatoio.cpp ../FreedomElectra/serbatoio.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serbatoio.o ../FreedomElectra/serbatoio.cpp
 
-impianto.o: ../FreedomElectra/impianto.cpp ../FreedomElectra/impianto.h
+impianto.o: ../FreedomElectra/impianto.cpp ../FreedomElectra/impianto.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o impianto.o ../FreedomElectra/impianto.cpp
 
-onoff.o: ../FreedomElectra/onoff.cpp ../FreedomElectra/onoff.h
+onoff.o: ../FreedomElectra/onoff.cpp ../FreedomElectra/onoff.h \
+		../FreedomElectra/macchinario.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o onoff.o ../FreedomElectra/onoff.cpp
 
-velocitavariabile.o: ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/velocitavariabile.h
+velocitavariabile.o: ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/velocitavariabile.h \
+		../FreedomElectra/macchinario.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o velocitavariabile.o ../FreedomElectra/velocitavariabile.cpp
 
 indirizzo.o: ../FreedomElectra/indirizzo.cpp ../FreedomElectra/indirizzo.h

@@ -8,6 +8,7 @@ private:
     int cadDiPress;
 public:
     Impianto(string, string, int, int, int, Cliente*, SalaCompressori*, int);
+    string getTipo() const;
 };
 
 #endif // IMPIANTO_H

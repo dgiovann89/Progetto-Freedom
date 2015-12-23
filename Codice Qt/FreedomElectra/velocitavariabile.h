@@ -1,9 +1,11 @@
 #ifndef VELOCITAVARIABILE_H
 #define VELOCITAVARIABILE_H
 
-class VelocitaVariabile{
+#include<macchinario.h>
+
+class VelocitaVariabile : public Macchinario{
 public:
-    VelocitaVariabile();
+    VelocitaVariabile(string, string, int, int, int, Cliente*, SalaCompressori*,int);
 };
 
 #endif // VELOCITAVARIABILE_H

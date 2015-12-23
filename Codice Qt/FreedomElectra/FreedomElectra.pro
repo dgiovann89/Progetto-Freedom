@@ -5,7 +5,6 @@ HEADERS += \
     databaseclienti.h \
     databasecomponenti.h \
     macchinario.h \
-    essiccatore.h \
     filtro.h \
     serbatoio.h \
     impianto.h \
@@ -21,7 +20,6 @@ SOURCES += \
     databasecomponenti.cpp \
     main.cpp \
     macchinario.cpp \
-    essiccatore.cpp \
     filtro.cpp \
     serbatoio.cpp \
     impianto.cpp \
