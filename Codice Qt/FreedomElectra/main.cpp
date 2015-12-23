@@ -1,8 +1,12 @@
 #include<iostream>
+#include <QApplication>
+#include<finestraprincipale.h>
 
-using std::cout;
-using std::endl;
+int main(int argc, char *argv[]) {
+  QApplication app(argc, argv);
 
-int main () {
-    cout << "cappe" << endl;
+  FinestraPrincipale window;
+  window.show();
+
+  return app.exec();
 }

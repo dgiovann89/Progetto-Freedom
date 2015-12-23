@@ -12,13 +12,13 @@ MAKEFILE      = Makefile
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.6 -Wall -W -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.6 -Wall -W -fPIE $(DEFINES)
-INCPATH       = -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I../FreedomElectra -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -F/Applications/Qt/5.3/clang_64/lib
+INCPATH       = -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I../FreedomElectra -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -F/Applications/Qt/5.3/clang_64/lib
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -headerpad_max_install_names -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.6
-LIBS          = $(SUBLIBS) -F/Applications/Qt/5.3/clang_64/lib -framework QtGui -framework QtCore -framework OpenGL -framework AGL 
+LIBS          = $(SUBLIBS) -F/Applications/Qt/5.3/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework OpenGL -framework AGL 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 QMAKE         = /Applications/Qt/5.3/clang_64/bin/qmake
@@ -57,7 +57,10 @@ SOURCES       = ../FreedomElectra/cliente.cpp \
 		../FreedomElectra/impianto.cpp \
 		../FreedomElectra/onoff.cpp \
 		../FreedomElectra/velocitavariabile.cpp \
-		../FreedomElectra/indirizzo.cpp 
+		../FreedomElectra/indirizzo.cpp \
+		../FreedomElectra/finestraprincipale.cpp \
+		../FreedomElectra/finestracercacliente.cpp moc_finestraprincipale.cpp \
+		moc_finestracercacliente.cpp
 OBJECTS       = cliente.o \
 		componente.o \
 		salacompressori.o \
@@ -70,7 +73,11 @@ OBJECTS       = cliente.o \
 		impianto.o \
 		onoff.o \
 		velocitavariabile.o \
-		indirizzo.o
+		indirizzo.o \
+		finestraprincipale.o \
+		finestracercacliente.o \
+		moc_finestraprincipale.o \
+		moc_finestracercacliente.o
 DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/qdevice.pri \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/device_config.prf \
@@ -180,6 +187,7 @@ DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/resources.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/moc.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/unix/opengl.prf \
+		/Applications/Qt/5.3/clang_64/mkspecs/features/uic.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/unix/thread.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/mac/rez.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/testcase_targets.prf \
@@ -198,7 +206,9 @@ DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../FreedomElectra/impianto.cpp \
 		../FreedomElectra/onoff.cpp \
 		../FreedomElectra/velocitavariabile.cpp \
-		../FreedomElectra/indirizzo.cpp
+		../FreedomElectra/indirizzo.cpp \
+		../FreedomElectra/finestraprincipale.cpp \
+		../FreedomElectra/finestracercacliente.cpp
 QMAKE_TARGET  = FreedomElectra
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = FreedomElectra.app/Contents/MacOS/FreedomElectra
@@ -351,6 +361,7 @@ Makefile: ../FreedomElectra/FreedomElectra.pro /Applications/Qt/5.3/clang_64/mks
 		/Applications/Qt/5.3/clang_64/mkspecs/features/resources.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/moc.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/unix/opengl.prf \
+		/Applications/Qt/5.3/clang_64/mkspecs/features/uic.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/unix/thread.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/mac/rez.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/testcase_targets.prf \
@@ -358,6 +369,7 @@ Makefile: ../FreedomElectra/FreedomElectra.pro /Applications/Qt/5.3/clang_64/mks
 		/Applications/Qt/5.3/clang_64/mkspecs/features/yacc.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/lex.prf \
 		../FreedomElectra/FreedomElectra.pro \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/QtGui.prl \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/QtCore.prl
 	$(QMAKE) -spec macx-clang CONFIG+=debug CONFIG+=x86_64 -o Makefile ../FreedomElectra/FreedomElectra.pro
@@ -470,6 +482,7 @@ Makefile: ../FreedomElectra/FreedomElectra.pro /Applications/Qt/5.3/clang_64/mks
 /Applications/Qt/5.3/clang_64/mkspecs/features/resources.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/moc.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/unix/opengl.prf:
+/Applications/Qt/5.3/clang_64/mkspecs/features/uic.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/unix/thread.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/mac/rez.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/testcase_targets.prf:
@@ -477,6 +490,7 @@ Makefile: ../FreedomElectra/FreedomElectra.pro /Applications/Qt/5.3/clang_64/mks
 /Applications/Qt/5.3/clang_64/mkspecs/features/yacc.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/lex.prf:
 ../FreedomElectra/FreedomElectra.pro:
+/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 /Applications/Qt/5.3/clang_64/lib/QtGui.framework/QtGui.prl:
 /Applications/Qt/5.3/clang_64/lib/QtCore.framework/QtCore.prl:
 qmake: FORCE
@@ -498,7 +512,7 @@ FreedomElectra.app/Contents/Info.plist:
 	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@ICON@,,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.FreedomElectra,g" -e "s,@EXECUTABLE@,FreedomElectra,g" -e "s,@TYPEINFO@,????,g" /Applications/Qt/5.3/clang_64/mkspecs/macx-clang/Info.plist.app >FreedomElectra.app/Contents/Info.plist
 dist: 
 	@test -d .tmp/FreedomElectra1.0.0 || mkdir -p .tmp/FreedomElectra1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.h ../FreedomElectra/componente.h ../FreedomElectra/salacompressori.h ../FreedomElectra/databaseclienti.h ../FreedomElectra/databasecomponenti.h ../FreedomElectra/macchinario.h ../FreedomElectra/filtro.h ../FreedomElectra/serbatoio.h ../FreedomElectra/impianto.h ../FreedomElectra/onoff.h ../FreedomElectra/velocitavariabile.h ../FreedomElectra/indirizzo.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.cpp ../FreedomElectra/componente.cpp ../FreedomElectra/salacompressori.cpp ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/main.cpp ../FreedomElectra/macchinario.cpp ../FreedomElectra/filtro.cpp ../FreedomElectra/serbatoio.cpp ../FreedomElectra/impianto.cpp ../FreedomElectra/onoff.cpp ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/indirizzo.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.h ../FreedomElectra/componente.h ../FreedomElectra/salacompressori.h ../FreedomElectra/databaseclienti.h ../FreedomElectra/databasecomponenti.h ../FreedomElectra/macchinario.h ../FreedomElectra/filtro.h ../FreedomElectra/serbatoio.h ../FreedomElectra/impianto.h ../FreedomElectra/onoff.h ../FreedomElectra/velocitavariabile.h ../FreedomElectra/indirizzo.h ../FreedomElectra/finestraprincipale.h ../FreedomElectra/finestracercacliente.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.cpp ../FreedomElectra/componente.cpp ../FreedomElectra/salacompressori.cpp ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/main.cpp ../FreedomElectra/macchinario.cpp ../FreedomElectra/filtro.cpp ../FreedomElectra/serbatoio.cpp ../FreedomElectra/impianto.cpp ../FreedomElectra/onoff.cpp ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/indirizzo.cpp ../FreedomElectra/finestraprincipale.cpp ../FreedomElectra/finestracercacliente.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
 
 
 clean:compiler_clean 
@@ -523,10 +537,33 @@ compiler_objective_c_make_all:
 compiler_objective_c_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_finestraprincipale.cpp moc_finestracercacliente.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_finestraprincipale.cpp moc_finestracercacliente.cpp
+moc_finestraprincipale.cpp: /Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../FreedomElectra/finestracercacliente.h \
+		../FreedomElectra/finestraprincipale.h \
+		../FreedomElectra/finestraprincipale.h
+	/Applications/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/giovannidamo/Dropbox/P2 Drop/Progetto Freedom/Codice Qt/FreedomElectra' -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Applications/Qt/5.3/clang_64/lib ../FreedomElectra/finestraprincipale.h -o moc_finestraprincipale.cpp
+
+moc_finestracercacliente.cpp: /Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../FreedomElectra/finestraprincipale.h \
+		../FreedomElectra/finestracercacliente.h \
+		../FreedomElectra/finestracercacliente.h
+	/Applications/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/giovannidamo/Dropbox/P2 Drop/Progetto Freedom/Codice Qt/FreedomElectra' -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Applications/Qt/5.3/clang_64/lib ../FreedomElectra/finestracercacliente.h -o moc_finestracercacliente.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
+compiler_uic_make_all:
+compiler_uic_clean:
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
 compiler_yacc_decl_make_all:
@@ -535,7 +572,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: 
+compiler_clean: compiler_moc_header_clean 
 
 ####### Compile
 
@@ -556,10 +593,22 @@ salacompressori.o: ../FreedomElectra/salacompressori.cpp ../FreedomElectra/salac
 databaseclienti.o: ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databaseclienti.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databaseclienti.o ../FreedomElectra/databaseclienti.cpp
 
-databasecomponenti.o: ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/databasecomponenti.h
+databasecomponenti.o: ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/databasecomponenti.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databasecomponenti.o ../FreedomElectra/databasecomponenti.cpp
 
-main.o: ../FreedomElectra/main.cpp 
+main.o: ../FreedomElectra/main.cpp /Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h \
+		../FreedomElectra/finestraprincipale.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../FreedomElectra/finestracercacliente.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../FreedomElectra/main.cpp
 
 macchinario.o: ../FreedomElectra/macchinario.cpp ../FreedomElectra/macchinario.h \
@@ -608,6 +657,30 @@ velocitavariabile.o: ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/v
 
 indirizzo.o: ../FreedomElectra/indirizzo.cpp ../FreedomElectra/indirizzo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o indirizzo.o ../FreedomElectra/indirizzo.cpp
+
+finestraprincipale.o: ../FreedomElectra/finestraprincipale.cpp ../FreedomElectra/finestraprincipale.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../FreedomElectra/finestracercacliente.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestraprincipale.o ../FreedomElectra/finestraprincipale.cpp
+
+finestracercacliente.o: ../FreedomElectra/finestracercacliente.cpp ../FreedomElectra/finestracercacliente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../FreedomElectra/finestraprincipale.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestracercacliente.o ../FreedomElectra/finestracercacliente.cpp
+
+moc_finestraprincipale.o: moc_finestraprincipale.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_finestraprincipale.o moc_finestraprincipale.cpp
+
+moc_finestracercacliente.o: moc_finestracercacliente.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_finestracercacliente.o moc_finestracercacliente.cpp
 
 ####### Install
 

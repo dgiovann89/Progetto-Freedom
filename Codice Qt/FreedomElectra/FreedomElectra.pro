@@ -10,7 +10,9 @@ HEADERS += \
     impianto.h \
     onoff.h \
     velocitavariabile.h \
-    indirizzo.h
+    indirizzo.h \
+    finestraprincipale.h \
+    finestracercacliente.h
 
 SOURCES += \
     cliente.cpp \
@@ -25,4 +27,10 @@ SOURCES += \
     impianto.cpp \
     onoff.cpp \
     velocitavariabile.cpp \
-    indirizzo.cpp
+    indirizzo.cpp \
+    finestraprincipale.cpp \
+    finestracercacliente.cpp
+
+QT += \
+    core \
+    widgets
