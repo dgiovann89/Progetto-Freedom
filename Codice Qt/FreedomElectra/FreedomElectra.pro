@@ -12,7 +12,8 @@ HEADERS += \
     velocitavariabile.h \
     indirizzo.h \
     finestraprincipale.h \
-    finestracercacliente.h
+    finestracercacliente.h \
+    finestrainseriscicliente.h
 
 SOURCES += \
     cliente.cpp \
@@ -29,7 +30,8 @@ SOURCES += \
     velocitavariabile.cpp \
     indirizzo.cpp \
     finestraprincipale.cpp \
-    finestracercacliente.cpp
+    finestracercacliente.cpp \
+    finestrainseriscicliente.cpp
 
 QT += \
     core \

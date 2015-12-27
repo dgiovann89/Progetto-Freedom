@@ -59,7 +59,8 @@ SOURCES       = ../FreedomElectra/cliente.cpp \
 		../FreedomElectra/velocitavariabile.cpp \
 		../FreedomElectra/indirizzo.cpp \
 		../FreedomElectra/finestraprincipale.cpp \
-		../FreedomElectra/finestracercacliente.cpp moc_finestraprincipale.cpp \
+		../FreedomElectra/finestracercacliente.cpp \
+		../FreedomElectra/finestrainseriscicliente.cpp moc_finestraprincipale.cpp \
 		moc_finestracercacliente.cpp
 OBJECTS       = cliente.o \
 		componente.o \
@@ -76,6 +77,7 @@ OBJECTS       = cliente.o \
 		indirizzo.o \
 		finestraprincipale.o \
 		finestracercacliente.o \
+		finestrainseriscicliente.o \
 		moc_finestraprincipale.o \
 		moc_finestracercacliente.o
 DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
@@ -208,7 +210,8 @@ DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../FreedomElectra/velocitavariabile.cpp \
 		../FreedomElectra/indirizzo.cpp \
 		../FreedomElectra/finestraprincipale.cpp \
-		../FreedomElectra/finestracercacliente.cpp
+		../FreedomElectra/finestracercacliente.cpp \
+		../FreedomElectra/finestrainseriscicliente.cpp
 QMAKE_TARGET  = FreedomElectra
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = FreedomElectra.app/Contents/MacOS/FreedomElectra
@@ -512,7 +515,7 @@ FreedomElectra.app/Contents/Info.plist:
 	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@ICON@,,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.FreedomElectra,g" -e "s,@EXECUTABLE@,FreedomElectra,g" -e "s,@TYPEINFO@,????,g" /Applications/Qt/5.3/clang_64/mkspecs/macx-clang/Info.plist.app >FreedomElectra.app/Contents/Info.plist
 dist: 
 	@test -d .tmp/FreedomElectra1.0.0 || mkdir -p .tmp/FreedomElectra1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.h ../FreedomElectra/componente.h ../FreedomElectra/salacompressori.h ../FreedomElectra/databaseclienti.h ../FreedomElectra/databasecomponenti.h ../FreedomElectra/macchinario.h ../FreedomElectra/filtro.h ../FreedomElectra/serbatoio.h ../FreedomElectra/impianto.h ../FreedomElectra/onoff.h ../FreedomElectra/velocitavariabile.h ../FreedomElectra/indirizzo.h ../FreedomElectra/finestraprincipale.h ../FreedomElectra/finestracercacliente.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.cpp ../FreedomElectra/componente.cpp ../FreedomElectra/salacompressori.cpp ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/main.cpp ../FreedomElectra/macchinario.cpp ../FreedomElectra/filtro.cpp ../FreedomElectra/serbatoio.cpp ../FreedomElectra/impianto.cpp ../FreedomElectra/onoff.cpp ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/indirizzo.cpp ../FreedomElectra/finestraprincipale.cpp ../FreedomElectra/finestracercacliente.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.h ../FreedomElectra/componente.h ../FreedomElectra/salacompressori.h ../FreedomElectra/databaseclienti.h ../FreedomElectra/databasecomponenti.h ../FreedomElectra/macchinario.h ../FreedomElectra/filtro.h ../FreedomElectra/serbatoio.h ../FreedomElectra/impianto.h ../FreedomElectra/onoff.h ../FreedomElectra/velocitavariabile.h ../FreedomElectra/indirizzo.h ../FreedomElectra/finestraprincipale.h ../FreedomElectra/finestracercacliente.h ../FreedomElectra/finestrainseriscicliente.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.cpp ../FreedomElectra/componente.cpp ../FreedomElectra/salacompressori.cpp ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/main.cpp ../FreedomElectra/macchinario.cpp ../FreedomElectra/filtro.cpp ../FreedomElectra/serbatoio.cpp ../FreedomElectra/impianto.cpp ../FreedomElectra/onoff.cpp ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/indirizzo.cpp ../FreedomElectra/finestraprincipale.cpp ../FreedomElectra/finestracercacliente.cpp ../FreedomElectra/finestrainseriscicliente.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
 
 
 clean:compiler_clean 
@@ -675,6 +678,9 @@ finestracercacliente.o: ../FreedomElectra/finestracercacliente.cpp ../FreedomEle
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
 		../FreedomElectra/finestraprincipale.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestracercacliente.o ../FreedomElectra/finestracercacliente.cpp
+
+finestrainseriscicliente.o: ../FreedomElectra/finestrainseriscicliente.cpp ../FreedomElectra/finestrainseriscicliente.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestrainseriscicliente.o ../FreedomElectra/finestrainseriscicliente.cpp
 
 moc_finestraprincipale.o: moc_finestraprincipale.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_finestraprincipale.o moc_finestraprincipale.cpp

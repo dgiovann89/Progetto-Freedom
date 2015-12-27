@@ -1,5 +1,5 @@
-#ifndef FINESTRACERCACLIENTE_H
-#define FINESTRACERCACLIENTE_H
+#ifndef FINESTRAINSERISCICLIENTE_H
+#define FINESTRAINSERISCICLIENTE_H
 
 #include<qdialog.h>
 #include<QVBoxLayout>
@@ -7,10 +7,10 @@
 #include<qlabel.h>
 #include<finestraprincipale.h>
 
-class FinestraCercaCliente : public QDialog{
+class FinestraInserisciCliente : public QDialog{
     Q_OBJECT
 public:
-    explicit FinestraCercaCliente(QDialog* parent=0);
+    explicit FinestraInserisciCliente(QDialog* parent=0);
 
     QVBoxLayout* layout;
     QLabel* labelTitolo;
@@ -18,7 +18,6 @@ public:
 
 public slots:
     void torna();
-
 };
 
-#endif // FINESTRACERCACLIENTE_H
+#endif // FINESTRAINSERISCICLIENTE_H

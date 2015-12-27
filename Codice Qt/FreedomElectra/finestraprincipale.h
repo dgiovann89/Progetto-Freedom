@@ -5,6 +5,7 @@
 #include<QVBoxLayout>
 #include<qpushbutton.h>
 #include<qlabel.h>
+#include<finestrainseriscicliente.h>
 #include<finestracercacliente.h>
 
 class FinestraPrincipale : public QDialog{
@@ -14,11 +15,13 @@ public:
 
     QVBoxLayout* layout;
     QLabel* labelTitolo;
-    QPushButton* bottoneCambia;
+    QPushButton* bottoneInserisciCliente;
+    QPushButton* bottoneCercaCliente;
     QPushButton* bottoneEsci;
 
 public slots:
-    void apriNuovaFinestra();
+    void apriFinestraInserisciCliente();
+    void apriFinestraCercaCliente();
     void esci();
 
 };

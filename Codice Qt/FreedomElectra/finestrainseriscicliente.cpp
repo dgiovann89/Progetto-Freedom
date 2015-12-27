@@ -1,11 +1,11 @@
-#include "finestracercacliente.h"
+#include "finestrainseriscicliente.h"
 
-FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
-    this->setWindowTitle("Finestra Cerca Cliente");
+FinestraInserisciCliente::FinestraInserisciCliente(QDialog* parent): QDialog(parent){
+    this->setWindowTitle("Finestra Inserisci Cliente");
     this->setMinimumSize(420,340);
 
     layout=new QVBoxLayout(this);
-    labelTitolo=new QLabel("Cerca i clienti");
+    labelTitolo=new QLabel("Inserisci cliente");
     bottoneIndietro=new QPushButton("Torna indietro",this);
 
     layout->addWidget(labelTitolo);
@@ -17,7 +17,7 @@ FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
 }
 
-void FinestraCercaCliente::torna(){
+void FinestraInserisciCliente::torna(){
 //    FinestraPrincipale finprinc;
     this->close();
 }
