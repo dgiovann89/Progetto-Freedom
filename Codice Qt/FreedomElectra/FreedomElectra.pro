@@ -13,7 +13,12 @@ HEADERS += \
     indirizzo.h \
     finestraprincipale.h \
     finestracercacliente.h \
-    finestrainseriscicliente.h
+    finestrainseriscicliente.h \
+    finestraclienteselezionato.h \
+    finestrainseriscisala.h \
+    finestrainfosala.h \
+    finestrainseriscicomponente.h \
+    finestravisualizzacomponente.h
 
 SOURCES += \
     cliente.cpp \
@@ -31,7 +36,12 @@ SOURCES += \
     indirizzo.cpp \
     finestraprincipale.cpp \
     finestracercacliente.cpp \
-    finestrainseriscicliente.cpp
+    finestrainseriscicliente.cpp \
+    finestraclienteselezionato.cpp \
+    finestrainseriscisala.cpp \
+    finestrainfosala.cpp \
+    finestrainseriscicomponente.cpp \
+    finestravisualizzacomponente.cpp
 
 QT += \
     core \

@@ -1,11 +1,11 @@
-#include "finestrainseriscicliente.h"
+#include "finestraclienteselezionato.h"
 
-FinestraInserisciCliente::FinestraInserisciCliente(QDialog* parent): QDialog(parent){
-    this->setWindowTitle("Finestra Inserisci Cliente");
-    this->setMinimumSize(420,340);
+FinestraClienteSelezionato::FinestraClienteSelezionato(QDialog *parent):QDialog(parent){
+    this->setWindowTitle("Finestra Cliente Selezionato");
+    this->setMinimumSize(520,340);
 
     layout=new QVBoxLayout(this);
-    labelTitolo=new QLabel("Inserisci cliente");
+    labelTitolo=new QLabel("Cliente Selezionato:");
     bottoneIndietro=new QPushButton("Torna indietro",this);
 
     layout->addWidget(labelTitolo);
@@ -17,6 +17,6 @@ FinestraInserisciCliente::FinestraInserisciCliente(QDialog* parent): QDialog(par
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
 }
 
-void FinestraInserisciCliente::torna(){
+void FinestraClienteSelezionato::torna(){
     this->close();
 }

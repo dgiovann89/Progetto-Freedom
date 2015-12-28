@@ -1,11 +1,11 @@
-#include "finestrainseriscicliente.h"
+#include "finestrainfosala.h"
 
-FinestraInserisciCliente::FinestraInserisciCliente(QDialog* parent): QDialog(parent){
-    this->setWindowTitle("Finestra Inserisci Cliente");
-    this->setMinimumSize(420,340);
+FinestraInfoSala::FinestraInfoSala(QDialog *parent):QDialog(parent){
+    this->setWindowTitle("Info Inserisci Sala Compressori");
+    this->setMinimumSize(320,340);
 
     layout=new QVBoxLayout(this);
-    labelTitolo=new QLabel("Inserisci cliente");
+    labelTitolo=new QLabel("Informazioni Sala Compressori:");
     bottoneIndietro=new QPushButton("Torna indietro",this);
 
     layout->addWidget(labelTitolo);
@@ -17,6 +17,6 @@ FinestraInserisciCliente::FinestraInserisciCliente(QDialog* parent): QDialog(par
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
 }
 
-void FinestraInserisciCliente::torna(){
+void FinestraInfoSala::torna(){
     this->close();
 }

@@ -1,10 +1,6 @@
 #ifndef FINESTRAINSERISCICLIENTE_H
 #define FINESTRAINSERISCICLIENTE_H
 
-#include<qdialog.h>
-#include<QVBoxLayout>
-#include<qpushbutton.h>
-#include<qlabel.h>
 #include<finestraprincipale.h>
 
 class FinestraInserisciCliente : public QDialog{

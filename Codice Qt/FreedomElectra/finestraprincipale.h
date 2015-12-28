@@ -1,10 +1,11 @@
 #ifndef FINESTRAPRINCIPALE_H
 #define FINESTRAPRINCIPALE_H
 
-#include<qdialog.h>
+#include<QDialog>
 #include<QVBoxLayout>
-#include<qpushbutton.h>
-#include<qlabel.h>
+#include<QPushButton>
+#include<QLabel>
+
 #include<finestrainseriscicliente.h>
 #include<finestracercacliente.h>
 
