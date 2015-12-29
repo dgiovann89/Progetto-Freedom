@@ -2,10 +2,13 @@
 
 FinestraInserisciSala::FinestraInserisciSala(QDialog *parent):QDialog(parent){
     this->setWindowTitle("Finestra Inserisci Sala Compressori");
-    this->setMinimumSize(320,340);
+    this->setMinimumSize(620,340);
 
     layout=new QVBoxLayout(this);
     labelTitolo=new QLabel("Sala Compressori:");
+    bottoneModificaInfoSala=new QPushButton("Modifica Info Sala",this);
+    bottoneInserisciComponente=new QPushButton("Inserisci nuovo componente",this);
+    bottoneVisualizzaComponente=new QPushButton("Visualizza componente",this);
     bottoneIndietro=new QPushButton("Torna indietro",this);
 
     layout->addWidget(labelTitolo);
