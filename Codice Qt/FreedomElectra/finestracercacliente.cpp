@@ -4,17 +4,22 @@ FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
     this->setWindowTitle("Finestra Cerca Cliente");
     this->setMinimumSize(620,340);
 
+    // new layout e groupbox
     layoutSfondo=new QHBoxLayout(this);
     layoutCompilazione=new QGridLayout();
     boxCompilazione=new QGroupBox(this);
     layoutLista= new QVBoxLayout(this);
     boxLista= new QGroupBox("",this);
+
+    // new label
     labelRagioneSociale=new QLabel("Ragione Sociale:",this);
     lineEditRagioneSociale=new QLineEdit(this);
     labelPIva=new QLabel("Partita Iva:",this);
     lineEditPIva=new QLineEdit(this);
     labelTitolo=new QLabel("Cerca cliente per Nome o PIva:");
     labelLista=new QLabel("Lista Clienti:");
+
+    // new bottoni
     bottoneApriCliente=new QPushButton("Visualizza Cliente",this);
     bottoneCercaCliente=new QPushButton("Cerca",this);
     bottoneIndietro=new QPushButton("Torna indietro",this);
@@ -27,20 +32,25 @@ FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
     header=QStringList() << "Rag. Sociale" << "Stabilimento";
     tabellaClienti->setHorizontalHeaderLabels(header);
 
+    // associazioni box e layout
     boxCompilazione->setLayout(layoutCompilazione);
     boxLista->setLayout(layoutLista);
     layoutSfondo->addWidget(boxCompilazione);
     layoutSfondo->addWidget(boxLista);
 
+//    labelTitolo->setAlignment(Qt::AlignTop);
+
+//    labelRagioneSociale->setAlignment(0);
+//    lineEditRagioneSociale->s eTT
+
     // layout compilazione
-    layoutCompilazione->addWidget(labelTitolo,0,0);
+    layoutCompilazione->addWidget(labelTitolo,0,0,1,0,Qt::AlignTop);
     layoutCompilazione->addWidget(labelRagioneSociale,1,0);
     layoutCompilazione->addWidget(lineEditRagioneSociale,1,1);
     layoutCompilazione->addWidget(labelPIva,2,0);
     layoutCompilazione->addWidget(lineEditPIva,2,1);
-    layoutCompilazione->setSpacing(30);
-    layoutCompilazione->addWidget(bottoneCercaCliente);
-    layoutCompilazione->addWidget(bottoneIndietro);
+    layoutCompilazione->addWidget(bottoneCercaCliente,3,0,1,0);
+    layoutCompilazione->addWidget(bottoneIndietro,4,0,1,0);
 
     // layout lista
     layoutLista->addWidget(labelLista);
