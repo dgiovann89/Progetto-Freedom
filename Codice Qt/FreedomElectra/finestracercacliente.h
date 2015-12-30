@@ -3,19 +3,44 @@
 
 #include<finestraprincipale.h>
 #include<finestraclienteselezionato.h>
+#include<QTableWidget>
+#include<QStringList>
+#include<QGroupBox>
+#include<QLineEdit>
 
 class FinestraCercaCliente : public QDialog{
     Q_OBJECT
 public:
     explicit FinestraCercaCliente(QDialog* parent=0);
 
-    QVBoxLayout* layout;
+    // Layout e groupBox
+    QHBoxLayout* layoutSfondo;
+    QGridLayout* layoutCompilazione;
+    QVBoxLayout* layoutLista;
+    QGroupBox* boxCompilazione;
+    QGroupBox* boxLista;
+
+    // Label e LineEdit
     QLabel* labelTitolo;
-    QPushButton* bottoneVisualizzaCliente;
+    QLabel* labelLista;
+    QLabel* labelRagioneSociale;
+    QLabel* labelPIva;
+    QLineEdit* lineEditPIva;
+    QLineEdit* lineEditRagioneSociale;
+
+    // Bottoni
+    QPushButton* bottoneCercaCliente;
+    QPushButton* bottoneApriCliente;
+    QPushButton* bottoneEliminaCliente;
     QPushButton* bottoneIndietro;
+
+    // tabella
+    QTableWidget* tabellaClienti;
 
 public slots:
     void apriFinestraClienteSelezionato();
+    // metodo per cercare il cliente
+    // metodo per eliminare il cliente selezionato
     void torna();
 
 };

@@ -18,8 +18,9 @@ private:
     string pIva;
     vector <SalaCompressori> sala;
     Indirizzo ind;
+    string stabilimento;
 public:
-    Cliente(string,string,string,string="",string="",Indirizzo=Indirizzo());
+    Cliente(string,string,string,string="",string="",Indirizzo=Indirizzo(),string="");
 //    ~Cliente() pensare
 
     //get
@@ -29,6 +30,7 @@ public:
     string getFax() const;
     string getPIva() const;
     Indirizzo getIndirizzo() const;
+    string getStabilimento() const;
     vector<SalaCompressori>& getSala() const; // ritorna il vector
     SalaCompressori& getSala(int) const; // ritorna l'oggetto di indice i
 
@@ -39,6 +41,7 @@ public:
     void setFax(string);
     void setPIva(string);
     void setInd(Indirizzo);
+    void setStabilimento(string);
 
     bool operator==(const Cliente&) const;
 
