@@ -13,29 +13,39 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(QDialog *parent):QDialog(
     boxTabella = new QGroupBox(this);
     boxBottoni = new QGroupBox(this);
 
-    // new label
+    // new label e lineedit
     labelTitolo=new QLabel("Cliente Selezionato:");
     labelTitoloTabella= new QLabel("Sale Compressori:", this);
     labelRagioneSociale=new QLabel("Ragione Sociale:",this);
     lineEditRagioneSociale=new QLineEdit(this);
+    lineEditRagioneSociale->setDisabled(true);
     labelPIva=new QLabel("Partita Iva:",this);
     lineEditPIva=new QLineEdit(this);
+    lineEditPIva->setDisabled(true);
     labelTelefono=new QLabel("Telefono:",this);
     lineEditTelefono=new QLineEdit(this);
+    lineEditTelefono->setDisabled(true);
     labelFax=new QLabel("Fax:",this);
     lineEditFax=new QLineEdit(this);
+    lineEditFax->setDisabled(true);
     labelEmail=new QLabel("Email:",this);
     lineEditEmail=new QLineEdit(this);
+    lineEditEmail->setDisabled(true);
     labelStabilimento=new QLabel("Stabilimento:",this);
     lineEditStabilimento=new QLineEdit(this);
+    lineEditStabilimento->setDisabled(true);
     labelVia=new QLabel("Via:",this);
     lineEditVia=new QLineEdit(this);
+    lineEditVia->setDisabled(true);
     labelCittà=new QLabel("Città:",this);
     lineEditCittà=new QLineEdit(this);
+    lineEditCittà->setDisabled(true);
     labelCap=new QLabel("CAP:",this);
     lineEditCap=new QLineEdit(this);
+    lineEditCap->setDisabled(true);
     labelProvincia=new QLabel("Provincia:",this);
     lineEditProvincia=new QLineEdit(this);
+    lineEditProvincia->setDisabled(true);
 
     // new tabella
     tabellaSale=new QTableWidget(0,5);

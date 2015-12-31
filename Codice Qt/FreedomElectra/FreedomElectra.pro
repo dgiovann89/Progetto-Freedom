@@ -15,10 +15,9 @@ HEADERS += \
     finestracercacliente.h \
     finestrainseriscicliente.h \
     finestraclienteselezionato.h \
-    finestrainseriscisala.h \
-    finestrainfosala.h \
     finestrainseriscicomponente.h \
-    finestravisualizzacomponente.h
+    finestravisualizzacomponente.h \
+    finestrainseriscisala.h
 
 SOURCES += \
     cliente.cpp \
@@ -38,10 +37,9 @@ SOURCES += \
     finestracercacliente.cpp \
     finestrainseriscicliente.cpp \
     finestraclienteselezionato.cpp \
-    finestrainseriscisala.cpp \
-    finestrainfosala.cpp \
     finestrainseriscicomponente.cpp \
-    finestravisualizzacomponente.cpp
+    finestravisualizzacomponente.cpp \
+    finestrainseriscisala.cpp
 
 QT += \
     core \

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_FinestraInserisciSala_t {
-    QByteArrayData data[6];
-    char stringdata[123];
+    QByteArrayData data[3];
+    char stringdata[29];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,16 +30,10 @@ struct qt_meta_stringdata_FinestraInserisciSala_t {
 static const qt_meta_stringdata_FinestraInserisciSala_t qt_meta_stringdata_FinestraInserisciSala = {
     {
 QT_MOC_LITERAL(0, 0, 21),
-QT_MOC_LITERAL(1, 22, 28),
-QT_MOC_LITERAL(2, 51, 0),
-QT_MOC_LITERAL(3, 52, 31),
-QT_MOC_LITERAL(4, 84, 32),
-QT_MOC_LITERAL(5, 117, 5)
+QT_MOC_LITERAL(1, 22, 5),
+QT_MOC_LITERAL(2, 28, 0)
     },
-    "FinestraInserisciSala\0"
-    "apriFinestraModificaInfoSala\0\0"
-    "apriFinestraInserisciComponente\0"
-    "apriFinestraVisualizzaComponente\0torna"
+    "FinestraInserisciSala\0torna\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -49,7 +43,7 @@ static const uint qt_meta_data_FinestraInserisciSala[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -57,15 +51,9 @@ static const uint qt_meta_data_FinestraInserisciSala[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x0a /* Public */,
-       3,    0,   35,    2, 0x0a /* Public */,
-       4,    0,   36,    2, 0x0a /* Public */,
-       5,    0,   37,    2, 0x0a /* Public */,
+       1,    0,   19,    2, 0x0a /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -76,10 +64,7 @@ void FinestraInserisciSala::qt_static_metacall(QObject *_o, QMetaObject::Call _c
     if (_c == QMetaObject::InvokeMetaMethod) {
         FinestraInserisciSala *_t = static_cast<FinestraInserisciSala *>(_o);
         switch (_id) {
-        case 0: _t->apriFinestraModificaInfoSala(); break;
-        case 1: _t->apriFinestraInserisciComponente(); break;
-        case 2: _t->apriFinestraVisualizzaComponente(); break;
-        case 3: _t->torna(); break;
+        case 0: _t->torna(); break;
         default: ;
         }
     }
@@ -111,13 +96,13 @@ int FinestraInserisciSala::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 1)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 1)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 1;
     }
     return _id;
 }

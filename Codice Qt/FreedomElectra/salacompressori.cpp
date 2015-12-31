@@ -1,6 +1,6 @@
 #include "salacompressori.h"
 
-SalaCompressori::SalaCompressori(string n, Cliente* cl, int k, int p):nome(n), proprietario(cl), kwTot(k), portataTot(p){}
+SalaCompressori::SalaCompressori(string n, Cliente* cl, int k, int p, int press, int port, string i):nome(n), proprietario(cl), kwTot(k), portataTot(p), pressioneRichiesta(press), portataRichiesta(port), impianto(i){}
 
 // get
 string SalaCompressori::getNome() const{
@@ -21,6 +21,15 @@ vector<Componente*>& SalaCompressori::getComponenti() const {
 Componente* SalaCompressori::getComponente(int i) const{
     return const_cast<Componente*>(componenti[i]);
 }
+int SalaCompressori::getPressioneRichiesta() const {
+    return pressioneRichiesta;
+}
+int SalaCompressori::getPortataRichiesta() const {
+    return portataRichiesta;
+}
+string SalaCompressori::getImpianto() const {
+    return impianto;
+}
 
 // set
 void SalaCompressori::setNome(string s){
@@ -28,6 +37,15 @@ void SalaCompressori::setNome(string s){
 }
 void SalaCompressori::setProprietario(Cliente * punt){
     proprietario = punt;
+}
+void SalaCompressori::setPressioneRichiesta(int p) {
+    pressioneRichiesta = p;
+}
+void SalaCompressori::setPortataRichiesta(int p) {
+    portataRichiesta = p;
+}
+void SalaCompressori::setImpianto(string i) {
+    impianto = i;
 }
 
 void SalaCompressori::aggiungiComponente(Componente * c){
