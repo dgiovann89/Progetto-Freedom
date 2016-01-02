@@ -3,6 +3,7 @@
 
 #include<finestracercacliente.h>
 #include<finestrainseriscisala.h>
+#include<finestraconfigurasala.h>
 #include<QTableWidget>
 #include<QGroupBox>
 
@@ -47,7 +48,7 @@ public:
     // Bottoni
     QPushButton* bottoneModificaDatiCliente;
     QPushButton* bottoneInserisciNuovaSala;
-    QPushButton* bottoneVisualizzaSala;
+    QPushButton* bottoneConfiguraSala;
     QPushButton* bottoneEliminaSala;
     QPushButton* bottoneIndietro;
 
@@ -56,6 +57,7 @@ public:
 
 public slots:
     void apriFinestraInserisciSala();
+    void apriFinestraConfiguraSala();
     void torna();
 };
 

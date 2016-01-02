@@ -13,7 +13,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(QDialog *parent):QDialog(
     boxTabella = new QGroupBox(this);
     boxBottoni = new QGroupBox(this);
 
-    // new label e lineedit
+    // new label e lineEdit
     labelTitolo=new QLabel("Cliente Selezionato:");
     labelTitoloTabella= new QLabel("Sale Compressori:", this);
     labelRagioneSociale=new QLabel("Ragione Sociale:",this);
@@ -57,7 +57,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(QDialog *parent):QDialog(
     // new bottoni
     bottoneModificaDatiCliente= new QPushButton("Modifica",this);
     bottoneInserisciNuovaSala=new QPushButton("Inserisci nuova Sala Compressori",this);
-    bottoneVisualizzaSala= new QPushButton("Visualizza",this);
+    bottoneConfiguraSala= new QPushButton("Visualizza",this);
     bottoneEliminaSala= new QPushButton("Elimina",this);
     bottoneIndietro=new QPushButton("Torna indietro",this);
 
@@ -102,7 +102,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(QDialog *parent):QDialog(
     layoutTabella->addWidget(tabellaSale);
 
     // associazioni sul layoutBottoni
-    layoutBottoni->addWidget(bottoneVisualizzaSala);
+    layoutBottoni->addWidget(bottoneConfiguraSala);
     layoutBottoni->addWidget(bottoneEliminaSala);
     layoutBottoni->addWidget(bottoneInserisciNuovaSala);
     layoutBottoni->addWidget(bottoneIndietro);
@@ -110,12 +110,18 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(QDialog *parent):QDialog(
     this->setLayout(layoutSfondo);
 
     connect(bottoneInserisciNuovaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
+    connect(bottoneConfiguraSala,SIGNAL(clicked()),this,SLOT(apriFinestraConfiguraSala()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
 }
 
 void FinestraClienteSelezionato::apriFinestraInserisciSala(){
     FinestraInserisciSala finInsSala;
     finInsSala.exec();
+}
+
+void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
+    FinestraConfiguraSala finConfSala;
+    finConfSala.exec();
 }
 
 void FinestraClienteSelezionato::torna(){
