@@ -6,6 +6,8 @@
 #include<finestravisualizzacomponente.h>
 #include<finestrainseriscicomponente.h>
 #include<QTableWidget>
+//#include<QStringList>
+#include<QGroupBox>
 
 class FinestraConfiguraSala : public QDialog{
     Q_OBJECT
@@ -63,7 +65,7 @@ public:
     QPushButton* bottoneIndietro;
 
     // tabella
-    QTableWidget tabellaComponenti;
+    QTableWidget* tabellaComponenti;
 
 public slots:
     void apriFinestraInserisciSala();

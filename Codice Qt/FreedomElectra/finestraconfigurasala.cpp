@@ -2,7 +2,7 @@
 
 FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
     this->setWindowTitle("Finestra Configurazione sala compressori");
-    this->setMinimumSize(720,440);
+    this->setMinimumSize(1020,540);
 
     // new layout e groupBox
     layoutInfoSala = new QGridLayout(this);
@@ -64,21 +64,33 @@ FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
     // associazione box e layout
     layoutSfondo->addWidget(boxSinistra);
     layoutSfondo->addWidget(boxDestra);
-    layoutSinistra->addWidget(boxInfoSala);
-    layoutSinistra->addWidget(boxTabella);
-    layoutSinistra->addWidget(boxBottoniTabella);
-    layoutTabella->addWidget(boxParametriSala);
-    layoutTabella->addWidget(boxBottoniFinestra);
+    // sinistra
     boxSinistra->setLayout(layoutSinistra);
+        layoutSinistra->addWidget(boxInfoSala);
+        boxInfoSala->setLayout(layoutInfoSala);
+        // associazione tabella a layoutTabella
+        layoutSinistra->addWidget(boxTabella);
+        boxTabella->setLayout(layoutTabella);
+        layoutTabella->addWidget(labelTabella);
+        layoutTabella->addWidget(tabellaComponenti);
+        // associazione boxTabella, layoutTabella dei bottoni
+        layoutSinistra->addWidget(boxBottoniTabella);
+        boxBottoniTabella->setLayout(layoutBottoniTabella);
+        layoutBottoniTabella->addWidget(bottoneInserisciComponente);
+        layoutBottoniTabella->addWidget(bottoneVisualizzaComponente);
+        layoutBottoniTabella->addWidget(bottoneEliminaComponente);
+    //destra
     boxDestra->setLayout(layoutDestra);
-    boxInfoSala->setLayout(layoutInfoSala);
-    boxTabella->setLayout(layoutTabella);
-    boxBottoniTabella->setLayout(layoutBottoniTabella);
-    boxParametriSala->setLayout(layoutParametriSala);
-    boxBottoniFinestra->setLayout(layoutBottoniFinestra);
+        layoutDestra->addWidget(boxParametriSala);
+        boxParametriSala->setLayout(layoutParametriSala);
+        layoutDestra->addWidget(boxBottoniFinestra);
+        boxBottoniFinestra->setLayout(layoutBottoniFinestra);
+        layoutBottoniFinestra->addWidget(bottoneSalva);
+        layoutBottoniFinestra->addWidget(bottoneEsportaPDF);
+        layoutBottoniFinestra->addWidget(bottoneIndietro);
 
-    // associazion label e linedit a layoutCliente
-    layoutInfoSala->addWidget(labelInfoSala);
+    // associazion label e lineEdit a layoutCliente
+    layoutInfoSala->addWidget(labelInfoSala,0,0);
     layoutInfoSala->addWidget(labelRagioneSociale,1,0);
     layoutInfoSala->addWidget(lineEditRagioneSociale,1,1);
     layoutInfoSala->addWidget(labelStabilimento,2,0);
@@ -93,23 +105,14 @@ FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
     layoutInfoSala->addWidget(lineEditImpianto,3,3);
     layoutInfoSala->addWidget(bottoneModificaSala,2,4);
 
-    // associazione tabella a layoutTabella
-    layoutTabella->addWidget(labelTabella);
-    layoutTabella->addWidget(tabellaComponenti);
-
-    // associazione sul layoutTabella dei bottoni
-    layoutBottoniTabella->addWidget(bottoneInserisciComponente);
-    layoutBottoniTabella->addWidget(bottoneVisualizzaComponente);
-    layoutBottoniTabella->addWidget(bottoneEliminaComponente);
-
-    layoutParametriSala->addWidget(labelKwTot);
-    layoutParametriSala->addWidget(lineEditKwTot);
-    layoutParametriSala->addWidget(labelPortatEffettiva);
-    layoutParametriSala->addWidget(lineEditPortataEffettiva);
-    layoutParametriSala->addWidget(labelCadutaDiPressioneTot);
-    layoutParametriSala->addWidget(lineEditCadutaDiPressioneTot);
-    layoutParametriSala->addWidget(labelPressioneEffettiva);
-    layoutParametriSala->addWidget(lineEditPressioneEffettiva);
+    layoutParametriSala->addWidget(labelKwTot,0,0);
+    layoutParametriSala->addWidget(lineEditKwTot,0,1);
+    layoutParametriSala->addWidget(labelPortatEffettiva,1,0);
+    layoutParametriSala->addWidget(lineEditPortataEffettiva,1,1);
+    layoutParametriSala->addWidget(labelCadutaDiPressioneTot,2,0);
+    layoutParametriSala->addWidget(lineEditCadutaDiPressioneTot,2,1);
+    layoutParametriSala->addWidget(labelPressioneEffettiva,3,0);
+    layoutParametriSala->addWidget(lineEditPressioneEffettiva,3,1);
 
     this->setLayout(layoutSfondo);
 
