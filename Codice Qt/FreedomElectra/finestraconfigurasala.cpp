@@ -45,6 +45,14 @@ FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
     labelCadutaDiPressioneTot = new QLabel("Caduta di pressione Totale:",this);
     lineEditCadutaDiPressioneTot = new QLineEdit(this);
 
+    // disabilito le lineEdit del cliente
+    lineEditNomeSala->setDisabled(true);
+    lineEditImpianto->setDisabled(true);
+    lineEditPortataRichiesta->setDisabled(true);
+    lineEditPressioneRichiesta->setDisabled(true);
+    lineEditRagioneSociale->setDisabled(true);
+    lineEditStabilimento->setDisabled(true);
+
     // new tabella
     tabellaComponenti = new QTableWidget(0,5);
     tabellaComponenti->setColumnWidth(0,250);

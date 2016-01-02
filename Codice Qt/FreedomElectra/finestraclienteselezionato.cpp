@@ -112,6 +112,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(QDialog *parent):QDialog(
     connect(bottoneInserisciNuovaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
     connect(bottoneConfiguraSala,SIGNAL(clicked()),this,SLOT(apriFinestraConfiguraSala()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
+    connect(bottoneModificaDatiCliente,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciCliente()));
 }
 
 void FinestraClienteSelezionato::apriFinestraInserisciSala(){
@@ -122,6 +123,11 @@ void FinestraClienteSelezionato::apriFinestraInserisciSala(){
 void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
     FinestraConfiguraSala finConfSala;
     finConfSala.exec();
+}
+
+void FinestraClienteSelezionato::apriFinestraInserisciCliente() {
+    FinestraInserisciCliente finInsCli;
+    finInsCli.exec();
 }
 
 void FinestraClienteSelezionato::torna(){

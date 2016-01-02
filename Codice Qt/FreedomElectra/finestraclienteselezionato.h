@@ -58,6 +58,7 @@ public:
 public slots:
     void apriFinestraInserisciSala();
     void apriFinestraConfiguraSala();
+    void apriFinestraInserisciCliente();
     void torna();
 };
 

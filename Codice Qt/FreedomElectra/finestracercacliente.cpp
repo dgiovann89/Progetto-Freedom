@@ -2,10 +2,11 @@
 
 FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
     this->setWindowTitle("Finestra Cerca Cliente");
-    this->setMinimumSize(620,340);
+    this->setMinimumSize(620,440);
 
     // new layout e groupbox
     layoutSfondo=new QHBoxLayout(this);
+//    layoutCompilazione=new QFormLayout();
     layoutCompilazione=new QGridLayout();
     boxCompilazione=new QGroupBox(this);
     layoutLista= new QVBoxLayout(this);
@@ -38,19 +39,24 @@ FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
     layoutSfondo->addWidget(boxCompilazione);
     layoutSfondo->addWidget(boxLista);
 
-//    labelTitolo->setAlignment(Qt::AlignTop);
-
-//    labelRagioneSociale->setAlignment(0);
-//    lineEditRagioneSociale->s eTT
-
     // layout compilazione
-    layoutCompilazione->addWidget(labelTitolo,0,0,1,0,Qt::AlignTop);
+    layoutCompilazione->addWidget(labelTitolo,0,0,1,0);
     layoutCompilazione->addWidget(labelRagioneSociale,1,0);
     layoutCompilazione->addWidget(lineEditRagioneSociale,1,1);
     layoutCompilazione->addWidget(labelPIva,2,0);
     layoutCompilazione->addWidget(lineEditPIva,2,1);
-    layoutCompilazione->addWidget(bottoneCercaCliente,3,0,1,0);
-    layoutCompilazione->addWidget(bottoneIndietro,4,0,1,0);
+    layoutCompilazione->addWidget(bottoneCercaCliente,3,0,1,0,Qt::AlignBottom);
+    layoutCompilazione->addWidget(bottoneIndietro,4,0,1,0,Qt::AlignBottom);
+
+       layoutCompilazione->setAlignment(Qt::AlignTop);
+    // layout compilazione con il qformLayout
+//    layoutCompilazione->addWidget(labelTitolo);
+//    layoutCompilazione->addWidget(labelRagioneSociale);
+//    layoutCompilazione->addWidget(lineEditRagioneSociale);
+//    layoutCompilazione->addWidget(labelPIva);
+//    layoutCompilazione->addWidget(lineEditPIva);
+//    layoutCompilazione->addWidget(bottoneCercaCliente);
+//    layoutCompilazione->addWidget(bottoneIndietro);
 
     // layout lista
     layoutLista->addWidget(labelLista);

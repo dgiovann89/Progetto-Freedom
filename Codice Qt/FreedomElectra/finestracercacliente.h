@@ -7,6 +7,7 @@
 #include<QStringList>
 #include<QGroupBox>
 #include<QLineEdit>
+#include<QFormLayout>
 
 class FinestraCercaCliente : public QDialog{
     Q_OBJECT
@@ -15,6 +16,7 @@ public:
 
     // Layout e groupBox
     QHBoxLayout* layoutSfondo;
+//    QFormLayout* layoutCompilazione;
     QGridLayout* layoutCompilazione;
     QVBoxLayout* layoutLista;
     QGroupBox* boxCompilazione;
