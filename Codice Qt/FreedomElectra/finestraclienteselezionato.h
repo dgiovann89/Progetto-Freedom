@@ -9,8 +9,10 @@
 
 class FinestraClienteSelezionato : public QDialog{
     Q_OBJECT
+private:
+    DatabaseClienti* db;
 public:
-    explicit FinestraClienteSelezionato(QDialog* parent=0);
+    explicit FinestraClienteSelezionato(DatabaseClienti* db, QDialog* parent=0);
 
     // Layout e groupbox
     QVBoxLayout* layoutSfondo;

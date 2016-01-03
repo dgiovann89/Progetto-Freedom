@@ -1,6 +1,6 @@
 #include "finestracercacliente.h"
 
-FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
+FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent): QDialog(parent), db(d){
     this->setWindowTitle("Finestra Cerca Cliente");
     this->setMinimumSize(620,440);
 
@@ -48,15 +48,7 @@ FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
     layoutCompilazione->addWidget(bottoneCercaCliente,3,0,1,0,Qt::AlignBottom);
     layoutCompilazione->addWidget(bottoneIndietro,4,0,1,0,Qt::AlignBottom);
 
-       layoutCompilazione->setAlignment(Qt::AlignTop);
-    // layout compilazione con il qformLayout
-//    layoutCompilazione->addWidget(labelTitolo);
-//    layoutCompilazione->addWidget(labelRagioneSociale);
-//    layoutCompilazione->addWidget(lineEditRagioneSociale);
-//    layoutCompilazione->addWidget(labelPIva);
-//    layoutCompilazione->addWidget(lineEditPIva);
-//    layoutCompilazione->addWidget(bottoneCercaCliente);
-//    layoutCompilazione->addWidget(bottoneIndietro);
+    layoutCompilazione->setAlignment(Qt::AlignTop);
 
     // layout lista
     layoutLista->addWidget(labelLista);
@@ -70,8 +62,33 @@ FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
 }
 
+void FinestraCercaCliente::aggiornaLista() {
+   tabellaClienti->clear();
+
+   QStringList listaTemporanea;
+   DatabaseClienti d;
+   vector<Cliente>::iterator it=d.getDatabase().begin();
+
+   for (; it!= d.getDatabase().end(); ++it)
+      listaTemporanea<< QString::fromStdString((*it).getRagioneSociale());
+   tabellaClienti->setItem(listaTemporanea);
+}
+
+// slots reset campi
+void FinestraCercaCliente::resetCampi(int) {
+   lineEditRagioneSociale->clear();
+   lineEditPIva->clear();
+}
+
+// publics slots
+// aggiorna lista
+void FinestraCercaCliente::aggiornaListaS() {
+   resetCampi(1);
+   aggiornaLista();
+}
+
 void FinestraCercaCliente::apriFinestraClienteSelezionato(){
-    FinestraClienteSelezionato finCliSel;
+    FinestraClienteSelezionato finCliSel(db);
     finCliSel.exec();
 }
 

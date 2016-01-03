@@ -7,11 +7,14 @@
 #include<QHBoxLayout>
 #include<QGroupBox>
 #include<QLineEdit>
+#include<QMessageBox>
 
 class FinestraInserisciCliente : public QDialog{
     Q_OBJECT
+private:
+    DatabaseClienti* db;
 public:
-    explicit FinestraInserisciCliente(QDialog* parent=0);
+    explicit FinestraInserisciCliente(DatabaseClienti*, QDialog* parent=0);
 
     QVBoxLayout* layoutSfondo;
 
@@ -47,6 +50,7 @@ public:
 
 
 public slots:
+    void salva();
     void torna();
 };
 

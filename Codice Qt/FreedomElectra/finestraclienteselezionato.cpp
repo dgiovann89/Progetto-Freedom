@@ -1,6 +1,6 @@
 #include "finestraclienteselezionato.h"
 
-FinestraClienteSelezionato::FinestraClienteSelezionato(QDialog *parent):QDialog(parent){
+FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, QDialog *parent):QDialog(parent), db(d){
     this->setWindowTitle("Finestra Cliente Selezionato");
     this->setMinimumSize(720,440);
 
@@ -126,7 +126,7 @@ void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
 }
 
 void FinestraClienteSelezionato::apriFinestraInserisciCliente() {
-    FinestraInserisciCliente finInsCli;
+    FinestraInserisciCliente finInsCli(db);
     finInsCli.exec();
 }
 
