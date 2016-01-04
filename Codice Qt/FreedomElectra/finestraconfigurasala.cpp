@@ -1,6 +1,8 @@
 #include "finestraconfigurasala.h"
 
 FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
+    db = new DatabaseComponenti();
+
     this->setWindowTitle("Finestra Configurazione sala compressori");
     this->setMinimumSize(1020,540);
 
@@ -136,12 +138,12 @@ void FinestraConfiguraSala::apriFinestraInserisciSala(){
 }
 
 void FinestraConfiguraSala::apriFinestraInserisciComponente(){
-    FinestraInserisciComponente finInsComp;
+    FinestraInserisciComponente finInsComp(db,this);
     finInsComp.exec();
 }
 
 void FinestraConfiguraSala::apriFinestraVisualizzaComponente(){
-    FinestraVisualizzaComponente finVisComp;
+    FinestraVisualizzaComponente finVisComp(db,this);
     finVisComp.exec();
 }
 

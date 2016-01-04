@@ -1,6 +1,6 @@
 #include "finestracercacliente.h"
 
-FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent): QDialog(parent), db(d){
+FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
     this->setWindowTitle("Finestra Cerca Cliente");
     this->setMinimumSize(620,440);
 
@@ -62,33 +62,8 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
 }
 
-void FinestraCercaCliente::aggiornaLista() {
-   tabellaClienti->clear();
-
-   QStringList listaTemporanea;
-   DatabaseClienti d;
-   vector<Cliente>::iterator it=d.getDatabase().begin();
-
-   for (; it!= d.getDatabase().end(); ++it)
-      listaTemporanea<< QString::fromStdString((*it).getRagioneSociale());
-   tabellaClienti->setItem(listaTemporanea);
-}
-
-// slots reset campi
-void FinestraCercaCliente::resetCampi(int) {
-   lineEditRagioneSociale->clear();
-   lineEditPIva->clear();
-}
-
-// publics slots
-// aggiorna lista
-void FinestraCercaCliente::aggiornaListaS() {
-   resetCampi(1);
-   aggiornaLista();
-}
-
 void FinestraCercaCliente::apriFinestraClienteSelezionato(){
-    FinestraClienteSelezionato finCliSel(db);
+    FinestraClienteSelezionato finCliSel;
     finCliSel.exec();
 }
 

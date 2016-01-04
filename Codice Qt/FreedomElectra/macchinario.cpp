@@ -1,6 +1,6 @@
 #include "macchinario.h"
 
-Macchinario::Macchinario(string ma, string mod, int a, int press, int port, Cliente* cl, SalaCompressori* s, int k):Componente(ma,mod,a,press,port,cl,s),kw(k){}
+Macchinario::Macchinario(string ma, string mod, int a, int press, int port, float cdp, int k, Cliente* cl, SalaCompressori* s):Componente(ma,mod,a,press,port,cdp,cl,s),kw(k){}
 
 string Macchinario::getTipo() const {
     return "Macchinario";

@@ -1,8 +1,6 @@
 #include "finestraprincipale.h"
 
 FinestraPrincipale::FinestraPrincipale(QDialog* parent): QDialog(parent){
-    db=new DatabaseClienti();
-
     this->setWindowTitle("Finestra Principale");
     this->setMinimumSize(320,240);
 
@@ -28,12 +26,12 @@ FinestraPrincipale::FinestraPrincipale(QDialog* parent): QDialog(parent){
 }
 
 void FinestraPrincipale::apriFinestraInserisciCliente(){
-    FinestraInserisciCliente finInsCli(db,this);
+    FinestraInserisciCliente finInsCli;
     finInsCli.exec();
 }
 
 void FinestraPrincipale::apriFinestraCercaCliente(){
-    FinestraCercaCliente finCerCli(db,this);
+    FinestraCercaCliente finCerCli;
     finCerCli.exec();
 }
 

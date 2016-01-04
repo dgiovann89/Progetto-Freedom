@@ -3,13 +3,16 @@
 
 #include<finestrainseriscisala.h>
 #include<finestrainseriscicomponente.h>
+#include<databasecomponenti.h>
 #include<QComboBox>
 #include<QString>
 
 class FinestraVisualizzaComponente : public QDialog{
     Q_OBJECT
+private:
+    DatabaseComponenti* db;
 public:
-    explicit FinestraVisualizzaComponente(QDialog* parent=0);
+    explicit FinestraVisualizzaComponente(DatabaseComponenti*, QDialog* parent=0);
 
     // box e layout
     QVBoxLayout* layoutSfondo;

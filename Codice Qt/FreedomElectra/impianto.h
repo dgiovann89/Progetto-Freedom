@@ -4,10 +4,8 @@
 #include<componente.h>
 
 class Impianto : public Componente{
-private:
-    int cadDiPress;
 public:
-    Impianto(string, string, int, int, int, Cliente*, SalaCompressori*, int);
+    Impianto(string, string, int, int, int, float, Cliente* =0, SalaCompressori* =0);
     string getTipo() const;
 };
 

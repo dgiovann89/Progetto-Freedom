@@ -5,12 +5,15 @@
 #include<finestrainseriscisala.h>
 #include<finestravisualizzacomponente.h>
 #include<finestrainseriscicomponente.h>
+#include<databasecomponenti.h>
 #include<QTableWidget>
-//#include<QStringList>
 #include<QGroupBox>
+
 
 class FinestraConfiguraSala : public QDialog{
     Q_OBJECT
+private:
+    DatabaseComponenti* db;
 public:
     explicit FinestraConfiguraSala(QDialog* parent=0);
 

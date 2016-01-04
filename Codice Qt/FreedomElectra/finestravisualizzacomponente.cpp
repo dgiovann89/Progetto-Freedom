@@ -1,6 +1,6 @@
 #include "finestravisualizzacomponente.h"
 
-FinestraVisualizzaComponente::FinestraVisualizzaComponente(QDialog *parent):QDialog(parent){
+FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d, QDialog *parent):QDialog(parent), db(d){
     this->setWindowTitle("Finestra Visualizza Componente");
     this->setMinimumSize(340,340);
 
@@ -78,7 +78,7 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(QDialog *parent):QDia
 }
 
 void FinestraVisualizzaComponente::apriFinestraInserisciComponente(){
-    FinestraInserisciComponente finInsComp;
+    FinestraInserisciComponente finInsComp(db);
     this->close();
     finInsComp.exec();
 }

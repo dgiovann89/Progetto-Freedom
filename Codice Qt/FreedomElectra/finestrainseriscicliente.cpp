@@ -1,6 +1,6 @@
 #include "finestrainseriscicliente.h"
 
-FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* parent): QDialog(parent), db(d){
+FinestraInserisciCliente::FinestraInserisciCliente(QDialog* parent): QDialog(parent){
     this->setWindowTitle("Finestra Inserisci Cliente");
     this->setMinimumSize(420,340);
 
@@ -68,37 +68,37 @@ FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* 
     this->setLayout(layoutSfondo);
 
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
-    connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
+//    connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
 }
 
 
-void FinestraInserisciCliente::salva(){
-    Cliente c(lineEditRagioneSociale->text().toStdString(),lineEditPIva->text().toStdString(),
-              lineEditTelefono->text().toStdString(),lineEditFax->text().toStdString(),
-              lineEditEmail->text().toStdString(),lineEditStabilimento->text().toStdString());
+//void FinestraInserisciCliente::salva(){
+//    Cliente c(lineEditRagioneSociale->text().toStdString(),lineEditPIva->text().toStdString(),
+//              lineEditTelefono->text().toStdString(),lineEditFax->text().toStdString(),
+//              lineEditEmail->text().toStdString(),lineEditStabilimento->text().toStdString());
 
-    Indirizzo i(lineEditVia->text().toStdString(), lineEditCittà->text().toStdString(),
-                lineEditCap->text().toStdString(), lineEditProvincia->text().toStdString());
+//    Indirizzo i(lineEditVia->text().toStdString(), lineEditCittà->text().toStdString(),
+//                lineEditCap->text().toStdString(), lineEditProvincia->text().toStdString());
 
-    c.setInd(i);
+//    c.setInd(i);
 
-    if(lineEditRagioneSociale->text()!="" && lineEditPIva->text()!="" &&
-            lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
-            lineEditVia->text()!="" && lineEditCittà->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
+//    if(lineEditRagioneSociale->text()!="" && lineEditPIva->text()!="" &&
+//            lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
+//            lineEditVia->text()!="" && lineEditCittà->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
 
-        db->aggiungiCliente(c);
-        QMessageBox messageBox(this);
-            messageBox.setText("Dati inseriti correttamente");
-            messageBox.exec();
-            this->close();
-    }
-    else{
-        QMessageBox messageBox(this);
-        messageBox.setText("Compilare tutti i campi");
-        messageBox.exec();
-  }
+//        db->aggiungiCliente(c);
+//        QMessageBox messageBox(this);
+//            messageBox.setText("Dati inseriti correttamente");
+//            messageBox.exec();
+//            this->close();
+//    }
+//    else{
+//        QMessageBox messageBox(this);
+//        messageBox.setText("Compilare tutti i campi");
+//        messageBox.exec();
+//  }
 
-}
+//}
 
 
 void FinestraInserisciCliente::torna(){

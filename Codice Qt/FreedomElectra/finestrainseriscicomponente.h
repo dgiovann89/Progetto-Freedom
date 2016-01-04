@@ -4,11 +4,20 @@
 #include<finestrainseriscisala.h>
 #include<QComboBox>
 #include<QString>
+#include<databasecomponenti.h>
+#include<componente.h>
+#include<onoff.h>
+#include<velocitavariabile.h>
+#include<serbatoio.h>
+#include<filtro.h>
+#include<impianto.h>
 
 class FinestraInserisciComponente : public QDialog{
     Q_OBJECT
+private:
+    DatabaseComponenti* db;
 public:
-    explicit FinestraInserisciComponente(QDialog* parent=0);
+    explicit FinestraInserisciComponente(DatabaseComponenti*, QDialog* parent=0);
 
     // box e layout
     QVBoxLayout* layoutSfondo;
@@ -26,6 +35,7 @@ public:
     QLabel* labelAnno;
     QLabel* labelPressione;
     QLabel* labelPortata_Capacità;
+    QLabel* labelCadDiPress;
     QLabel* labelKw;
 
     // lineEdit
@@ -34,6 +44,7 @@ public:
     QLineEdit* lineEditAnno;
     QLineEdit* lineEditPressione;
     QLineEdit* lineEditPortata_Capacità;
+    QLineEdit* lineEditCadDiPress;
     QLineEdit* lineEditKw;
 
     // bottoni
@@ -44,6 +55,7 @@ public:
     QComboBox* comboBoxTipo;
 
 public slots:
+    void salva();
     void torna();
 };
 

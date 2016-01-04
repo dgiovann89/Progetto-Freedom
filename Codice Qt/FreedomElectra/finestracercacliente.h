@@ -9,15 +9,11 @@
 #include<QLineEdit>
 #include<QFormLayout>
 #include<databaseclienti.h>
-#include<QListWidget>
 
 class FinestraCercaCliente : public QDialog{
     Q_OBJECT
-private:
-    DatabaseClienti* db;
-    void aggiornaLista();
 public:
-    explicit FinestraCercaCliente(DatabaseClienti* db, QDialog* parent=0);
+    explicit FinestraCercaCliente(QDialog* parent=0);
 
     // Layout e groupBox
     QHBoxLayout* layoutSfondo;
@@ -44,13 +40,8 @@ public:
     // tabella
     QTableWidget* tabellaClienti;
 
-private slots:
-    void inserisciCliente(QListWidgetItem*);
-    void resetCampi(int);
-
 public slots:
     void apriFinestraClienteSelezionato();
-    void aggiornaListaS();
     // metodo per cercare il cliente
     // metodo per eliminare il cliente selezionato
     void torna();

@@ -1,6 +1,6 @@
 #include "finestrainseriscicomponente.h"
 
-FinestraInserisciComponente::FinestraInserisciComponente(QDialog *parent):QDialog(parent){
+FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, QDialog *parent):QDialog(parent), db(d){
     this->setWindowTitle("Finestra Inserisci Componenti");
     this->setMinimumSize(340,340);
 
@@ -16,6 +16,8 @@ FinestraInserisciComponente::FinestraInserisciComponente(QDialog *parent):QDialo
     labelAnno = new QLabel("Anno:");
     labelPressione = new QLabel("Pressione:");
     labelPortata_Capacità = new QLabel("Portata o Capacità:");
+    labelCadDiPress = new QLabel("Caduta di pressione:");
+    lineEditCadDiPress = new QLineEdit(this);
     labelKw = new QLabel("Kw:");
     lineEditMarca = new QLineEdit(this);
     lineEditModello = new QLineEdit(this);
@@ -56,8 +58,10 @@ FinestraInserisciComponente::FinestraInserisciComponente(QDialog *parent):QDialo
     layoutDatiComponente->addWidget(lineEditPressione,4,1);
     layoutDatiComponente->addWidget(labelPortata_Capacità,5,0);
     layoutDatiComponente->addWidget(lineEditPortata_Capacità,5,1);
-    layoutDatiComponente->addWidget(labelKw,6,0);
-    layoutDatiComponente->addWidget(lineEditKw,6,1);
+    layoutDatiComponente->addWidget(labelCadDiPress,6,0);
+    layoutDatiComponente->addWidget(lineEditCadDiPress,6,1);
+    layoutDatiComponente->addWidget(labelKw,7,0);
+    layoutDatiComponente->addWidget(lineEditKw,7,1);
 
     // associazione a layoutBottoni
     layoutBottoni->addWidget(bottoneIndietro);
@@ -67,6 +71,56 @@ FinestraInserisciComponente::FinestraInserisciComponente(QDialog *parent):QDialo
     this->setLayout(layoutSfondo);
 
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
+    connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
+}
+
+void FinestraInserisciComponente::salva(){
+
+    string marca = lineEditMarca->text().toStdString();
+    string modello = lineEditModello->text().toStdString();
+    int anno = lineEditAnno->text().toInt();
+    int pressione = lineEditPressione->text().toInt();
+    int portataCapacità = lineEditPortata_Capacità->text().toInt();
+    float cdp = lineEditCadDiPress->text().toFloat();
+    int kw = lineEditKw->text().toInt();
+
+     bool inserito;
+
+     if (lineEditMarca->text()!=""){
+        if (comboBoxTipo->currentIndex()==0 || comboBoxTipo->currentIndex()==2){
+            inserito = db->inserisciComponente(new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw));
+        }
+        else if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==3){
+            inserito = db->inserisciComponente(new VelocitaVariabile(marca, modello, anno, pressione, portataCapacità, cdp ,kw));
+        }
+        else if (comboBoxTipo->currentIndex()==4){
+            inserito = db->inserisciComponente(new Impianto(marca, modello, anno, pressione, portataCapacità,cdp));
+        }
+        else if (comboBoxTipo->currentIndex()==5){
+            inserito = db->inserisciComponente(new Filtro(marca, modello, anno, pressione, portataCapacità,cdp));
+        }
+        else if (comboBoxTipo->currentIndex()==6){
+            inserito = db->inserisciComponente(new Serbatoio(marca, modello, anno, pressione, portataCapacità,cdp));
+        }
+        else
+            inserito=false;
+        QMessageBox messageBox(this);
+        if (inserito) {
+           messageBox.setText("Componente inserito con successo!");
+           messageBox.exec();
+           this->close();
+        }
+        else {
+           messageBox.setText("Compilare il campo marca.");
+           messageBox.exec();
+        }
+     }
+     else {
+         QMessageBox messageBox(this);
+         messageBox.setText("Inserire una marca non vuota.");
+         messageBox.exec();
+     }
+
 }
 
 void FinestraInserisciComponente::torna(){

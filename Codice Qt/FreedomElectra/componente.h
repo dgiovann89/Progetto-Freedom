@@ -13,10 +13,11 @@ private:
     int anno;
     int pressione;
     int portata_capacità;
+    float cadutaDiPressione;
     Cliente* proprietario;
     SalaCompressori* sala;
 public:
-    Componente(string, string, int, int, int, Cliente*, SalaCompressori*);
+    Componente(string, string, int, int, int, float, Cliente* =0, SalaCompressori* =0);
     // distruttore virtuale
     virtual ~Componente();
 
@@ -26,6 +27,7 @@ public:
     int getAnno() const;
     int getPressione() const;
     int getPortata_capacità() const;
+    float getCadutaDiPressione() const;
     Cliente* getCliente() const;
     SalaCompressori* getSala() const;
     virtual string getTipo() const=0;
@@ -36,6 +38,7 @@ public:
     void setAnno(int);
     void setPressione(int);
     void setPortata_capacità(int);
+    void setCadutaDiPressione(float);
     void setProprietario(Cliente*);
     void setSala(SalaCompressori*);
 //    void setTipo(string);

@@ -7,7 +7,7 @@ class Macchinario : public Componente{
 private:
     int kw;
 public:
-    Macchinario(string, string, int, int, int, Cliente*, SalaCompressori*,int);
+    Macchinario(string, string, int, int, int, float, int, Cliente* =0, SalaCompressori* =0);
     string getTipo() const;
     // get
     int getKw() const;

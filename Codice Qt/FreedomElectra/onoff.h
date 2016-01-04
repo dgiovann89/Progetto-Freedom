@@ -5,7 +5,7 @@
 
 class OnOff : public Macchinario{
 public:
-    OnOff(string, string, int, int, int, Cliente*, SalaCompressori*,int);
+    OnOff(string, string, int, int, int, float, int,Cliente* =0, SalaCompressori* =0);
 };
 
 #endif // ONOFF_H

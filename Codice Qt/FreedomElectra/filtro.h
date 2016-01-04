@@ -6,7 +6,7 @@
 class Filtro : public Componente{
 
 public:
-    Filtro(string, string, int, int, int, Cliente*, SalaCompressori*);
+    Filtro(string, string, int, int, int, float, Cliente* =0, SalaCompressori* =0);
     string getTipo() const;
 };
 
