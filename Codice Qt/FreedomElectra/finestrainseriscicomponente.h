@@ -8,6 +8,7 @@
 #include<componente.h>
 #include<onoff.h>
 #include<velocitavariabile.h>
+#include<salacompressori.h>
 #include<serbatoio.h>
 #include<filtro.h>
 #include<impianto.h>

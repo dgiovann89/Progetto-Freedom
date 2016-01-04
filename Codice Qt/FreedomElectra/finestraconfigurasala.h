@@ -8,6 +8,9 @@
 #include<databasecomponenti.h>
 #include<QTableWidget>
 #include<QGroupBox>
+#include<iostream>
+
+using namespace std;
 
 
 class FinestraConfiguraSala : public QDialog{
@@ -74,6 +77,7 @@ public slots:
     void apriFinestraInserisciSala();
     void apriFinestraInserisciComponente();
     void apriFinestraVisualizzaComponente();
+    void eliminaComponente();
     void torna();
 };
 

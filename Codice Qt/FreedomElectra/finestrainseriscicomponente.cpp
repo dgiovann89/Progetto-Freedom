@@ -88,7 +88,10 @@ void FinestraInserisciComponente::salva(){
 
      if (lineEditMarca->text()!=""){
         if (comboBoxTipo->currentIndex()==0 || comboBoxTipo->currentIndex()==2){
-            inserito = db->inserisciComponente(new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw));
+            OnOff* a = new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw);
+            inserito = db->inserisciComponente(a);
+//            SalaCompressori x;
+//            x.aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==3){
             inserito = db->inserisciComponente(new VelocitaVariabile(marca, modello, anno, pressione, portataCapacità, cdp ,kw));

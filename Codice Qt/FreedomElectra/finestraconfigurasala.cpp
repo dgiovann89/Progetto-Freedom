@@ -129,7 +129,14 @@ FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
     connect(bottoneModificaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
     connect(bottoneInserisciComponente,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciComponente()));
     connect(bottoneVisualizzaComponente,SIGNAL(clicked()),this,SLOT(apriFinestraVisualizzaComponente()));
+    connect(bottoneEliminaComponente,SIGNAL(clicked()),this,SLOT(eliminaComponente()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
+
+}
+
+void FinestraConfiguraSala::eliminaComponente(){
+    if (tabellaComponenti->selectedItems().isEmpty())
+        cout << "cappe!" << endl; // funziona
 }
 
 void FinestraConfiguraSala::apriFinestraInserisciSala(){
