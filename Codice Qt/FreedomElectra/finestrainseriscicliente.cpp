@@ -1,6 +1,8 @@
 #include "finestrainseriscicliente.h"
 
-FinestraInserisciCliente::FinestraInserisciCliente(QDialog* parent): QDialog(parent){
+FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* parent): QDialog(parent), dbc(d){
+    dbc = new DatabaseClienti();
+
     this->setWindowTitle("Finestra Inserisci Cliente");
     this->setMinimumSize(420,340);
 
@@ -68,39 +70,44 @@ FinestraInserisciCliente::FinestraInserisciCliente(QDialog* parent): QDialog(par
     this->setLayout(layoutSfondo);
 
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
-//    connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
+    connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
 }
-
-
-//void FinestraInserisciCliente::salva(){
-//    Cliente c(lineEditRagioneSociale->text().toStdString(),lineEditPIva->text().toStdString(),
-//              lineEditTelefono->text().toStdString(),lineEditFax->text().toStdString(),
-//              lineEditEmail->text().toStdString(),lineEditStabilimento->text().toStdString());
-
-//    Indirizzo i(lineEditVia->text().toStdString(), lineEditCittà->text().toStdString(),
-//                lineEditCap->text().toStdString(), lineEditProvincia->text().toStdString());
-
-//    c.setInd(i);
-
-//    if(lineEditRagioneSociale->text()!="" && lineEditPIva->text()!="" &&
-//            lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
-//            lineEditVia->text()!="" && lineEditCittà->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
-
-//        db->aggiungiCliente(c);
-//        QMessageBox messageBox(this);
-//            messageBox.setText("Dati inseriti correttamente");
-//            messageBox.exec();
-//            this->close();
-//    }
-//    else{
-//        QMessageBox messageBox(this);
-//        messageBox.setText("Compilare tutti i campi");
-//        messageBox.exec();
-//  }
-
-//}
-
 
 void FinestraInserisciCliente::torna(){
     this->close();
+}
+
+void FinestraInserisciCliente::salva(){
+
+    Cliente cli(lineEditRagioneSociale->text().toStdString(),
+              lineEditTelefono->text().toStdString(),
+              lineEditEmail->text().toStdString(),
+              lineEditFax->text().toStdString(),
+              lineEditPIva->text().toStdString(),
+              lineEditStabilimento->text().toStdString());
+
+    Indirizzo i(lineEditVia->text().toStdString(),
+                lineEditCittà->text().toStdString(),
+                lineEditProvincia->text().toStdString(),
+                lineEditCap->text().toStdString());
+
+    cli.setInd(i);
+
+    if(lineEditRagioneSociale->text()!="" && lineEditPIva->text()!="" &&
+       lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
+       lineEditVia->text()!="" && lineEditCittà->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
+
+       dbc->aggiungiCliente(cli);
+       QMessageBox messageBox(this);
+            messageBox.setText("Dati inseriti correttamente");
+            messageBox.exec();
+            cout << "capp";
+            this->close();
+
+    }
+    else{
+        QMessageBox messageBox(this);
+        messageBox.setText("Compilare tutti i campi");
+        messageBox.exec();
+  }
 }

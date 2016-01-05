@@ -3,8 +3,8 @@
 
 #include<iostream>
 #include<vector>
-#include<indirizzo.h>
-#include<salacompressori.h>
+#include "indirizzo.h"
+#include "salacompressori.h"
 
 using std::vector;
 using std::string;
@@ -16,12 +16,13 @@ private:
     string email;
     string fax;
     string pIva;
-    vector <SalaCompressori> sala;
-    Indirizzo ind;
     string stabilimento;
+    Indirizzo ind;
+    vector <SalaCompressori> sala;
+
 public:
-    Cliente(string,string,string,string="",string="",Indirizzo=Indirizzo(),string="");
-//    ~Cliente() pensare
+    Cliente(string="", string="", string="", string="", string="", string="", Indirizzo=Indirizzo());
+//    ~Cliente();
 
     //get
     string getRagioneSociale() const;
@@ -29,19 +30,19 @@ public:
     string getEmail() const;
     string getFax() const;
     string getPIva() const;
-    Indirizzo getIndirizzo() const;
     string getStabilimento() const;
+    Indirizzo getIndirizzo() const;
     vector<SalaCompressori>& getSala() const; // ritorna il vector
     SalaCompressori& getSala(int) const; // ritorna l'oggetto di indice i
 
     //set
-    void setRagioneSociale(string);
-    void setTelefono(string);
-    void setEmail(string);
-    void setFax(string);
-    void setPIva(string);
-    void setInd(Indirizzo);
-    void setStabilimento(string);
+    void setRagioneSociale(string s);
+    void setTelefono(string s);
+    void setEmail(string s);
+    void setFax(string s);
+    void setPIva(string s);
+    void setStabilimento(string s);
+    void setInd(const Indirizzo& i);
 
     bool operator==(const Cliente&) const;
 

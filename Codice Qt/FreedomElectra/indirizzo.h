@@ -24,10 +24,10 @@ public:
     string getCap() const;
 
     // set
-    void setVia(string);
-    void setCittà(string);
-    void setProvincia(string);
-    void setCap(string);
+    void setVia(string s);
+    void setCittà(string s);
+    void setProvincia(string s);
+    void setCap(string s);
 
     bool operator==(const Indirizzo&) const;
 };

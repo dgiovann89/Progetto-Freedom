@@ -1,18 +1,28 @@
 #ifndef FINESTRAINSERISCICLIENTE_H
 #define FINESTRAINSERISCICLIENTE_H
 
-#include<finestraprincipale.h>
+//#include <finestraprincipale.h>
+#include <databaseclienti.h>
 #include<QGridLayout>
 #include<QVBoxLayout>
 #include<QHBoxLayout>
 #include<QGroupBox>
 #include<QLineEdit>
 #include<QMessageBox>
+#include<QLabel>
+#include<QPushButton>
+
+#include<iostream>
+
+using std::cout;
+
 
 class FinestraInserisciCliente : public QDialog{
     Q_OBJECT
+private:
+    DatabaseClienti* dbc;
 public:
-    explicit FinestraInserisciCliente(QDialog* parent=0);
+    explicit FinestraInserisciCliente(DatabaseClienti*, QDialog* parent=0);
 
     QVBoxLayout* layoutSfondo;
 
@@ -48,7 +58,7 @@ public:
 
 
 public slots:
-//    void salva();
+    void salva();
     void torna();
 };
 

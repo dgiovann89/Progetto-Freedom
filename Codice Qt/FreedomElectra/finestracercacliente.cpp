@@ -1,6 +1,6 @@
 #include "finestracercacliente.h"
 
-FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
+FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent): QDialog(parent), dbc(d){
     this->setWindowTitle("Finestra Cerca Cliente");
     this->setMinimumSize(620,440);
 
@@ -63,7 +63,7 @@ FinestraCercaCliente::FinestraCercaCliente(QDialog* parent): QDialog(parent){
 }
 
 void FinestraCercaCliente::apriFinestraClienteSelezionato(){
-    FinestraClienteSelezionato finCliSel;
+    FinestraClienteSelezionato finCliSel(dbc);
     finCliSel.exec();
 }
 

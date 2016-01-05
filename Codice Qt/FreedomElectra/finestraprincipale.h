@@ -7,9 +7,12 @@
 #include<QLabel>
 #include<finestrainseriscicliente.h>
 #include<finestracercacliente.h>
+#include "databaseclienti.h"
 
 class FinestraPrincipale : public QDialog{
     Q_OBJECT
+private:
+    DatabaseClienti* dbc;
 public:
     explicit FinestraPrincipale(QDialog* parent=0);
 

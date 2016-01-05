@@ -12,8 +12,10 @@
 
 class FinestraCercaCliente : public QDialog{
     Q_OBJECT
+private:
+    DatabaseClienti* dbc;
 public:
-    explicit FinestraCercaCliente(QDialog* parent=0);
+    explicit FinestraCercaCliente(DatabaseClienti*, QDialog* parent=0);
 
     // Layout e groupBox
     QHBoxLayout* layoutSfondo;

@@ -1,6 +1,6 @@
 #include "cliente.h"
 
-Cliente::Cliente(string r, string t, string e, string f, string p, Indirizzo i, string s):ragioneSociale(r), telefono(t), email(e), fax(f), pIva(p), ind(i), stabilimento(s){}
+Cliente::Cliente(string r, string t, string e, string f, string p, string s, Indirizzo i) : ragioneSociale(r), telefono(t), email(e), fax(f), pIva(p), stabilimento(s), ind(i){}
 
 // get
 string Cliente::getRagioneSociale() const {
@@ -18,11 +18,11 @@ string Cliente::getFax() const{
 string Cliente::getPIva() const {
     return pIva;
 }
-Indirizzo Cliente::getIndirizzo() const {
-    return ind;
-}
 string Cliente::getStabilimento() const {
     return stabilimento;
+}
+Indirizzo Cliente::getIndirizzo() const {
+    return ind;
 }
 vector<SalaCompressori> & Cliente::getSala() const {
     return const_cast<vector<SalaCompressori>&>(sala);
@@ -48,18 +48,18 @@ void Cliente::setFax(string s){
 void Cliente::setPIva(string s){
     pIva = s;
 }
-void Cliente::setInd(Indirizzo i){
-    ind = i;
-}
 void Cliente::setStabilimento(string s){
     stabilimento = s;
+}
+void Cliente::setInd(const Indirizzo& i){
+    ind = i;
 }
 
 bool Cliente::operator==(const Cliente& c) const {
     return ragioneSociale==c.ragioneSociale && ind==c.ind;
 }
 
-void Cliente::aggiungiSala(const SalaCompressori & s) {
+void Cliente::aggiungiSala(const SalaCompressori& s) {
     sala.push_back(s);
 }
 void Cliente::rimuoviSala(int i) {
