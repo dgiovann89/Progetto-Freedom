@@ -13,6 +13,7 @@ public:
     void aggiungiCliente(const Cliente &);
     void rimuoviCliente(int);
     vector<Cliente>& getDatabase() const; // ritorno vector per rif
+    Cliente& getCliente(int) const;
 };
 
 

@@ -14,12 +14,13 @@ class FinestraCercaCliente : public QDialog{
     Q_OBJECT
 private:
     DatabaseClienti* dbc;
+    void riempiTabellaClienti(); //+ eventualmente header
 public:
     explicit FinestraCercaCliente(DatabaseClienti*, QDialog* parent=0);
 
     // Layout e groupBox
     QHBoxLayout* layoutSfondo;
-//    QFormLayout* layoutCompilazione;
+    // QFormLayout* layoutCompilazione;
     QGridLayout* layoutCompilazione;
     QVBoxLayout* layoutLista;
     QGroupBox* boxCompilazione;
@@ -46,6 +47,7 @@ public slots:
     void apriFinestraClienteSelezionato();
     // metodo per cercare il cliente
     // metodo per eliminare il cliente selezionato
+    void rimuoviClienteSelezionato();
     void torna();
 
 };

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_FinestraCercaCliente_t {
-    QByteArrayData data[4];
-    char stringdata[59];
+    QByteArrayData data[5];
+    char stringdata[85];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,10 +32,12 @@ static const qt_meta_stringdata_FinestraCercaCliente_t qt_meta_stringdata_Finest
 QT_MOC_LITERAL(0, 0, 20),
 QT_MOC_LITERAL(1, 21, 30),
 QT_MOC_LITERAL(2, 52, 0),
-QT_MOC_LITERAL(3, 53, 5)
+QT_MOC_LITERAL(3, 53, 25),
+QT_MOC_LITERAL(4, 79, 5)
     },
     "FinestraCercaCliente\0"
-    "apriFinestraClienteSelezionato\0\0torna"
+    "apriFinestraClienteSelezionato\0\0"
+    "rimuoviClienteSelezionato\0torna"
 };
 #undef QT_MOC_LITERAL
 
@@ -45,7 +47,7 @@ static const uint qt_meta_data_FinestraCercaCliente[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -53,10 +55,12 @@ static const uint qt_meta_data_FinestraCercaCliente[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x0a /* Public */,
-       3,    0,   25,    2, 0x0a /* Public */,
+       1,    0,   29,    2, 0x0a /* Public */,
+       3,    0,   30,    2, 0x0a /* Public */,
+       4,    0,   31,    2, 0x0a /* Public */,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -69,7 +73,8 @@ void FinestraCercaCliente::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         FinestraCercaCliente *_t = static_cast<FinestraCercaCliente *>(_o);
         switch (_id) {
         case 0: _t->apriFinestraClienteSelezionato(); break;
-        case 1: _t->torna(); break;
+        case 1: _t->rimuoviClienteSelezionato(); break;
+        case 2: _t->torna(); break;
         default: ;
         }
     }
@@ -101,13 +106,13 @@ int FinestraCercaCliente::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

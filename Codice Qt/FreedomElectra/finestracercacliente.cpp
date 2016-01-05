@@ -58,8 +58,33 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
 
     this->setLayout(layoutSfondo);
 
+    // eseguo metdo riempiTabellaClieni
+    riempiTabellaClienti();
+
     connect(bottoneApriCliente,SIGNAL(clicked()),this,SLOT(apriFinestraClienteSelezionato()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
+    connect(bottoneEliminaCliente,SIGNAL(clicked()),this,SLOT(rimuoviClienteSelezionato()));
+}
+// metodi privati
+// riempi tabella lingue
+void FinestraCercaCliente::riempiTabellaClienti() {
+   int row = tabellaClienti->rowCount();
+   for (unsigned int i= 0; i<dbc->getDatabase().size(); ++i) {
+         tabellaClienti->setRowCount(row+1);
+         QTableWidgetItem* itemRagioneSociale= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getRagioneSociale()));
+         tabellaClienti->setItem(row, 0, itemRagioneSociale);
+         QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getStabilimento()));
+         tabellaClienti->setItem(row, 1, itemStabilimento);
+         ++row;
+   }
+}
+
+void FinestraCercaCliente::rimuoviClienteSelezionato() {
+   if (tabellaClienti->currentItem()!= 0)
+      dbc->rimuoviCliente(tabellaClienti->currentRow());
+   tabellaClienti->clearContents();
+   tabellaClienti->setRowCount(0);
+   riempiTabellaClienti();
 }
 
 void FinestraCercaCliente::apriFinestraClienteSelezionato(){

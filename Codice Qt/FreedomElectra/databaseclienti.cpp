@@ -16,3 +16,7 @@ void DatabaseClienti::rimuoviCliente(int i){
 vector<Cliente>& DatabaseClienti::getDatabase() const{
     return const_cast<vector<Cliente>&>(vettoreClienti);
 }
+
+Cliente& DatabaseClienti::getCliente(int i) const {
+    return const_cast<Cliente&>(vettoreClienti[i]);
+}

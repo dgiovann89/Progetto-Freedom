@@ -1,7 +1,7 @@
 #include "finestrainseriscicliente.h"
 
 FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* parent): QDialog(parent), dbc(d){
-    dbc = new DatabaseClienti();
+//    dbc = new DatabaseClienti();
 
     this->setWindowTitle("Finestra Inserisci Cliente");
     this->setMinimumSize(420,340);
@@ -101,7 +101,6 @@ void FinestraInserisciCliente::salva(){
        QMessageBox messageBox(this);
             messageBox.setText("Dati inseriti correttamente");
             messageBox.exec();
-            cout << "capp";
             this->close();
 
     }
