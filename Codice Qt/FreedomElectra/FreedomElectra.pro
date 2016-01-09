@@ -18,7 +18,8 @@ HEADERS += \
     finestrainseriscicomponente.h \
     finestravisualizzacomponente.h \
     finestrainseriscisala.h \
-    finestraconfigurasala.h
+    finestraconfigurasala.h \
+    modificaanagraficacliente.h
 
 SOURCES += \
     cliente.cpp \
@@ -41,7 +42,8 @@ SOURCES += \
     finestrainseriscicomponente.cpp \
     finestravisualizzacomponente.cpp \
     finestrainseriscisala.cpp \
-    finestraconfigurasala.cpp
+    finestraconfigurasala.cpp \
+    modificaanagraficacliente.cpp
 
 QT += \
     core \

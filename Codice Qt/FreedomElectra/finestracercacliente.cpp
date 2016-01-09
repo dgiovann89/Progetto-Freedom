@@ -66,7 +66,7 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     connect(bottoneEliminaCliente,SIGNAL(clicked()),this,SLOT(rimuoviClienteSelezionato()));
 }
 // metodi privati
-// riempi tabella lingue
+// riempi tabella clienti
 void FinestraCercaCliente::riempiTabellaClienti() {
    int row = tabellaClienti->rowCount();
    for (unsigned int i= 0; i<dbc->getDatabase().size(); ++i) {
@@ -88,7 +88,23 @@ void FinestraCercaCliente::rimuoviClienteSelezionato() {
 }
 
 void FinestraCercaCliente::apriFinestraClienteSelezionato(){
-    FinestraClienteSelezionato finCliSel(dbc);
+    Cliente* c;
+    int riga = tabellaClienti->currentRow();
+    int colonna = tabellaClienti->currentColumn();
+
+    vector<Cliente>::const_iterator it=dbc->getDatabase().begin();
+    int i = 0;
+    for (;it!=dbc->getDatabase().end();++it){
+        if (dbc->getCliente(i).getRagioneSociale()==(tabellaClienti->item(riga,colonna)->text().toStdString())){
+            c=&(dbc->getCliente(i));
+            i++;
+        }
+        else {
+            c=0;
+            i++;
+        }
+    }
+    FinestraClienteSelezionato finCliSel(dbc,c);
     finCliSel.exec();
 }
 

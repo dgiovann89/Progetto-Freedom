@@ -13,6 +13,7 @@ class FinestraPrincipale : public QDialog{
     Q_OBJECT
 private:
     DatabaseClienti* dbc;
+//    Cliente* cl;
 public:
     explicit FinestraPrincipale(QDialog* parent=0);
 

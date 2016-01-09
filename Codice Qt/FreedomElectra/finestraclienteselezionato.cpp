@@ -1,6 +1,6 @@
 #include "finestraclienteselezionato.h"
 
-FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, QDialog *parent):QDialog(parent), dbc(d){
+FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Cliente* c, QDialog *parent):QDialog(parent), dbc(d), cl(c){
     this->setWindowTitle("Finestra Cliente Selezionato");
     this->setMinimumSize(720,440);
 
@@ -17,34 +17,34 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, QDial
     labelTitolo=new QLabel("Cliente Selezionato:");
     labelTitoloTabella= new QLabel("Sale Compressori:", this);
     labelRagioneSociale=new QLabel("Ragione Sociale:",this);
-    lineEditRagioneSociale=new QLineEdit(this);
+    lineEditRagioneSociale=new QLineEdit(QString::fromStdString(c->getRagioneSociale()));
     lineEditRagioneSociale->setDisabled(true);
     labelPIva=new QLabel("Partita Iva:",this);
-    lineEditPIva=new QLineEdit(this);
+    lineEditPIva=new QLineEdit(QString::fromStdString(c->getPIva()));
     lineEditPIva->setDisabled(true);
     labelTelefono=new QLabel("Telefono:",this);
-    lineEditTelefono=new QLineEdit(this);
+    lineEditTelefono=new QLineEdit(QString::fromStdString(c->getTelefono()));
     lineEditTelefono->setDisabled(true);
     labelFax=new QLabel("Fax:",this);
-    lineEditFax=new QLineEdit(this);
+    lineEditFax=new QLineEdit(QString::fromStdString(c->getFax()));
     lineEditFax->setDisabled(true);
     labelEmail=new QLabel("Email:",this);
-    lineEditEmail=new QLineEdit(this);
+    lineEditEmail=new QLineEdit(QString::fromStdString(c->getEmail()));
     lineEditEmail->setDisabled(true);
     labelStabilimento=new QLabel("Stabilimento:",this);
-    lineEditStabilimento=new QLineEdit(this);
+    lineEditStabilimento=new QLineEdit(QString::fromStdString(c->getStabilimento()));
     lineEditStabilimento->setDisabled(true);
     labelVia=new QLabel("Via:",this);
-    lineEditVia=new QLineEdit(this);
+    lineEditVia=new QLineEdit(QString::fromStdString(c->getIndirizzo().getVia()));
     lineEditVia->setDisabled(true);
     labelCittà=new QLabel("Città:",this);
-    lineEditCittà=new QLineEdit(this);
+    lineEditCittà=new QLineEdit(QString::fromStdString(c->getIndirizzo().getCittà()));
     lineEditCittà->setDisabled(true);
     labelCap=new QLabel("CAP:",this);
-    lineEditCap=new QLineEdit(this);
+    lineEditCap=new QLineEdit(QString::fromStdString(c->getIndirizzo().getCap()));
     lineEditCap->setDisabled(true);
     labelProvincia=new QLabel("Provincia:",this);
-    lineEditProvincia=new QLineEdit(this);
+    lineEditProvincia=new QLineEdit(QString::fromStdString(c->getIndirizzo().getProvincia()));
     lineEditProvincia->setDisabled(true);
 
     // new tabella
@@ -112,7 +112,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, QDial
     connect(bottoneInserisciNuovaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
     connect(bottoneConfiguraSala,SIGNAL(clicked()),this,SLOT(apriFinestraConfiguraSala()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
-    connect(bottoneModificaDatiCliente,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciCliente()));
+    connect(bottoneModificaDatiCliente,SIGNAL(clicked()),this,SLOT(apriModificaAnagraficaCliente()));
 }
 
 void FinestraClienteSelezionato::apriFinestraInserisciSala(){
@@ -125,9 +125,9 @@ void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
     finConfSala.exec();
 }
 
-void FinestraClienteSelezionato::apriFinestraInserisciCliente() {
-    FinestraInserisciCliente finInsCli(dbc);
-    finInsCli.exec();
+void FinestraClienteSelezionato::apriModificaAnagraficaCliente() {
+    ModificaAnagraficaCliente modAnaCli(dbc,cl);
+    modAnaCli.exec();
 }
 
 void FinestraClienteSelezionato::torna(){

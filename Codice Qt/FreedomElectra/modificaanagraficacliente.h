@@ -1,27 +1,23 @@
-#ifndef FINESTRAINSERISCICLIENTE_H
-#define FINESTRAINSERISCICLIENTE_H
+#ifndef MODIFICAANAGRAFICACLIENTE_H
+#define MODIFICAANAGRAFICACLIENTE_H
 
-//#include <finestraprincipale.h>
-#include <databaseclienti.h>
-#include<QGridLayout>
-#include<QVBoxLayout>
-#include<QHBoxLayout>
+#include "finestraclienteselezionato.h"
+#include "finestracercacliente.h"
 #include<QGroupBox>
-#include<QLineEdit>
-#include<QMessageBox>
+#include<QVBoxLayout>
+#include<QGridLayout>
+#include<QHBoxLayout>
 #include<QLabel>
+#include<QLineEdit>
 #include<QPushButton>
 
-#include<iostream>
-
-using std::cout;
-
-class FinestraInserisciCliente : public QDialog{
+class ModificaAnagraficaCliente : public QDialog {
     Q_OBJECT
 private:
     DatabaseClienti* dbc;
+    Cliente* cl;
 public:
-    explicit FinestraInserisciCliente(DatabaseClienti*, QDialog* parent=0);
+    explicit ModificaAnagraficaCliente(DatabaseClienti*, Cliente* ,QDialog* parent=0);
 
     QVBoxLayout* layoutSfondo;
 
@@ -61,4 +57,4 @@ public slots:
     void torna();
 };
 
-#endif // FINESTRAINSERISCICLIENTE_H
+#endif // MODIFICAANAGRAFICACLIENTE_H

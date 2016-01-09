@@ -4,6 +4,7 @@
 #include<finestracercacliente.h>
 #include<finestrainseriscisala.h>
 #include<finestraconfigurasala.h>
+#include "modificaanagraficacliente.h"
 #include<QTableWidget>
 #include<QGroupBox>
 
@@ -11,8 +12,9 @@ class FinestraClienteSelezionato : public QDialog{
     Q_OBJECT
 private:
     DatabaseClienti* dbc;
+    Cliente* cl;
 public:
-    explicit FinestraClienteSelezionato(DatabaseClienti* ,QDialog* parent=0);
+    explicit FinestraClienteSelezionato(DatabaseClienti* , Cliente* , QDialog* parent=0);
 
     // Layout e groupbox
     QVBoxLayout* layoutSfondo;
@@ -60,7 +62,7 @@ public:
 public slots:
     void apriFinestraInserisciSala();
     void apriFinestraConfiguraSala();
-    void apriFinestraInserisciCliente();
+    void apriModificaAnagraficaCliente();
     void torna();
 };
 

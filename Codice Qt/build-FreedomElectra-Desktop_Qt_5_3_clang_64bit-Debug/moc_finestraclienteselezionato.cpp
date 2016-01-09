@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_FinestraClienteSelezionato_t {
     QByteArrayData data[6];
-    char stringdata[115];
+    char stringdata[116];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,13 +33,13 @@ QT_MOC_LITERAL(0, 0, 26),
 QT_MOC_LITERAL(1, 27, 25),
 QT_MOC_LITERAL(2, 53, 0),
 QT_MOC_LITERAL(3, 54, 25),
-QT_MOC_LITERAL(4, 80, 28),
-QT_MOC_LITERAL(5, 109, 5)
+QT_MOC_LITERAL(4, 80, 29),
+QT_MOC_LITERAL(5, 110, 5)
     },
     "FinestraClienteSelezionato\0"
     "apriFinestraInserisciSala\0\0"
     "apriFinestraConfiguraSala\0"
-    "apriFinestraInserisciCliente\0torna"
+    "apriModificaAnagraficaCliente\0torna"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,7 +78,7 @@ void FinestraClienteSelezionato::qt_static_metacall(QObject *_o, QMetaObject::Ca
         switch (_id) {
         case 0: _t->apriFinestraInserisciSala(); break;
         case 1: _t->apriFinestraConfiguraSala(); break;
-        case 2: _t->apriFinestraInserisciCliente(); break;
+        case 2: _t->apriModificaAnagraficaCliente(); break;
         case 3: _t->torna(); break;
         default: ;
         }
