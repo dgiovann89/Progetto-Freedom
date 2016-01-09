@@ -74,6 +74,7 @@ ModificaAnagraficaCliente::ModificaAnagraficaCliente(DatabaseClienti* d, Cliente
     }
 
     void ModificaAnagraficaCliente::torna(){
+        cout << "eccolo" << endl;
         this->close();
     }
 

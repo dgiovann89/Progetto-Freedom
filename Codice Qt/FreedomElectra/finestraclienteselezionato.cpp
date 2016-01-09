@@ -125,18 +125,23 @@ void FinestraClienteSelezionato::riempiTabellaSale() {
 
          QTableWidgetItem* itemNome= new QTableWidgetItem (QString::fromStdString(cl->getSala(i).getNome()));
          tabellaSale->setItem(row, 0, itemNome);
+         itemNome->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
          QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(cl->getStabilimento()));
          tabellaSale->setItem(row, 1, itemStabilimento);
+         itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
          QTableWidgetItem* itemImpianto= new QTableWidgetItem (QString::fromStdString(cl->getSala(i).getImpianto()));
-         tabellaSale->setItem(row, 3, itemImpianto);
+         tabellaSale->setItem(row, 2, itemImpianto);
+         itemImpianto->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
          QTableWidgetItem* itemKwTot= new QTableWidgetItem (QString::number(cl->getSala(i).getKwTot()));
-         tabellaSale->setItem(row, 4, itemKwTot);
+         tabellaSale->setItem(row, 3, itemKwTot);
+         itemKwTot->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
          QTableWidgetItem* itemLtMin= new QTableWidgetItem (QString::number(cl->getSala(i).getPortataTot()));
-         tabellaSale->setItem(row, 5, itemLtMin);
+         tabellaSale->setItem(row, 4, itemLtMin);
+         itemLtMin->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          ++row;
    }
 }
@@ -157,6 +162,17 @@ void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
 void FinestraClienteSelezionato::apriModificaAnagraficaCliente() {
     ModificaAnagraficaCliente modAnaCli(dbc,cl);
     modAnaCli.exec();
+    // aggiorna anagrafica cliente nella finestra
+    lineEditRagioneSociale->setText(QString::fromStdString(cl->getRagioneSociale()));
+    lineEditCap->setText(QString::fromStdString(cl->getIndirizzo().getCap()));
+    lineEditCittà->setText(QString::fromStdString(cl->getIndirizzo().getCittà()));
+    lineEditEmail->setText(QString::fromStdString(cl->getEmail()));
+    lineEditFax->setText(QString::fromStdString(cl->getFax()));
+    lineEditPIva->setText(QString::fromStdString(cl->getPIva()));
+    lineEditProvincia->setText(QString::fromStdString(cl->getIndirizzo().getProvincia()));
+    lineEditStabilimento->setText(QString::fromStdString(cl->getStabilimento()));
+    lineEditTelefono->setText(QString::fromStdString(cl->getTelefono()));
+    lineEditVia->setText(QString::fromStdString(cl->getIndirizzo().getVia()));
 }
 
 void FinestraClienteSelezionato::torna(){

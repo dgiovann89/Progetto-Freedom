@@ -63,22 +63,27 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     riempiTabellaClienti();
 
     connect(bottoneApriCliente,SIGNAL(clicked()),this,SLOT(apriFinestraClienteSelezionato()));
-    connect(tabellaClienti,SIGNAL(cellPressed(int,int)),this,SLOT(mostraBottoneVisualizza()));
+    connect(tabellaClienti,SIGNAL(cellClicked(int,int)),this,SLOT(mostraBottoneVisualizza()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
     connect(bottoneEliminaCliente,SIGNAL(clicked()),this,SLOT(rimuoviClienteSelezionato()));
+
 }
 // metodi privati
 // riempi tabella clienti
 void FinestraCercaCliente::riempiTabellaClienti() {
    int row = tabellaClienti->rowCount();
+   cout << row << endl;
    for (unsigned int i= 0; i<dbc->getDatabase().size(); ++i) {
          tabellaClienti->setRowCount(row+1);
          QTableWidgetItem* itemRagioneSociale= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getRagioneSociale()));
          tabellaClienti->setItem(row, 0, itemRagioneSociale);
+         itemRagioneSociale->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getStabilimento()));
+         itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          tabellaClienti->setItem(row, 1, itemStabilimento);
          ++row;
    }
+   cout << "row dopo il for:" << row << endl;
 }
 
 void FinestraCercaCliente::mostraBottoneVisualizza(){
@@ -91,11 +96,13 @@ void FinestraCercaCliente::rimuoviClienteSelezionato() {
    tabellaClienti->clearContents();
    tabellaClienti->setRowCount(0);
    riempiTabellaClienti();
+   bottoneApriCliente->setDisabled(true);
 }
 
 void FinestraCercaCliente::apriFinestraClienteSelezionato(){
     Cliente* c;
     int riga = tabellaClienti->currentRow();
+    cout << riga << endl;
     int colonna = tabellaClienti->currentColumn();
 
     vector<Cliente>::const_iterator it=dbc->getDatabase().begin();
@@ -112,6 +119,10 @@ void FinestraCercaCliente::apriFinestraClienteSelezionato(){
     }
     FinestraClienteSelezionato finCliSel(dbc,c);
     finCliSel.exec();
+    tabellaClienti->clearContents();
+    tabellaClienti->setRowCount(0);
+    riempiTabellaClienti();
+    bottoneApriCliente->setDisabled(true);
 }
 
 void FinestraCercaCliente::torna(){
