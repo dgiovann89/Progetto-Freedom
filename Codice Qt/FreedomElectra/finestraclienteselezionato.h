@@ -13,6 +13,7 @@ class FinestraClienteSelezionato : public QDialog{
 private:
     DatabaseClienti* dbc;
     Cliente* cl;
+    void riempiTabellaSale();
 public:
     explicit FinestraClienteSelezionato(DatabaseClienti* , Cliente* , QDialog* parent=0);
 

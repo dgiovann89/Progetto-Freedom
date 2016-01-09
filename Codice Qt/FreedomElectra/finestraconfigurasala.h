@@ -74,7 +74,7 @@ public:
     QTableWidget* tabellaComponenti;
 
 public slots:
-    void apriFinestraInserisciSala();
+//    void apriFinestraInserisciSala();
     void apriFinestraInserisciComponente();
     void apriFinestraVisualizzaComponente();
     void eliminaComponente();

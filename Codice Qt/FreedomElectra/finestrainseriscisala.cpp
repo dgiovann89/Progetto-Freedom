@@ -1,6 +1,6 @@
 #include "finestrainseriscisala.h"
 
-FinestraInserisciSala::FinestraInserisciSala(QDialog *parent):QDialog(parent){
+FinestraInserisciSala::FinestraInserisciSala(DatabaseClienti* d, Cliente* c, QDialog *parent):QDialog(parent), dbc(d), cl(c){
     this->setWindowTitle("Finestra inserisci sala compressori");
     this->setMinimumSize(420,340);
 
@@ -19,8 +19,10 @@ FinestraInserisciSala::FinestraInserisciSala(QDialog *parent):QDialog(parent){
     labelPortataRichiesta = new QLabel("Portata richiesta:");
     labelImpianto = new QLabel("Impianto:");
     lineEditNomeSala = new QLineEdit(this);
-    lineEditCliente = new QLineEdit(this);
-    lineEditStabilimento = new QLineEdit(this);
+    lineEditCliente = new QLineEdit(QString::fromStdString(c->getRagioneSociale()));
+    lineEditCliente->setDisabled(true);
+    lineEditStabilimento = new QLineEdit(QString::fromStdString(c->getStabilimento()));
+    lineEditStabilimento->setDisabled(true);
     lineEditPressioneRichiesta = new QLineEdit(this);
     lineEditPortataRichiesta = new QLineEdit(this);
     lineEditImpianto = new QLineEdit(this);
@@ -55,8 +57,34 @@ FinestraInserisciSala::FinestraInserisciSala(QDialog *parent):QDialog(parent){
     this->setLayout(layoutSfondo);
 
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
+    connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
 }
 
 void FinestraInserisciSala::torna() {
     this->close();
+}
+
+void FinestraInserisciSala::salva(){
+    SalaCompressori sala(lineEditNomeSala->text().toStdString(),
+                         cl,
+                         0,
+                         0,
+                         lineEditPressioneRichiesta->text().toInt(),
+                         lineEditPortataRichiesta->text().toInt(),
+                         lineEditImpianto->text().toStdString());
+
+    if(lineEditNomeSala->text()!="" && lineEditPressioneRichiesta->text()!="" &&
+       lineEditPortataRichiesta->text()!="" && lineEditImpianto->text()!=""){
+
+       cl->aggiungiSala(sala);
+       QMessageBox messageBox(this);
+            messageBox.setText("Dati inseriti correttamente");
+            messageBox.exec();
+            this->close();
+    }
+    else{
+        QMessageBox messageBox(this);
+        messageBox.setText("Compilare tutti i campi");
+        messageBox.exec();
+  }
 }

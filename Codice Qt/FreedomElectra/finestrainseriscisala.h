@@ -7,8 +7,11 @@
 
 class FinestraInserisciSala : public QDialog{
     Q_OBJECT
+private:
+    DatabaseClienti* dbc;
+    Cliente* cl;
 public:
-    explicit FinestraInserisciSala(QDialog* parent=0);
+    explicit FinestraInserisciSala(DatabaseClienti*, Cliente*, QDialog* parent=0);
 
     QVBoxLayout* layoutSfondo;
 
@@ -35,6 +38,7 @@ public:
     QPushButton* bottoneSalva;
 
 public slots:
+    void salva();
     void torna();
 };
 

@@ -109,15 +109,44 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
 
     this->setLayout(layoutSfondo);
 
+    riempiTabellaSale();
+
     connect(bottoneInserisciNuovaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
     connect(bottoneConfiguraSala,SIGNAL(clicked()),this,SLOT(apriFinestraConfiguraSala()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
     connect(bottoneModificaDatiCliente,SIGNAL(clicked()),this,SLOT(apriModificaAnagraficaCliente()));
 }
 
+//metodo privato riempiTabellaSale
+void FinestraClienteSelezionato::riempiTabellaSale() {
+   int row= tabellaSale->rowCount();
+   for (unsigned int i= 0; i<cl->getSala().size();++i) {
+         tabellaSale->setRowCount(row+1);
+
+         QTableWidgetItem* itemNome= new QTableWidgetItem (QString::fromStdString(cl->getSala(i).getNome()));
+         tabellaSale->setItem(row, 0, itemNome);
+
+         QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(cl->getStabilimento()));
+         tabellaSale->setItem(row, 1, itemStabilimento);
+
+         QTableWidgetItem* itemImpianto= new QTableWidgetItem (QString::fromStdString(cl->getSala(i).getImpianto()));
+         tabellaSale->setItem(row, 3, itemImpianto);
+
+         QTableWidgetItem* itemKwTot= new QTableWidgetItem (QString::number(cl->getSala(i).getKwTot()));
+         tabellaSale->setItem(row, 4, itemKwTot);
+
+         QTableWidgetItem* itemLtMin= new QTableWidgetItem (QString::number(cl->getSala(i).getPortataTot()));
+         tabellaSale->setItem(row, 5, itemLtMin);
+         ++row;
+   }
+}
+
 void FinestraClienteSelezionato::apriFinestraInserisciSala(){
-    FinestraInserisciSala finInsSala;
+    FinestraInserisciSala finInsSala(dbc,cl);
     finInsSala.exec();
+    tabellaSale->clearContents();
+    tabellaSale->setRowCount(0);
+    riempiTabellaSale();
 }
 
 void FinestraClienteSelezionato::apriFinestraConfiguraSala() {

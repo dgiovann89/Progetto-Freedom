@@ -48,6 +48,7 @@ public slots:
     // metodo per cercare il cliente
     // metodo per eliminare il cliente selezionato
     void rimuoviClienteSelezionato();
+    void mostraBottoneVisualizza();
     void torna();
 
 };

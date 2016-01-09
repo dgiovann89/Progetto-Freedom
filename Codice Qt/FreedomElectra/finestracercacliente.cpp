@@ -22,6 +22,7 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
 
     // new bottoni
     bottoneApriCliente=new QPushButton("Visualizza Cliente",this);
+    bottoneApriCliente->setDisabled(true);
     bottoneCercaCliente=new QPushButton("Cerca",this);
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneEliminaCliente=new QPushButton("Elimina Cliente",this);
@@ -62,6 +63,7 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     riempiTabellaClienti();
 
     connect(bottoneApriCliente,SIGNAL(clicked()),this,SLOT(apriFinestraClienteSelezionato()));
+    connect(tabellaClienti,SIGNAL(cellPressed(int,int)),this,SLOT(mostraBottoneVisualizza()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
     connect(bottoneEliminaCliente,SIGNAL(clicked()),this,SLOT(rimuoviClienteSelezionato()));
 }
@@ -77,6 +79,10 @@ void FinestraCercaCliente::riempiTabellaClienti() {
          tabellaClienti->setItem(row, 1, itemStabilimento);
          ++row;
    }
+}
+
+void FinestraCercaCliente::mostraBottoneVisualizza(){
+    bottoneApriCliente->setDisabled(false);
 }
 
 void FinestraCercaCliente::rimuoviClienteSelezionato() {

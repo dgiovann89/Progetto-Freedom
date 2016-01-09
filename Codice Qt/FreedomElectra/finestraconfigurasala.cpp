@@ -126,7 +126,7 @@ FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
 
     this->setLayout(layoutSfondo);
 
-    connect(bottoneModificaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
+//    connect(bottoneModificaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
     connect(bottoneInserisciComponente,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciComponente()));
     connect(bottoneVisualizzaComponente,SIGNAL(clicked()),this,SLOT(apriFinestraVisualizzaComponente()));
     connect(bottoneEliminaComponente,SIGNAL(clicked()),this,SLOT(eliminaComponente()));
@@ -139,10 +139,10 @@ void FinestraConfiguraSala::eliminaComponente(){
         cout << "cappe!" << endl; // funziona
 }
 
-void FinestraConfiguraSala::apriFinestraInserisciSala(){
-    FinestraInserisciSala finInfoSala;
-    finInfoSala.exec();
-}
+//void FinestraConfiguraSala::apriFinestraInserisciSala(){
+//    FinestraInserisciSala finInfoSala();
+//    finInfoSala.exec();
+//}
 
 void FinestraConfiguraSala::apriFinestraInserisciComponente(){
     FinestraInserisciComponente finInsComp(db,this);

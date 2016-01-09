@@ -1,8 +1,6 @@
 #include "finestrainseriscicliente.h"
 
 FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* parent): QDialog(parent), dbc(d){
-//    dbc = new DatabaseClienti();
-
     this->setWindowTitle("Finestra Inserisci Cliente");
     this->setMinimumSize(420,340);
 
