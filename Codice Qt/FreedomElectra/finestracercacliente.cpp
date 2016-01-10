@@ -122,7 +122,7 @@ void FinestraCercaCliente::apriFinestraClienteSelezionato(){
     tabellaClienti->clearContents();
     tabellaClienti->setRowCount(0);
     riempiTabellaClienti();
-    bottoneApriCliente->setDisabled(true);
+//    bottoneApriCliente->setDisabled(true);
 }
 
 void FinestraCercaCliente::torna(){

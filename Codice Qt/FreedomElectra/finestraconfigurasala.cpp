@@ -1,6 +1,6 @@
 #include "finestraconfigurasala.h"
 
-FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
+FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, SalaCompressori* sl, QDialog *parent): dbc(d), cl(c), sala(sl), QDialog(parent){
     db = new DatabaseComponenti();
 
     this->setWindowTitle("Finestra Configurazione sala compressori");
@@ -27,19 +27,19 @@ FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
     labelInfoSala = new QLabel("Info Sala:");
     labelTabella = new QLabel("Componenti sala:");
     labelRagioneSociale = new QLabel("Ragione Sociale",this);
-    lineEditRagioneSociale = new QLineEdit(this);
+    lineEditRagioneSociale = new QLineEdit(QString::fromStdString(cl->getRagioneSociale()));
     labelStabilimento = new QLabel("Stabilimento",this);
-    lineEditStabilimento = new QLineEdit(this);
+    lineEditStabilimento = new QLineEdit(QString::fromStdString(cl->getStabilimento()));
     labelNomeSala = new QLabel("Nome Sala:",this);
-    lineEditNomeSala = new QLineEdit(this);
+    lineEditNomeSala = new QLineEdit(QString::fromStdString(sala->getNome()));
     labelPressioneRichiesta = new QLabel("Pressione Richiesta:", this);
-    lineEditPressioneRichiesta = new QLineEdit(this);
+    lineEditPressioneRichiesta = new QLineEdit(QString::number(sala->getPressioneRichiesta()));
     labelPortataRichiesta = new QLabel("Portata Richiesta:", this);
-    lineEditPortataRichiesta = new QLineEdit(this);
+    lineEditPortataRichiesta = new QLineEdit(QString::number(sala->getPortataRichiesta()));
     labelImpianto = new QLabel("Impianto:",this);
-    lineEditImpianto = new QLineEdit(this);
+    lineEditImpianto = new QLineEdit(QString::fromStdString(sala->getImpianto()));
     labelKwTot = new QLabel("Kw Tot:",this);
-    lineEditKwTot = new QLineEdit(this);
+    lineEditKwTot = new QLineEdit(QString::number(sala->getKwTot()));
     labelPortatEffettiva = new QLabel("Portata effettiva:", this);
     lineEditPortataEffettiva = new QLineEdit(this);
     labelPressioneEffettiva = new QLabel("Pressione Effettiva:", this);
@@ -135,8 +135,7 @@ FinestraConfiguraSala::FinestraConfiguraSala(QDialog *parent):QDialog(parent){
 }
 
 void FinestraConfiguraSala::eliminaComponente(){
-    if (tabellaComponenti->selectedItems().isEmpty())
-        cout << "cappe!" << endl; // funziona
+    if (tabellaComponenti->selectedItems().isEmpty());
 }
 
 //void FinestraConfiguraSala::apriFinestraInserisciSala(){

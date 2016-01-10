@@ -8,6 +8,7 @@
 #include<databasecomponenti.h>
 #include<QTableWidget>
 #include<QGroupBox>
+#include<QString>
 #include<iostream>
 
 using namespace std;
@@ -17,8 +18,11 @@ class FinestraConfiguraSala : public QDialog{
     Q_OBJECT
 private:
     DatabaseComponenti* db;
+    DatabaseClienti* dbc;
+    Cliente* cl;
+    SalaCompressori* sala;
 public:
-    explicit FinestraConfiguraSala(QDialog* parent=0);
+    explicit FinestraConfiguraSala(DatabaseClienti*, Cliente*, SalaCompressori* , QDialog* parent=0);
 
     // layout e groupbox
     QGridLayout* layoutInfoSala;
