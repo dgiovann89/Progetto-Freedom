@@ -100,28 +100,30 @@ void FinestraCercaCliente::rimuoviClienteSelezionato() {
 }
 
 void FinestraCercaCliente::apriFinestraClienteSelezionato(){
-    Cliente* c;
-    int riga = tabellaClienti->currentRow();
-    cout << riga << endl;
-    int colonna = tabellaClienti->currentColumn();
+    if(!(tabellaClienti->selectedItems().isEmpty())){
+        Cliente* c;
+        int riga = tabellaClienti->currentRow();
+        cout << riga << endl;
+        int colonna = tabellaClienti->currentColumn();
 
-    vector<Cliente>::const_iterator it=dbc->getDatabase().begin();
-    int i = 0;
-    for (;it!=dbc->getDatabase().end();++it){
-        if (dbc->getCliente(i).getRagioneSociale()==(tabellaClienti->item(riga,colonna)->text().toStdString())){
-            c=&(dbc->getCliente(i));
-            i++;
+        vector<Cliente>::const_iterator it=dbc->getDatabase().begin();
+        int i = 0;
+        for (;it!=dbc->getDatabase().end();++it){
+            if (dbc->getCliente(i).getRagioneSociale()==(tabellaClienti->item(riga,colonna)->text().toStdString())){
+                c=&(dbc->getCliente(i));
+                i++;
+            }
+            else {
+                c=0;
+                i++;
+            }
         }
-        else {
-            c=0;
-            i++;
-        }
+        FinestraClienteSelezionato finCliSel(dbc,c);
+        finCliSel.exec();
+        tabellaClienti->clearContents();
+        tabellaClienti->setRowCount(0);
+        riempiTabellaClienti();
     }
-    FinestraClienteSelezionato finCliSel(dbc,c);
-    finCliSel.exec();
-    tabellaClienti->clearContents();
-    tabellaClienti->setRowCount(0);
-    riempiTabellaClienti();
 //    bottoneApriCliente->setDisabled(true);
 }
 

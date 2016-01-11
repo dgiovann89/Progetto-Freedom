@@ -3,7 +3,7 @@
 ModificaAnagraficaCliente::ModificaAnagraficaCliente(DatabaseClienti* d, Cliente* c, QDialog* parent): QDialog(parent), dbc(d), cl(c){
     //    dbc = new DatabaseClienti();
 
-        this->setWindowTitle("Finestra Inserisci Cliente");
+        this->setWindowTitle("Finestra Modifica Anagrafica Cliente");
         this->setMinimumSize(420,340);
 
         layoutSfondo=new QVBoxLayout(this);
@@ -96,7 +96,7 @@ ModificaAnagraficaCliente::ModificaAnagraficaCliente(DatabaseClienti* d, Cliente
             i.setProvincia(lineEditProvincia->text().toStdString());
             i.setCap(lineEditCap->text().toStdString());
             cl->setInd(i);
-           QMessageBox messageBox(this);
+            QMessageBox messageBox(this);
                 messageBox.setText("Dati aggiornati correttamente");
                 messageBox.exec();
                 this->close();

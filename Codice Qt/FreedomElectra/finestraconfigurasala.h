@@ -5,6 +5,7 @@
 #include<finestrainseriscisala.h>
 #include<finestravisualizzacomponente.h>
 #include<finestrainseriscicomponente.h>
+#include<modificainfosala.h>
 #include<databasecomponenti.h>
 #include<QTableWidget>
 #include<QGroupBox>
@@ -21,6 +22,7 @@ private:
     DatabaseClienti* dbc;
     Cliente* cl;
     SalaCompressori* sala;
+    void riempiTabellaComponenti();
 public:
     explicit FinestraConfiguraSala(DatabaseClienti*, Cliente*, SalaCompressori* , QDialog* parent=0);
 
@@ -78,7 +80,7 @@ public:
     QTableWidget* tabellaComponenti;
 
 public slots:
-//    void apriFinestraInserisciSala();
+    void apriModificaInfoSala();
     void apriFinestraInserisciComponente();
     void apriFinestraVisualizzaComponente();
     void eliminaComponente();

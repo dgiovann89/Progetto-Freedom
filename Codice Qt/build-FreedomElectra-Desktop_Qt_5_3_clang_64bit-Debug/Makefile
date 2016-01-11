@@ -66,7 +66,8 @@ SOURCES       = ../FreedomElectra/cliente.cpp \
 		../FreedomElectra/finestravisualizzacomponente.cpp \
 		../FreedomElectra/finestrainseriscisala.cpp \
 		../FreedomElectra/finestraconfigurasala.cpp \
-		../FreedomElectra/modificaanagraficacliente.cpp moc_finestraprincipale.cpp \
+		../FreedomElectra/modificaanagraficacliente.cpp \
+		../FreedomElectra/modificainfosala.cpp moc_finestraprincipale.cpp \
 		moc_finestracercacliente.cpp \
 		moc_finestrainseriscicliente.cpp \
 		moc_finestraclienteselezionato.cpp \
@@ -74,7 +75,8 @@ SOURCES       = ../FreedomElectra/cliente.cpp \
 		moc_finestravisualizzacomponente.cpp \
 		moc_finestrainseriscisala.cpp \
 		moc_finestraconfigurasala.cpp \
-		moc_modificaanagraficacliente.cpp
+		moc_modificaanagraficacliente.cpp \
+		moc_modificainfosala.cpp
 OBJECTS       = cliente.o \
 		componente.o \
 		salacompressori.o \
@@ -97,6 +99,7 @@ OBJECTS       = cliente.o \
 		finestrainseriscisala.o \
 		finestraconfigurasala.o \
 		modificaanagraficacliente.o \
+		modificainfosala.o \
 		moc_finestraprincipale.o \
 		moc_finestracercacliente.o \
 		moc_finestrainseriscicliente.o \
@@ -105,7 +108,8 @@ OBJECTS       = cliente.o \
 		moc_finestravisualizzacomponente.o \
 		moc_finestrainseriscisala.o \
 		moc_finestraconfigurasala.o \
-		moc_modificaanagraficacliente.o
+		moc_modificaanagraficacliente.o \
+		moc_modificainfosala.o
 DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/qdevice.pri \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/device_config.prf \
@@ -243,7 +247,8 @@ DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../FreedomElectra/finestravisualizzacomponente.cpp \
 		../FreedomElectra/finestrainseriscisala.cpp \
 		../FreedomElectra/finestraconfigurasala.cpp \
-		../FreedomElectra/modificaanagraficacliente.cpp
+		../FreedomElectra/modificaanagraficacliente.cpp \
+		../FreedomElectra/modificainfosala.cpp
 QMAKE_TARGET  = FreedomElectra
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = FreedomElectra.app/Contents/MacOS/FreedomElectra
@@ -547,7 +552,7 @@ FreedomElectra.app/Contents/Info.plist:
 	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@ICON@,,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.FreedomElectra,g" -e "s,@EXECUTABLE@,FreedomElectra,g" -e "s,@TYPEINFO@,????,g" /Applications/Qt/5.3/clang_64/mkspecs/macx-clang/Info.plist.app >FreedomElectra.app/Contents/Info.plist
 dist: 
 	@test -d .tmp/FreedomElectra1.0.0 || mkdir -p .tmp/FreedomElectra1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.h ../FreedomElectra/componente.h ../FreedomElectra/salacompressori.h ../FreedomElectra/databaseclienti.h ../FreedomElectra/databasecomponenti.h ../FreedomElectra/macchinario.h ../FreedomElectra/filtro.h ../FreedomElectra/serbatoio.h ../FreedomElectra/impianto.h ../FreedomElectra/onoff.h ../FreedomElectra/velocitavariabile.h ../FreedomElectra/indirizzo.h ../FreedomElectra/finestraprincipale.h ../FreedomElectra/finestracercacliente.h ../FreedomElectra/finestrainseriscicliente.h ../FreedomElectra/finestraclienteselezionato.h ../FreedomElectra/finestrainseriscicomponente.h ../FreedomElectra/finestravisualizzacomponente.h ../FreedomElectra/finestrainseriscisala.h ../FreedomElectra/finestraconfigurasala.h ../FreedomElectra/modificaanagraficacliente.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.cpp ../FreedomElectra/componente.cpp ../FreedomElectra/salacompressori.cpp ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/main.cpp ../FreedomElectra/macchinario.cpp ../FreedomElectra/filtro.cpp ../FreedomElectra/serbatoio.cpp ../FreedomElectra/impianto.cpp ../FreedomElectra/onoff.cpp ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/indirizzo.cpp ../FreedomElectra/finestraprincipale.cpp ../FreedomElectra/finestracercacliente.cpp ../FreedomElectra/finestrainseriscicliente.cpp ../FreedomElectra/finestraclienteselezionato.cpp ../FreedomElectra/finestrainseriscicomponente.cpp ../FreedomElectra/finestravisualizzacomponente.cpp ../FreedomElectra/finestrainseriscisala.cpp ../FreedomElectra/finestraconfigurasala.cpp ../FreedomElectra/modificaanagraficacliente.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.h ../FreedomElectra/componente.h ../FreedomElectra/salacompressori.h ../FreedomElectra/databaseclienti.h ../FreedomElectra/databasecomponenti.h ../FreedomElectra/macchinario.h ../FreedomElectra/filtro.h ../FreedomElectra/serbatoio.h ../FreedomElectra/impianto.h ../FreedomElectra/onoff.h ../FreedomElectra/velocitavariabile.h ../FreedomElectra/indirizzo.h ../FreedomElectra/finestraprincipale.h ../FreedomElectra/finestracercacliente.h ../FreedomElectra/finestrainseriscicliente.h ../FreedomElectra/finestraclienteselezionato.h ../FreedomElectra/finestrainseriscicomponente.h ../FreedomElectra/finestravisualizzacomponente.h ../FreedomElectra/finestrainseriscisala.h ../FreedomElectra/finestraconfigurasala.h ../FreedomElectra/modificaanagraficacliente.h ../FreedomElectra/modificainfosala.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents ../FreedomElectra/cliente.cpp ../FreedomElectra/componente.cpp ../FreedomElectra/salacompressori.cpp ../FreedomElectra/databaseclienti.cpp ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra/main.cpp ../FreedomElectra/macchinario.cpp ../FreedomElectra/filtro.cpp ../FreedomElectra/serbatoio.cpp ../FreedomElectra/impianto.cpp ../FreedomElectra/onoff.cpp ../FreedomElectra/velocitavariabile.cpp ../FreedomElectra/indirizzo.cpp ../FreedomElectra/finestraprincipale.cpp ../FreedomElectra/finestracercacliente.cpp ../FreedomElectra/finestrainseriscicliente.cpp ../FreedomElectra/finestraclienteselezionato.cpp ../FreedomElectra/finestrainseriscicomponente.cpp ../FreedomElectra/finestravisualizzacomponente.cpp ../FreedomElectra/finestrainseriscisala.cpp ../FreedomElectra/finestraconfigurasala.cpp ../FreedomElectra/modificaanagraficacliente.cpp ../FreedomElectra/modificainfosala.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
 
 
 clean:compiler_clean 
@@ -572,9 +577,9 @@ compiler_objective_c_make_all:
 compiler_objective_c_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_finestraprincipale.cpp moc_finestracercacliente.cpp moc_finestrainseriscicliente.cpp moc_finestraclienteselezionato.cpp moc_finestrainseriscicomponente.cpp moc_finestravisualizzacomponente.cpp moc_finestrainseriscisala.cpp moc_finestraconfigurasala.cpp moc_modificaanagraficacliente.cpp
+compiler_moc_header_make_all: moc_finestraprincipale.cpp moc_finestracercacliente.cpp moc_finestrainseriscicliente.cpp moc_finestraclienteselezionato.cpp moc_finestrainseriscicomponente.cpp moc_finestravisualizzacomponente.cpp moc_finestrainseriscisala.cpp moc_finestraconfigurasala.cpp moc_modificaanagraficacliente.cpp moc_modificainfosala.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_finestraprincipale.cpp moc_finestracercacliente.cpp moc_finestrainseriscicliente.cpp moc_finestraclienteselezionato.cpp moc_finestrainseriscicomponente.cpp moc_finestravisualizzacomponente.cpp moc_finestrainseriscisala.cpp moc_finestraconfigurasala.cpp moc_modificaanagraficacliente.cpp
+	-$(DEL_FILE) moc_finestraprincipale.cpp moc_finestracercacliente.cpp moc_finestrainseriscicliente.cpp moc_finestraclienteselezionato.cpp moc_finestrainseriscicomponente.cpp moc_finestravisualizzacomponente.cpp moc_finestrainseriscisala.cpp moc_finestraconfigurasala.cpp moc_modificaanagraficacliente.cpp moc_modificainfosala.cpp
 moc_finestraprincipale.cpp: /Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
@@ -1004,6 +1009,57 @@ moc_modificaanagraficacliente.cpp: ../FreedomElectra/finestraclienteselezionato.
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/modificaanagraficacliente.h
 	/Applications/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/giovannidamo/Dropbox/P2 Drop/Progetto Freedom/Codice Qt/FreedomElectra' -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Applications/Qt/5.3/clang_64/lib ../FreedomElectra/modificaanagraficacliente.h -o moc_modificaanagraficacliente.cpp
+
+moc_modificainfosala.cpp: ../FreedomElectra/finestraclienteselezionato.h \
+		../FreedomElectra/finestracercacliente.h \
+		../FreedomElectra/finestraprincipale.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QPushButton \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../FreedomElectra/finestrainseriscicliente.h \
+		../FreedomElectra/databaseclienti.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGroupBox \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgroupbox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLineEdit \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		../FreedomElectra/finestrainseriscisala.h \
+		../FreedomElectra/finestraconfigurasala.h \
+		../FreedomElectra/finestravisualizzacomponente.h \
+		../FreedomElectra/finestrainseriscicomponente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../FreedomElectra/databasecomponenti.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/onoff.h \
+		../FreedomElectra/macchinario.h \
+		../FreedomElectra/velocitavariabile.h \
+		../FreedomElectra/serbatoio.h \
+		../FreedomElectra/filtro.h \
+		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificaanagraficacliente.h \
+		../FreedomElectra/modificainfosala.h
+	/Applications/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/giovannidamo/Dropbox/P2 Drop/Progetto Freedom/Codice Qt/FreedomElectra' -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Applications/Qt/5.3/clang_64/lib ../FreedomElectra/modificainfosala.h -o moc_modificainfosala.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1569,6 +1625,57 @@ modificaanagraficacliente.o: ../FreedomElectra/modificaanagraficacliente.cpp ../
 		../FreedomElectra/impianto.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modificaanagraficacliente.o ../FreedomElectra/modificaanagraficacliente.cpp
 
+modificainfosala.o: ../FreedomElectra/modificainfosala.cpp ../FreedomElectra/modificainfosala.h \
+		../FreedomElectra/finestraclienteselezionato.h \
+		../FreedomElectra/finestracercacliente.h \
+		../FreedomElectra/finestraprincipale.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QPushButton \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../FreedomElectra/finestrainseriscicliente.h \
+		../FreedomElectra/databaseclienti.h \
+		../FreedomElectra/cliente.h \
+		../FreedomElectra/indirizzo.h \
+		../FreedomElectra/salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGroupBox \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgroupbox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLineEdit \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		../FreedomElectra/finestrainseriscisala.h \
+		../FreedomElectra/finestraconfigurasala.h \
+		../FreedomElectra/finestravisualizzacomponente.h \
+		../FreedomElectra/finestrainseriscicomponente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../FreedomElectra/databasecomponenti.h \
+		../FreedomElectra/componente.h \
+		../FreedomElectra/onoff.h \
+		../FreedomElectra/macchinario.h \
+		../FreedomElectra/velocitavariabile.h \
+		../FreedomElectra/serbatoio.h \
+		../FreedomElectra/filtro.h \
+		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificaanagraficacliente.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modificainfosala.o ../FreedomElectra/modificainfosala.cpp
+
 moc_finestraprincipale.o: moc_finestraprincipale.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_finestraprincipale.o moc_finestraprincipale.cpp
 
@@ -1595,6 +1702,9 @@ moc_finestraconfigurasala.o: moc_finestraconfigurasala.cpp
 
 moc_modificaanagraficacliente.o: moc_modificaanagraficacliente.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_modificaanagraficacliente.o moc_modificaanagraficacliente.cpp
+
+moc_modificainfosala.o: moc_modificainfosala.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_modificainfosala.o moc_modificainfosala.cpp
 
 ####### Install
 

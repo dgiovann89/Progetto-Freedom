@@ -126,7 +126,7 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
 
     this->setLayout(layoutSfondo);
 
-//    connect(bottoneModificaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
+    connect(bottoneModificaSala,SIGNAL(clicked()),this,SLOT(apriModificaInfoSala()));
     connect(bottoneInserisciComponente,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciComponente()));
     connect(bottoneVisualizzaComponente,SIGNAL(clicked()),this,SLOT(apriFinestraVisualizzaComponente()));
     connect(bottoneEliminaComponente,SIGNAL(clicked()),this,SLOT(eliminaComponente()));
@@ -134,14 +134,56 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
 
 }
 
-void FinestraConfiguraSala::eliminaComponente(){
-    if (tabellaComponenti->selectedItems().isEmpty());
+// metodo privato riempiTabellaComponenti
+void FinestraConfiguraSala::riempiTabellaComponenti(){
+    int row = tabellaComponenti->rowCount();
+    for (unsigned int i=0; i<sala->getComponenti().size();++i){
+        tabellaComponenti->setRowCount(row+1);
+
+        QTableWidgetItem* itemMarca= new QTableWidgetItem (QString::fromStdString(sala->getComponente(i)->getMarca()));
+        tabellaComponenti->setItem(row, 0, itemMarca);
+        itemMarca->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        QTableWidgetItem* itemModello= new QTableWidgetItem (QString::fromStdString(sala->getComponente(i)->getModello()));
+        tabellaComponenti->setItem(row, 1, itemModello);
+        itemModello->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        QTableWidgetItem* itemAnno= new QTableWidgetItem (QString::fromStdString(sala->getComponente(i)->getAnno()));
+        tabellaComponenti->setItem(row, 2, itemAnno);
+        itemAnno->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        QTableWidgetItem* itemPressione= new QTableWidgetItem (QString::fromStdString(sala->getComponente(i)->getPressione()));
+        tabellaComponenti->setItem(row, 3, itemPressione);
+        itemPressione->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        QTableWidgetItem* itemPortata_Capacità= new QTableWidgetItem (QString::fromStdString(sala->getComponente(i)->getPortata_capacità()));
+        tabellaComponenti->setItem(row, 4, itemPortata_Capacità);
+        itemPortata_Capacità->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        QTableWidgetItem* itemCadDiPress= new QTableWidgetItem (QString::fromStdString(sala->getComponente(i)->getCadutaDiPressione()));
+        tabellaComponenti->setItem(row, 5, itemCadDiPress);
+        itemCadDiPress->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        if (Q) // manca da settare i kw
+        QTableWidgetItem* itemKw= new QTableWidgetItem (QString::fromStdString(sala->getComponente(i)-));
+        tabellaComponenti->setItem(row, 6, itemKw);
+        itemKw->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+    }
 }
 
-//void FinestraConfiguraSala::apriFinestraInserisciSala(){
-//    FinestraInserisciSala finInfoSala();
-//    finInfoSala.exec();
-//}
+void FinestraConfiguraSala::eliminaComponente(){
+//    if (tabellaComponenti->selectedItems().isEmpty());
+}
+
+void FinestraConfiguraSala::apriModificaInfoSala(){
+    ModificaInfoSala modInfoSala(dbc,cl,sala);
+    modInfoSala.exec();
+    // aggiorna anagrafica cliente nella finestra
+    lineEditNomeSala->setText(QString::fromStdString(sala->getNome()));
+    lineEditPortataRichiesta->setText(QString::number(sala->getPortataRichiesta()));
+    lineEditPressioneRichiesta->setText(QString::number(sala->getPressioneRichiesta()));
+    lineEditImpianto->setText(QString::fromStdString(sala->getImpianto()));
+}
 
 void FinestraConfiguraSala::apriFinestraInserisciComponente(){
     FinestraInserisciComponente finInsComp(db,this);
