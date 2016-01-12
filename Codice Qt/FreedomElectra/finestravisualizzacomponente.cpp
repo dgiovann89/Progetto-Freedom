@@ -1,6 +1,6 @@
 #include "finestravisualizzacomponente.h"
 
-FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d, QDialog *parent):QDialog(parent), db(d){
+FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d, Componente* cp, QDialog *parent):QDialog(parent), db(d), c(cp){
     this->setWindowTitle("Finestra Visualizza Componente");
     this->setMinimumSize(340,340);
 
@@ -9,6 +9,7 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     layoutDatiComponente = new QGridLayout();
     layoutBottoni = new QHBoxLayout(this);
     boxDatiComponente = new QGroupBox(this);
+    boxDatiComponente->setDisabled(true);
     boxBottoni = new QGroupBox(this);
     labelTipo = new QLabel("Tipo:");
     labelMarca=new QLabel("Marca:");
@@ -17,12 +18,18 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     labelPressione = new QLabel("Pressione:");
     labelPortata_Capacità = new QLabel("Portata o Capacità:");
     labelKw = new QLabel("Kw:");
-    lineEditMarca = new QLineEdit(this);
-    lineEditModello = new QLineEdit(this);
-    lineEditAnno = new QLineEdit(this);
-    lineEditPressione = new QLineEdit(this);
-    lineEditPortata_Capacità = new QLineEdit(this);
+    lineEditMarca = new QLineEdit(QString::fromStdString(c->getMarca()));
+    lineEditMarca->setDisabled(true);
+    lineEditModello = new QLineEdit(QString::fromStdString(c->getModello()));
+    lineEditModello->setDisabled(true);
+    lineEditAnno = new QLineEdit(QString::number(c->getAnno()));
+    lineEditAnno->setDisabled(true);
+    lineEditPressione = new QLineEdit(QString::number(c->getPressione()));
+    lineEditPressione->setDisabled(true);
+    lineEditPortata_Capacità = new QLineEdit(QString::number(c->getPortata_capacità()));
+    lineEditPortata_Capacità->setDisabled(true);
     lineEditKw = new QLineEdit(this);
+    lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneModifica = new QPushButton("Modifica",this);
     comboBoxTipo = new QComboBox();
@@ -74,14 +81,14 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     this->setLayout(layoutSfondo);
 
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
-    connect(bottoneModifica,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciComponente()));
+//    connect(bottoneModifica,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciComponente()));
 }
 
-void FinestraVisualizzaComponente::apriFinestraInserisciComponente(){
-    FinestraInserisciComponente finInsComp(db);
-    this->close();
-    finInsComp.exec();
-}
+//void FinestraVisualizzaComponente::apriFinestraInserisciComponente(){
+//    FinestraInserisciComponente finInsComp(db);
+//    this->close();
+//    finInsComp.exec();
+//}
 
 void FinestraVisualizzaComponente::torna(){
     this->close();

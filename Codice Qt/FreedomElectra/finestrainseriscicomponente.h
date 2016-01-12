@@ -17,8 +17,10 @@ class FinestraInserisciComponente : public QDialog{
     Q_OBJECT
 private:
     DatabaseComponenti* db;
+    Cliente* cl;
+    SalaCompressori* sala;
 public:
-    explicit FinestraInserisciComponente(DatabaseComponenti*, QDialog* parent=0);
+    explicit FinestraInserisciComponente(DatabaseComponenti*, Cliente*, SalaCompressori* ,QDialog* parent=0);
 
     // box e layout
     QVBoxLayout* layoutSfondo;

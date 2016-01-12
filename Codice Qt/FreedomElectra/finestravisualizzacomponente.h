@@ -11,8 +11,9 @@ class FinestraVisualizzaComponente : public QDialog{
     Q_OBJECT
 private:
     DatabaseComponenti* db;
+    Componente* c;
 public:
-    explicit FinestraVisualizzaComponente(DatabaseComponenti*, QDialog* parent=0);
+    explicit FinestraVisualizzaComponente(DatabaseComponenti*, Componente*, QDialog* parent=0);
 
     // box e layout
     QVBoxLayout* layoutSfondo;
@@ -48,7 +49,7 @@ public:
     QComboBox* comboBoxTipo;
 
 public slots:
-    void apriFinestraInserisciComponente();
+//    void apriFinestraInserisciComponente();
     void torna();
 };
 

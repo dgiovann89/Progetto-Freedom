@@ -1,6 +1,6 @@
 #include "finestrainseriscicomponente.h"
 
-FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, QDialog *parent):QDialog(parent), db(d){
+FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, Cliente* c, SalaCompressori* s ,QDialog *parent):QDialog(parent), db(d), cl(c), sala(s){
     this->setWindowTitle("Finestra Inserisci Componenti");
     this->setMinimumSize(340,340);
 
@@ -88,22 +88,29 @@ void FinestraInserisciComponente::salva(){
 
      if (lineEditMarca->text()!=""){
         if (comboBoxTipo->currentIndex()==0 || comboBoxTipo->currentIndex()==2){
-            OnOff* a = new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw);
+            OnOff* a = new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw,cl,sala);
             inserito = db->inserisciComponente(a);
-//            SalaCompressori x;
-//            x.aggiungiComponente(a);
+            sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==3){
-            inserito = db->inserisciComponente(new VelocitaVariabile(marca, modello, anno, pressione, portataCapacità, cdp ,kw));
+            VelocitaVariabile* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacità, cdp ,kw,cl,sala);
+            inserito = db->inserisciComponente(a);
+            sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==4){
-            inserito = db->inserisciComponente(new Impianto(marca, modello, anno, pressione, portataCapacità,cdp));
+            Impianto* a = new Impianto(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            inserito = db->inserisciComponente(a);
+            sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==5){
-            inserito = db->inserisciComponente(new Filtro(marca, modello, anno, pressione, portataCapacità,cdp));
+            Filtro* a = new Filtro(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            inserito = db->inserisciComponente(a);
+            sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==6){
-            inserito = db->inserisciComponente(new Serbatoio(marca, modello, anno, pressione, portataCapacità,cdp));
+            Serbatoio* a = new Serbatoio(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            inserito = db->inserisciComponente(a);
+            sala->aggiungiComponente(a);
         }
         else
             inserito=false;
@@ -114,7 +121,7 @@ void FinestraInserisciComponente::salva(){
            this->close();
         }
         else {
-           messageBox.setText("Compilare il campo marca.");
+           messageBox.setText("Compilare i campi.");
            messageBox.exec();
         }
      }
@@ -123,7 +130,6 @@ void FinestraInserisciComponente::salva(){
          messageBox.setText("Inserire una marca non vuota.");
          messageBox.exec();
      }
-
 }
 
 void FinestraInserisciComponente::torna(){

@@ -158,21 +158,7 @@ void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
     if(!(tabellaSale->selectedItems().isEmpty())){
         SalaCompressori* s;
         int riga = tabellaSale->currentRow();
-        cout << riga << endl;
-        int colonna = tabellaSale->currentColumn();
-
-        vector<SalaCompressori>::const_iterator it=cl->getSala().begin();
-        int i = 0;
-        for (;it!=cl->getSala().end();++it){
-            if (cl->getSala(i).getNome() == (tabellaSale->item(riga,colonna)->text().toStdString())){
-                s=&(cl->getSala(i));
-                i++;
-            }
-            else {
-                s=0;
-                i++;
-            }
-        }
+        s = &(cl->getSala(riga));
         FinestraConfiguraSala finConfSala(dbc,cl,s);
         finConfSala.exec();
         tabellaSale->clearContents();
