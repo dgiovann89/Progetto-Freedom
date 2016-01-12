@@ -1,7 +1,7 @@
-#include "finestravisualizzacomponente.h"
+#include "modificadaticomponente.h"
 
-FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d, Componente* cp, QDialog *parent):QDialog(parent), db(d), c(cp){
-    this->setWindowTitle("Finestra Visualizza Componente");
+ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente* cp, QDialog *parent):QDialog(parent), db(d), c(cp){
+    this->setWindowTitle("Modifica dati Componente");
     this->setMinimumSize(340,340);
 
     // new
@@ -9,7 +9,7 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     layoutDatiComponente = new QGridLayout();
     layoutBottoni = new QHBoxLayout(this);
     boxDatiComponente = new QGroupBox(this);
-    boxDatiComponente->setDisabled(true);
+//    boxDatiComponente->setDisabled(true);
     boxBottoni = new QGroupBox(this);
     labelTipo = new QLabel("Tipo:");
     labelMarca=new QLabel("Marca:");
@@ -19,20 +19,15 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     labelPortata_Capacità = new QLabel("Portata o Capacità:");
     labelKw = new QLabel("Kw:");
     lineEditMarca = new QLineEdit(QString::fromStdString(c->getMarca()));
-    lineEditMarca->setDisabled(true);
     lineEditModello = new QLineEdit(QString::fromStdString(c->getModello()));
-    lineEditModello->setDisabled(true);
     lineEditAnno = new QLineEdit(QString::number(c->getAnno()));
-    lineEditAnno->setDisabled(true);
     lineEditPressione = new QLineEdit(QString::number(c->getPressione()));
-    lineEditPressione->setDisabled(true);
     lineEditPortata_Capacità = new QLineEdit(QString::number(c->getPortata_capacità()));
-    lineEditPortata_Capacità->setDisabled(true);
     lineEditKw = new QLineEdit(this);
-    lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
-    bottoneModifica = new QPushButton("Modifica",this);
+    bottoneSalva = new QPushButton("Salva",this);
     comboBoxTipo = new QComboBox();
+    comboBoxTipo->setDisabled(true);
 
     // set comboBox
     QStringList list= (QStringList()<< "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
@@ -67,29 +62,44 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     layoutDatiComponente->addWidget(lineEditKw,6,1);
 
     // disabilito lineEdit
-    lineEditMarca->setDisabled(true);
-    lineEditModello->setDisabled(true);
-    lineEditAnno->setDisabled(true);
-    lineEditPressione->setDisabled(true);
-    lineEditPortata_Capacità->setDisabled(true);
-    lineEditKw->setDisabled(true);
+//    lineEditMarca->setDisabled(false);
+//    lineEditModello->setDisabled(false);
+//    lineEditAnno->setDisabled(false);
+//    lineEditPressione->setDisabled(false);
+//    lineEditPortata_Capacità->setDisabled(false);
+//    lineEditKw->setDisabled(false);
 
     // associazione a layoutBottoni
     layoutBottoni->addWidget(bottoneIndietro);
-    layoutBottoni->addWidget(bottoneModifica);
+    layoutBottoni->addWidget(bottoneSalva);
 
     this->setLayout(layoutSfondo);
 
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
-    connect(bottoneModifica,SIGNAL(clicked()),this,SLOT(apriModificaDatiComponente()));
+    connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
 }
 
-void FinestraVisualizzaComponente::apriModificaDatiComponente(){
-    ModificaDatiComponente modDatiCompo(db,c);
-    this->close();
-    modDatiCompo.exec();
+void ModificaDatiComponente::salva(){
+    if (lineEditMarca->text()!=""){
+    c->setMarca(lineEditMarca->text().toStdString());
+    c->setModello(lineEditModello->text().toStdString());
+    c->setAnno(lineEditAnno->text().toInt());
+    c->setPressione(lineEditPressione->text().toInt());
+    c->setPortata_capacità(lineEditPortata_Capacità->text().toInt());
+//    if (c->getTipo()=="OnOff")
+//        c->setKw();
+    QMessageBox messageBox(this);
+        messageBox.setText("Dati aggiornati correttamente");
+        messageBox.exec();
+        this->close();
+    }
+    else{
+        QMessageBox messageBox(this);
+        messageBox.setText("Compilare tutti i campi");
+        messageBox.exec();
+    }
 }
 
-void FinestraVisualizzaComponente::torna(){
+void ModificaDatiComponente::torna(){
     this->close();
 }

@@ -1,5 +1,5 @@
-#ifndef FINESTRAVISUALIZZACOMPONENTE_H
-#define FINESTRAVISUALIZZACOMPONENTE_H
+#ifndef MODIFICADATICOMPONENTE_H
+#define MODIFICADATICOMPONENTE_H
 
 #include<finestrainseriscisala.h>
 #include<finestrainseriscicomponente.h>
@@ -8,13 +8,13 @@
 #include<QComboBox>
 #include<QString>
 
-class FinestraVisualizzaComponente : public QDialog{
+class ModificaDatiComponente : public QDialog{
     Q_OBJECT
 private:
     DatabaseComponenti* db;
     Componente* c;
 public:
-    explicit FinestraVisualizzaComponente(DatabaseComponenti*, Componente*, QDialog* parent=0);
+    explicit ModificaDatiComponente(DatabaseComponenti*, Componente*, QDialog* parent=0);
 
     // box e layout
     QVBoxLayout* layoutSfondo;
@@ -44,14 +44,14 @@ public:
 
     // bottoni
     QPushButton* bottoneIndietro;
-    QPushButton* bottoneModifica;
+    QPushButton* bottoneSalva;
 
     // combobox
     QComboBox* comboBoxTipo;
 
 public slots:
-    void apriModificaDatiComponente();
+    void salva();
     void torna();
 };
 
-#endif // FINESTRAVISUALIZZACOMPONENTE_H
+#endif // MODIFICADATICOMPONENTE_H

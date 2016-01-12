@@ -42,6 +42,7 @@ public:
     void setProprietario(Cliente*);
     void setSala(SalaCompressori*);
 //    void setTipo(string);
+//    void virtual setKw(int);
 };
 
 #endif // COMPONENTE_H
