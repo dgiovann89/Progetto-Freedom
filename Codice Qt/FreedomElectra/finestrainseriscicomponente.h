@@ -60,6 +60,7 @@ public:
 public slots:
     void salva();
     void torna();
+    void sbloccaLineEdit();
 };
 
 #endif // FINESTRAINSERISCICOMPONENTE_H

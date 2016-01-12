@@ -25,12 +25,14 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     lineEditPressione = new QLineEdit(this);
     lineEditPortata_Capacità = new QLineEdit(this);
     lineEditKw = new QLineEdit(this);
+    lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneSalva = new QPushButton("Salva",this);
     comboBoxTipo = new QComboBox();
 
+
     // set comboBox
-    QStringList list= (QStringList()<< "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
+    QStringList list= (QStringList()<< "Seleziona il tipo" << "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
     comboBoxTipo->addItems(list);
 
 //    selezionato = comboBoxTipo->currentText();
@@ -70,8 +72,49 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
 
     this->setLayout(layoutSfondo);
 
+    lineEditMarca->setDisabled(true);
+    lineEditModello->setDisabled(true);
+    lineEditAnno->setDisabled(true);
+    lineEditCadDiPress->setDisabled(true);
+    lineEditPortata_Capacità->setDisabled(true);
+    lineEditKw->setDisabled(true);
+    lineEditPressione->setDisabled(true);
+
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
     connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
+    connect(comboBoxTipo,SIGNAL(currentIndexChanged(int)),this,SLOT(sbloccaLineEdit()));
+}
+
+void FinestraInserisciComponente::sbloccaLineEdit(){
+    if (comboBoxTipo->currentIndex()==0){
+        lineEditMarca->setDisabled(true);
+        lineEditModello->setDisabled(true);
+        lineEditAnno->setDisabled(true);
+        lineEditCadDiPress->setDisabled(true);
+        lineEditPortata_Capacità->setDisabled(true);
+        lineEditKw->setDisabled(true);
+        lineEditPressione->setDisabled(true);
+    }
+    else
+        if (comboBoxTipo->currentIndex()!=5 && comboBoxTipo->currentIndex()!=6 && comboBoxTipo->currentIndex()!=7){
+            lineEditMarca->setDisabled(false);
+            lineEditModello->setDisabled(false);
+            lineEditAnno->setDisabled(false);
+            lineEditCadDiPress->setDisabled(false);
+            lineEditPortata_Capacità->setDisabled(false);
+            lineEditKw->setDisabled(false);
+            lineEditPressione->setDisabled(false);
+        }
+        else{
+            lineEditMarca->setDisabled(false);
+            lineEditModello->setDisabled(false);
+            lineEditAnno->setDisabled(false);
+            lineEditCadDiPress->setDisabled(false);
+            lineEditPortata_Capacità->setDisabled(false);
+            lineEditKw->setDisabled(true);
+            lineEditPressione->setDisabled(false);
+        }
+
 }
 
 void FinestraInserisciComponente::salva(){
@@ -86,28 +129,30 @@ void FinestraInserisciComponente::salva(){
 
      bool inserito;
 
+    FinestraInserisciComponente::sbloccaLineEdit();
+
      if (lineEditMarca->text()!=""){
-        if (comboBoxTipo->currentIndex()==0 || comboBoxTipo->currentIndex()==2){
+        if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==2){
             OnOff* a = new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
-        else if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==3){
+        else if (comboBoxTipo->currentIndex()==3 || comboBoxTipo->currentIndex()==4){
             VelocitaVariabile* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacità, cdp ,kw,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
-        else if (comboBoxTipo->currentIndex()==4){
+        else if (comboBoxTipo->currentIndex()==5){
             Impianto* a = new Impianto(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
-        else if (comboBoxTipo->currentIndex()==5){
+        else if (comboBoxTipo->currentIndex()==6){
             Filtro* a = new Filtro(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
-        else if (comboBoxTipo->currentIndex()==6){
+        else if (comboBoxTipo->currentIndex()==7){
             Serbatoio* a = new Serbatoio(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);

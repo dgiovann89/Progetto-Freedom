@@ -45,7 +45,7 @@ public:
 
 public slots:
     void apriFinestraClienteSelezionato();
-    // metodo per cercare il cliente
+    void cercaCliente();
     // metodo per eliminare il cliente selezionato
     void rimuoviClienteSelezionato();
     void mostraBottoneVisualizza();
