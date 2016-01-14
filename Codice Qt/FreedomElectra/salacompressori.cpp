@@ -2,6 +2,15 @@
 
 SalaCompressori::SalaCompressori(string n, Cliente* cl, int k, int p, int press, int port, string i):nome(n), proprietario(cl), kwTot(k), portataTot(p), pressioneRichiesta(press), portataRichiesta(port), impianto(i){}
 
+SalaCompressori::~SalaCompressori(){
+//    // scorro i componenti
+//    vector<Componente*>::iterator it=componenti.begin();
+//    for (;it!=componenti.end();i++){
+
+//        componenti.erase(it);
+//    }
+}
+
 // get
 string SalaCompressori::getNome() const{
     return nome;

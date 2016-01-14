@@ -41,6 +41,7 @@ public:
     QLineEdit* lineEditPressione;
     QLineEdit* lineEditPortata_Capacità;
     QLineEdit* lineEditKw;
+    QLineEdit* lineEditTipo;
 
     // bottoni
     QPushButton* bottoneIndietro;

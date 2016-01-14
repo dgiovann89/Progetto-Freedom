@@ -138,8 +138,8 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
 // metodo privato riempiTabellaComponenti
 void FinestraConfiguraSala::riempiTabellaComponenti(){
     int row = tabellaComponenti->rowCount();
-    cout << "rowwasdasdasdasd:" << row;
-    cout << sala->getComponenti().size() << endl;
+//    cout << "rowwasdasdasdasd:" << row;
+//    cout << sala->getComponenti().size() << endl;
 
     for (unsigned int i=0; i<sala->getComponenti().size();++i){
         tabellaComponenti->setRowCount(row+1);
@@ -198,16 +198,39 @@ void FinestraConfiguraSala::apriFinestraInserisciComponente(){
 }
 
 void FinestraConfiguraSala::apriFinestraVisualizzaComponente(){
+//    if(!(tabellaComponenti->selectedItems().isEmpty())){
+//        Componente* c;
+//        int riga = tabellaComponenti->currentRow();
+//        c = (sala->getComponente(riga));
+//        FinestraVisualizzaComponente finVisComp(db,c);
+//        finVisComp.exec();
+//        tabellaComponenti->clearContents();
+//        tabellaComponenti->setRowCount(0);
+//        riempiTabellaComponenti();
+//    }
     if(!(tabellaComponenti->selectedItems().isEmpty())){
-        Componente* c;
-        int riga = tabellaComponenti->currentRow();
-        c = (sala->getComponente(riga));
-        FinestraVisualizzaComponente finVisComp(db,c);
+            int riga=tabellaComponenti->currentRow();
+            Componente* r;
+            int i=0;
+            bool trovato=false;
+             vector<Componente*>::const_iterator it=sala->getComponenti().begin();
+             for(;it!=sala->getComponenti().end() && !trovato;++it){
+                 if(
+                   (QString::fromStdString(sala->getComponente(i)->getMarca()))==(tabellaComponenti->item(riga,0)->text()) &&
+                   (QString::fromStdString(sala->getComponente(i)->getModello()))==(tabellaComponenti->item(riga,1)->text())
+                   ){
+                     r=sala->getComponente(i);
+                     trovato=true;
+                 }
+                 i++;
+             }
+        FinestraVisualizzaComponente finVisComp(db,r,this);
         finVisComp.exec();
+        }
         tabellaComponenti->clearContents();
         tabellaComponenti->setRowCount(0);
         riempiTabellaComponenti();
-    }
+
 }
 
 void FinestraConfiguraSala::torna(){

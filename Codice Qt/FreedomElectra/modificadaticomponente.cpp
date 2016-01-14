@@ -27,6 +27,8 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneSalva = new QPushButton("Salva",this);
     comboBoxTipo = new QComboBox();
+//    lineEditTipo = new QLineEdit(QString::fromStdString(c->getTipo()));
+
     comboBoxTipo->setDisabled(true);
 
     // set comboBox

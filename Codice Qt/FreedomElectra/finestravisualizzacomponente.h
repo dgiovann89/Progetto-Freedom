@@ -35,6 +35,7 @@ public:
     QLabel* labelKw;
 
     // lineEdit
+    QLineEdit* lineEditTipo;
     QLineEdit* lineEditMarca;
     QLineEdit* lineEditModello;
     QLineEdit* lineEditAnno;
@@ -47,7 +48,7 @@ public:
     QPushButton* bottoneModifica;
 
     // combobox
-    QComboBox* comboBoxTipo;
+//    QComboBox* comboBoxTipo;
 
 public slots:
     void apriModificaDatiComponente();

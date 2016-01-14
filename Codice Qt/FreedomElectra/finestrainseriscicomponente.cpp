@@ -77,8 +77,8 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     lineEditAnno->setDisabled(true);
     lineEditCadDiPress->setDisabled(true);
     lineEditPortata_Capacità->setDisabled(true);
-    lineEditKw->setDisabled(true);
     lineEditPressione->setDisabled(true);
+    lineEditKw->setDisabled(true);
 
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
     connect(bottoneSalva,SIGNAL(clicked()),this,SLOT(salva()));
@@ -127,33 +127,33 @@ void FinestraInserisciComponente::salva(){
     float cdp = lineEditCadDiPress->text().toFloat();
     int kw = lineEditKw->text().toInt();
 
-     bool inserito;
+    bool inserito;
 
     FinestraInserisciComponente::sbloccaLineEdit();
 
      if (lineEditMarca->text()!=""){
         if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==2){
-            OnOff* a = new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw,cl,sala);
+            Componente* a = new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==3 || comboBoxTipo->currentIndex()==4){
-            VelocitaVariabile* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacità, cdp ,kw,cl,sala);
+            Componente* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacità, cdp ,kw,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==5){
-            Impianto* a = new Impianto(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            Componente* a = new Impianto(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==6){
-            Filtro* a = new Filtro(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            Componente* a = new Filtro(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==7){
-            Serbatoio* a = new Serbatoio(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            Componente* a = new Serbatoio(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
@@ -175,6 +175,7 @@ void FinestraInserisciComponente::salva(){
          messageBox.setText("Inserire una marca non vuota.");
          messageBox.exec();
      }
+
 }
 
 void FinestraInserisciComponente::torna(){

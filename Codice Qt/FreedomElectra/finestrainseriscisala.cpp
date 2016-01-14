@@ -65,16 +65,16 @@ void FinestraInserisciSala::torna() {
 }
 
 void FinestraInserisciSala::salva(){
-    SalaCompressori sala(lineEditNomeSala->text().toStdString(),
-                         cl,
-                         0,
-                         0,
-                         lineEditPressioneRichiesta->text().toInt(),
-                         lineEditPortataRichiesta->text().toInt(),
-                         lineEditImpianto->text().toStdString());
-
     if(lineEditNomeSala->text()!="" && lineEditPressioneRichiesta->text()!="" &&
        lineEditPortataRichiesta->text()!="" && lineEditImpianto->text()!=""){
+
+        SalaCompressori sala(lineEditNomeSala->text().toStdString(),
+                             cl,
+                             0,
+                             0,
+                             lineEditPressioneRichiesta->text().toInt(),
+                             lineEditPortataRichiesta->text().toInt(),
+                             lineEditImpianto->text().toStdString());
 
        cl->aggiungiSala(sala);
        QMessageBox messageBox(this);

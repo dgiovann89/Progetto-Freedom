@@ -25,7 +25,7 @@ private:
     vector<Componente*> componenti; //tipo puntatore o classe??
 public:
     SalaCompressori(string,Cliente*,int=0,int=0,int=0,int=0,string="");
-//    ~SalaCompressori(...)
+    ~SalaCompressori();
 
     //get
     string getNome() const;

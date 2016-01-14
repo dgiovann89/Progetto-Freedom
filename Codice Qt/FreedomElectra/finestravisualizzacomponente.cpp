@@ -9,8 +9,9 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     layoutDatiComponente = new QGridLayout();
     layoutBottoni = new QHBoxLayout(this);
     boxDatiComponente = new QGroupBox(this);
-    boxDatiComponente->setDisabled(true);
+//    boxDatiComponente->setDisabled(true);
     boxBottoni = new QGroupBox(this);
+
     labelTipo = new QLabel("Tipo:");
     labelMarca=new QLabel("Marca:");
     labelModello = new QLabel("Modello:");
@@ -18,6 +19,10 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     labelPressione = new QLabel("Pressione:");
     labelPortata_Capacità = new QLabel("Portata o Capacità:");
     labelKw = new QLabel("Kw:");
+
+//    lineEditTipo = new QLineEdit(comboBoxTipo->currentText());
+    lineEditTipo = new QLineEdit(QString::fromStdString(c->getTipo()));
+    lineEditTipo->setDisabled(true);
     lineEditMarca = new QLineEdit(QString::fromStdString(c->getMarca()));
     lineEditMarca->setDisabled(true);
     lineEditModello = new QLineEdit(QString::fromStdString(c->getModello()));
@@ -32,17 +37,12 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneModifica = new QPushButton("Modifica",this);
-    comboBoxTipo = new QComboBox();
+//    comboBoxTipo = new QComboBox(this);
 
-    // set comboBox
-    QStringList list= (QStringList()<< "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
-    comboBoxTipo->addItems(list);
+//    // set comboBox
+//    QStringList list= (QStringList()<< "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
+//    comboBoxTipo->addItems(list);
 
-//    selezionato = comboBoxTipo->currentText();
-//    if (selezionato=="Compressore On-Off")
-//        lineEditKw->setDisabled(true);
-//    else
-//        lineEditKw->setDisabled(false);
 
     // associazione box e layout
     layoutSfondo->addWidget(boxDatiComponente);
@@ -52,7 +52,8 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
 
     // associazione a layoutDatiComponente
     layoutDatiComponente->addWidget(labelTipo,0,0);
-    layoutDatiComponente->addWidget(comboBoxTipo,0,1);
+//    layoutDatiComponente->addWidget(comboBoxTipo,0,1);
+    layoutDatiComponente->addWidget(lineEditTipo,0,1);
     layoutDatiComponente->addWidget(labelMarca,1,0);
     layoutDatiComponente->addWidget(lineEditMarca,1,1);
     layoutDatiComponente->addWidget(labelModello,2,0);
