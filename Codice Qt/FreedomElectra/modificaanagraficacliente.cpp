@@ -96,6 +96,7 @@ ModificaAnagraficaCliente::ModificaAnagraficaCliente(DatabaseClienti* d, Cliente
             i.setProvincia(lineEditProvincia->text().toStdString());
             i.setCap(lineEditCap->text().toStdString());
             cl->setInd(i);
+            dbc->saveClienti(DatabaseClienti::Json); // per la modifica (aggiorna) anagrafica cliente
             QMessageBox messageBox(this);
                 messageBox.setText("Dati aggiornati correttamente");
                 messageBox.exec();

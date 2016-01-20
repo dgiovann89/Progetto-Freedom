@@ -217,7 +217,8 @@ void FinestraCercaCliente::apriFinestraClienteSelezionato(){
             bool trovato=false;
              vector<Cliente>::const_iterator it=dbc->getDatabase().begin();
              for(;it!=dbc->getDatabase().end() && !trovato;++it){
-                 if(QString::fromStdString(dbc->getCliente(i).getRagioneSociale())==tabellaClienti->item(riga,0)->text()){
+                 if((QString::fromStdString(dbc->getCliente(i).getRagioneSociale())==tabellaClienti->item(riga,0)->text()) &&
+                         QString::fromStdString(dbc->getCliente(i).getStabilimento())==tabellaClienti->item(riga,1)->text()){
                      c=&(dbc->getCliente(i));
                      trovato=true;
                  }

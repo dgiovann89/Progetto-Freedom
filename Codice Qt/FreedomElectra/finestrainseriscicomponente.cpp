@@ -30,10 +30,15 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     bottoneSalva = new QPushButton("Salva",this);
     comboBoxTipo = new QComboBox();
 
+   comboBoxTipo->insertItem(0,"Seleziona il tipo");
+   comboBoxTipo->insertItem(1,"Compressore On-Off");
+   comboBoxTipo->insertItem(2,"Essiccatore On-Off");
+   comboBoxTipo->insertItem(3,"Compressorie Vel variable");
+   comboBoxTipo->insertItem(4,"Essiccatore Vel variabile");
+   comboBoxTipo->insertItem(5,"Impianto");
+   comboBoxTipo->insertItem(6,"Filtro");
+   comboBoxTipo->insertItem(7,"Serbatoio");
 
-    // set comboBox
-    QStringList list= (QStringList()<< "Seleziona il tipo" << "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
-    comboBoxTipo->addItems(list);
 
 //    selezionato = comboBoxTipo->currentText();
 //    if (selezionato=="Compressore On-Off")
