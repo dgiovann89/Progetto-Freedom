@@ -16,30 +16,18 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     labelModello = new QLabel("Modello:");
     labelAnno = new QLabel("Anno:");
     labelPressione = new QLabel("Pressione:");
-    labelPortata_Capacità = new QLabel("Portata o Capacità:");
+    labelPortata_Capacita = new QLabel("Portata o Capacita:");
     labelKw = new QLabel("Kw:");
     lineEditMarca = new QLineEdit(QString::fromStdString(c->getMarca()));
     lineEditModello = new QLineEdit(QString::fromStdString(c->getModello()));
     lineEditAnno = new QLineEdit(QString::number(c->getAnno()));
     lineEditPressione = new QLineEdit(QString::number(c->getPressione()));
-    lineEditPortata_Capacità = new QLineEdit(QString::number(c->getPortata_capacità()));
+    lineEditPortata_Capacita = new QLineEdit(QString::number(c->getPortata_capacita()));
     lineEditKw = new QLineEdit(this);
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneSalva = new QPushButton("Salva",this);
-    comboBoxTipo = new QComboBox();
-//    lineEditTipo = new QLineEdit(QString::fromStdString(c->getTipo()));
-
-    comboBoxTipo->setDisabled(true);
-
-    // set comboBox
-    QStringList list= (QStringList()<< "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
-    comboBoxTipo->addItems(list);
-
-//    selezionato = comboBoxTipo->currentText();
-//    if (selezionato=="Compressore On-Off")
-//        lineEditKw->setDisabled(true);
-//    else
-//        lineEditKw->setDisabled(false);
+    lineEditTipo = new QLineEdit(QString::fromStdString(c->getTipo()));
+    lineEditTipo->setDisabled(true);
 
     // associazione box e layout
     layoutSfondo->addWidget(boxDatiComponente);
@@ -49,7 +37,7 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
 
     // associazione a layoutDatiComponente
     layoutDatiComponente->addWidget(labelTipo,0,0);
-    layoutDatiComponente->addWidget(comboBoxTipo,0,1);
+    layoutDatiComponente->addWidget(lineEditTipo,0,1);
     layoutDatiComponente->addWidget(labelMarca,1,0);
     layoutDatiComponente->addWidget(lineEditMarca,1,1);
     layoutDatiComponente->addWidget(labelModello,2,0);
@@ -58,8 +46,8 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     layoutDatiComponente->addWidget(lineEditAnno,3,1);
     layoutDatiComponente->addWidget(labelPressione,4,0);
     layoutDatiComponente->addWidget(lineEditPressione,4,1);
-    layoutDatiComponente->addWidget(labelPortata_Capacità,5,0);
-    layoutDatiComponente->addWidget(lineEditPortata_Capacità,5,1);
+    layoutDatiComponente->addWidget(labelPortata_Capacita,5,0);
+    layoutDatiComponente->addWidget(lineEditPortata_Capacita,5,1);
     layoutDatiComponente->addWidget(labelKw,6,0);
     layoutDatiComponente->addWidget(lineEditKw,6,1);
 
@@ -68,7 +56,7 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
 //    lineEditModello->setDisabled(false);
 //    lineEditAnno->setDisabled(false);
 //    lineEditPressione->setDisabled(false);
-//    lineEditPortata_Capacità->setDisabled(false);
+//    lineEditPortata_Capacita->setDisabled(false);
 //    lineEditKw->setDisabled(false);
 
     // associazione a layoutBottoni
@@ -87,9 +75,8 @@ void ModificaDatiComponente::salva(){
     c->setModello(lineEditModello->text().toStdString());
     c->setAnno(lineEditAnno->text().toInt());
     c->setPressione(lineEditPressione->text().toInt());
-    c->setPortata_capacità(lineEditPortata_Capacità->text().toInt());
-//    if (c->getTipo()=="OnOff")
-//        c->setKw();
+    c->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
+
     QMessageBox messageBox(this);
         messageBox.setText("Dati aggiornati correttamente");
         messageBox.exec();

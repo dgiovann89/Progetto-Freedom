@@ -26,8 +26,8 @@ ModificaAnagraficaCliente::ModificaAnagraficaCliente(DatabaseClienti* d, Cliente
         lineEditStabilimento=new QLineEdit(QString::fromStdString(c->getStabilimento()));
         labelVia=new QLabel("Via:",this);
         lineEditVia=new QLineEdit(QString::fromStdString(c->getIndirizzo().getVia()));
-        labelCittà=new QLabel("Città:",this);
-        lineEditCittà=new QLineEdit(QString::fromStdString(c->getIndirizzo().getCittà()));
+        labelCitta=new QLabel("Citta:",this);
+        lineEditCitta=new QLineEdit(QString::fromStdString(c->getIndirizzo().getCitta()));
         labelCap=new QLabel("CAP:",this);
         lineEditCap=new QLineEdit(QString::fromStdString(c->getIndirizzo().getCap()));
         labelProvincia=new QLabel("Provincia:",this);
@@ -53,8 +53,8 @@ ModificaAnagraficaCliente::ModificaAnagraficaCliente(DatabaseClienti* d, Cliente
         layoutInfoCliente->addWidget(lineEditStabilimento,1,1);
         layoutInfoCliente->addWidget(labelVia,2,1);
         layoutInfoCliente->addWidget(lineEditVia,3,1);
-        layoutInfoCliente->addWidget(labelCittà,4,1);
-        layoutInfoCliente->addWidget(lineEditCittà,5,1);
+        layoutInfoCliente->addWidget(labelCitta,4,1);
+        layoutInfoCliente->addWidget(lineEditCitta,5,1);
         layoutInfoCliente->addWidget(labelCap,6,1);
         layoutInfoCliente->addWidget(lineEditCap,7,1);
         layoutInfoCliente->addWidget(labelProvincia,8,1);
@@ -82,7 +82,7 @@ ModificaAnagraficaCliente::ModificaAnagraficaCliente(DatabaseClienti* d, Cliente
 
         if(lineEditRagioneSociale->text()!="" && lineEditPIva->text()!="" &&
            lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
-           lineEditVia->text()!="" && lineEditCittà->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
+           lineEditVia->text()!="" && lineEditCitta->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
 
             cl->setRagioneSociale(lineEditRagioneSociale->text().toStdString());
             cl->setTelefono(lineEditTelefono->text().toStdString());
@@ -92,7 +92,7 @@ ModificaAnagraficaCliente::ModificaAnagraficaCliente(DatabaseClienti* d, Cliente
             cl->setStabilimento(lineEditStabilimento->text().toStdString());
             Indirizzo i;
             i.setVia(lineEditVia->text().toStdString());
-            i.setCittà(lineEditCittà->text().toStdString());
+            i.setCitta(lineEditCitta->text().toStdString());
             i.setProvincia(lineEditProvincia->text().toStdString());
             i.setCap(lineEditCap->text().toStdString());
             cl->setInd(i);

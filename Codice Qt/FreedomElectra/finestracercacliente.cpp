@@ -4,6 +4,8 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     this->setWindowTitle("Finestra Cerca Cliente");
     this->setMinimumSize(620,440);
 
+//    fromJasonClienti.loadClienti(DatabaseClienti::Json); // tira su i dati da file json
+
     // new layout e groupbox
     layoutSfondo=new QHBoxLayout(this);
 //    layoutCompilazione=new QFormLayout();
@@ -25,7 +27,6 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     bottoneApriCliente->setDisabled(true);
     bottoneCercaCliente=new QPushButton("Cerca",this);
     bottoneIndietro=new QPushButton("Torna indietro",this);
-    bottoneEliminaCliente=new QPushButton("Elimina Cliente",this);
 
     // tabella clienti
     tabellaClienti=new QTableWidget(0,3);
@@ -55,7 +56,8 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     layoutLista->addWidget(labelLista);
     layoutLista->addWidget(tabellaClienti);
     layoutLista->addWidget(bottoneApriCliente);
-    layoutLista->addWidget(bottoneEliminaCliente);
+
+    lineEditRagioneSociale->setCursorPosition(0);
 
     this->setLayout(layoutSfondo);
 
@@ -65,8 +67,9 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     connect(bottoneApriCliente,SIGNAL(clicked()),this,SLOT(apriFinestraClienteSelezionato()));
     connect(tabellaClienti,SIGNAL(cellClicked(int,int)),this,SLOT(mostraBottoneVisualizza()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
-    connect(bottoneEliminaCliente,SIGNAL(clicked()),this,SLOT(rimuoviClienteSelezionato()));
     connect(bottoneCercaCliente,SIGNAL(clicked()),this,SLOT(cercaCliente()));
+    connect(lineEditRagioneSociale,SIGNAL(textEdited(QString)),this,SLOT(abilitaLineEditPIva()));
+    connect(lineEditPIva,SIGNAL(textEdited(QString)),this,SLOT(abilitaLineEditRagioneSociale()));
 
 }
 // metodi privati
@@ -74,7 +77,7 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
 void FinestraCercaCliente::riempiTabellaClienti() {
    int row = tabellaClienti->rowCount();
    cout << row << endl;
-   for (unsigned int i= 0; i<dbc->getDatabase().size(); ++i) {
+   for (unsigned int i= 0; i<dbc->getDatabase().size(); ++i) { // si prende i dati dal file e nn dal dbc
          tabellaClienti->setRowCount(row+1);
          QTableWidgetItem* itemRagioneSociale= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getRagioneSociale()));
          tabellaClienti->setItem(row, 0, itemRagioneSociale);
@@ -94,13 +97,18 @@ void FinestraCercaCliente::mostraBottoneVisualizza(){
     bottoneApriCliente->setDisabled(false);
 }
 
-void FinestraCercaCliente::rimuoviClienteSelezionato() {
-   if (tabellaClienti->currentItem()!= 0)
-      dbc->rimuoviCliente(tabellaClienti->currentRow());
-      tabellaClienti->clearContents();
-      tabellaClienti->setRowCount(0);
-      riempiTabellaClienti();
-      bottoneApriCliente->setDisabled(true);
+void FinestraCercaCliente::abilitaLineEditPIva(){
+    if (lineEditRagioneSociale->text()!="")
+    lineEditPIva->setDisabled(true);
+    else
+        lineEditPIva->setDisabled(false);
+}
+
+void FinestraCercaCliente::abilitaLineEditRagioneSociale(){
+    if(lineEditPIva->text()!="")
+        lineEditRagioneSociale->setDisabled(true);
+    else
+        lineEditRagioneSociale->setDisabled(false);
 }
 
 // slot cerca cliente
@@ -110,27 +118,50 @@ void FinestraCercaCliente::cercaCliente() {
        int i=0;
        bool trovato=false;
         vector<Cliente>::const_iterator it=dbc->getDatabase().begin();
-        for(;it!=dbc->getDatabase().end() && !trovato;++it){
+        int row = tabellaClienti->rowCount();
+        for(;it!=dbc->getDatabase().end();++it){
 
             if(QString::fromStdString(dbc->getCliente(i).getRagioneSociale()) == lineEditRagioneSociale->text()){
                 cliente=&(dbc->getCliente(i));
-                trovato=true;
-                tabellaClienti->clear();
-                tabellaClienti->setRowCount(1);
+                if (trovato==false){
+                    trovato=true;
+                    tabellaClienti->clear();
+                    tabellaClienti->setRowCount(1);
+                    row = 0;
 
-                QTableWidgetItem* itemRagioneSociale= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getRagioneSociale()));
-                tabellaClienti->setItem(0, 0, itemRagioneSociale);
-                itemRagioneSociale->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+                    QTableWidgetItem* itemRagioneSociale= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getRagioneSociale()));
+                    tabellaClienti->setItem(0, 0, itemRagioneSociale);
+                    itemRagioneSociale->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-                QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getStabilimento()));
-                tabellaClienti->setItem(0, 1, itemStabilimento);
-                itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+                    QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getStabilimento()));
+                    tabellaClienti->setItem(0, 1, itemStabilimento);
+                    itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-                QTableWidgetItem* itemPartitaIva= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getPIva()));
-                tabellaClienti->setItem(0, 2, itemPartitaIva);
-                itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+                    QTableWidgetItem* itemPartitaIva= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getPIva()));
+                    tabellaClienti->setItem(0, 2, itemPartitaIva);
+                    itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+                    cout << "entrato" << endl;
+                }
+                else{ // trovato==true ->ho gia trovato un cliente con lo stesso nome
+                    tabellaClienti->setRowCount(row+1);
+
+                    QTableWidgetItem* itemRagioneSociale= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getRagioneSociale()));
+                    tabellaClienti->setItem(row, 0, itemRagioneSociale);
+                    itemRagioneSociale->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+                    QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getStabilimento()));
+                    tabellaClienti->setItem(row, 1, itemStabilimento);
+                    itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+                    QTableWidgetItem* itemPartitaIva= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getPIva()));
+                    tabellaClienti->setItem(row, 2, itemPartitaIva);
+                    itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+                }
+            row++;
 
             }
+            else
+                cout<< "cliente " << i << "non corrisponendente" << endl;
           i++;
         }
        if(!trovato){

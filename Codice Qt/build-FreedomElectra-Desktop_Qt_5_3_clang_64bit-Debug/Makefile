@@ -626,6 +626,7 @@ moc_finestraprincipale.cpp: /Applications/Qt/5.3/clang_64/lib/QtWidgets.framewor
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
@@ -678,6 +679,7 @@ moc_finestracercacliente.cpp: ../FreedomElectra/finestraprincipale.h \
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
@@ -752,6 +754,7 @@ moc_finestraclienteselezionato.cpp: ../FreedomElectra/finestracercacliente.h \
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
@@ -810,6 +813,7 @@ moc_finestrainseriscicomponente.cpp: ../FreedomElectra/finestrainseriscisala.h \
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/finestrainseriscicomponente.h
@@ -862,6 +866,7 @@ moc_finestravisualizzacomponente.cpp: ../FreedomElectra/finestrainseriscisala.h 
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/finestravisualizzacomponente.h
@@ -914,6 +919,7 @@ moc_finestrainseriscisala.cpp: ../FreedomElectra/finestraclienteselezionato.h \
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/finestrainseriscisala.h
@@ -966,6 +972,7 @@ moc_finestraconfigurasala.cpp: ../FreedomElectra/finestraclienteselezionato.h \
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/finestraconfigurasala.h
@@ -1018,6 +1025,7 @@ moc_modificaanagraficacliente.cpp: ../FreedomElectra/finestraclienteselezionato.
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/modificaanagraficacliente.h
@@ -1070,6 +1078,7 @@ moc_modificainfosala.cpp: ../FreedomElectra/finestraclienteselezionato.h \
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/modificainfosala.h
@@ -1122,6 +1131,7 @@ moc_modificadaticomponente.cpp: ../FreedomElectra/finestrainseriscisala.h \
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/modificadaticomponente.h
@@ -1167,7 +1177,9 @@ databasecomponenti.o: ../FreedomElectra/databasecomponenti.cpp ../FreedomElectra
 		../FreedomElectra/componente.h \
 		../FreedomElectra/cliente.h \
 		../FreedomElectra/indirizzo.h \
-		../FreedomElectra/salacompressori.h
+		../FreedomElectra/salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databasecomponenti.o ../FreedomElectra/databasecomponenti.cpp
 
 main.o: ../FreedomElectra/main.cpp /Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
@@ -1213,6 +1225,7 @@ main.o: ../FreedomElectra/main.cpp /Applications/Qt/5.3/clang_64/lib/QtWidgets.f
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
@@ -1311,6 +1324,7 @@ finestraprincipale.o: ../FreedomElectra/finestraprincipale.cpp ../FreedomElectra
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
@@ -1362,6 +1376,7 @@ finestracercacliente.o: ../FreedomElectra/finestracercacliente.cpp ../FreedomEle
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
@@ -1441,6 +1456,7 @@ finestraclienteselezionato.o: ../FreedomElectra/finestraclienteselezionato.cpp .
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestraclienteselezionato.o ../FreedomElectra/finestraclienteselezionato.cpp
@@ -1480,12 +1496,13 @@ finestrainseriscicomponente.o: ../FreedomElectra/finestrainseriscicomponente.cpp
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
 		../FreedomElectra/finestraconfigurasala.h \
 		../FreedomElectra/finestravisualizzacomponente.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/databasecomponenti.h \
 		../FreedomElectra/componente.h \
-		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
-		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h \
 		../FreedomElectra/onoff.h \
@@ -1544,7 +1561,8 @@ finestravisualizzacomponente.o: ../FreedomElectra/finestravisualizzacomponente.c
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
 		../FreedomElectra/modificainfosala.h \
-		../FreedomElectra/modificaanagraficacliente.h
+		../FreedomElectra/modificaanagraficacliente.h \
+		../FreedomElectra/modificadaticomponente.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestravisualizzacomponente.o ../FreedomElectra/finestravisualizzacomponente.cpp
 
 finestrainseriscisala.o: ../FreedomElectra/finestrainseriscisala.cpp ../FreedomElectra/finestrainseriscisala.h \
@@ -1594,6 +1612,7 @@ finestrainseriscisala.o: ../FreedomElectra/finestrainseriscisala.cpp ../FreedomE
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h \
 		../FreedomElectra/modificaanagraficacliente.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestrainseriscisala.o ../FreedomElectra/finestrainseriscisala.cpp
@@ -1646,6 +1665,7 @@ finestraconfigurasala.o: ../FreedomElectra/finestraconfigurasala.cpp ../FreedomE
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestraconfigurasala.o ../FreedomElectra/finestraconfigurasala.cpp
 
@@ -1697,6 +1717,7 @@ modificaanagraficacliente.o: ../FreedomElectra/modificaanagraficacliente.cpp ../
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificainfosala.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modificaanagraficacliente.o ../FreedomElectra/modificaanagraficacliente.cpp
 
@@ -1748,6 +1769,7 @@ modificainfosala.o: ../FreedomElectra/modificainfosala.cpp ../FreedomElectra/mod
 		../FreedomElectra/serbatoio.h \
 		../FreedomElectra/filtro.h \
 		../FreedomElectra/impianto.h \
+		../FreedomElectra/modificadaticomponente.h \
 		../FreedomElectra/modificaanagraficacliente.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modificainfosala.o ../FreedomElectra/modificainfosala.cpp
 

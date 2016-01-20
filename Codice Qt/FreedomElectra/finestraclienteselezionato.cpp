@@ -37,9 +37,9 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     labelVia=new QLabel("Via:",this);
     lineEditVia=new QLineEdit(QString::fromStdString(c->getIndirizzo().getVia()));
     lineEditVia->setDisabled(true);
-    labelCittà=new QLabel("Città:",this);
-    lineEditCittà=new QLineEdit(QString::fromStdString(c->getIndirizzo().getCittà()));
-    lineEditCittà->setDisabled(true);
+    labelCitta=new QLabel("Citta:",this);
+    lineEditCitta=new QLineEdit(QString::fromStdString(c->getIndirizzo().getCitta()));
+    lineEditCitta->setDisabled(true);
     labelCap=new QLabel("CAP:",this);
     lineEditCap=new QLineEdit(QString::fromStdString(c->getIndirizzo().getCap()));
     lineEditCap->setDisabled(true);
@@ -87,10 +87,10 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     layoutCliente->addWidget(lineEditEmail,2,3);
 
     layoutCliente->addWidget(labelVia,0,4);
-    layoutCliente->addWidget(labelCittà,1,4);
+    layoutCliente->addWidget(labelCitta,1,4);
     layoutCliente->addWidget(labelCap,2,4);
     layoutCliente->addWidget(lineEditVia,0,5);
-    layoutCliente->addWidget(lineEditCittà,1,5);
+    layoutCliente->addWidget(lineEditCitta,1,5);
     layoutCliente->addWidget(lineEditCap,2,5);
 
     layoutCliente->addWidget(labelProvincia,0,6);
@@ -119,7 +119,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
 
 //metodo privato riempiTabellaSale
 void FinestraClienteSelezionato::riempiTabellaSale() {
-   int row= tabellaSale->rowCount();
+   int row = tabellaSale->rowCount();
    for (unsigned int i= 0; i<cl->getSala().size();++i) {
          tabellaSale->setRowCount(row+1);
 
@@ -173,7 +173,7 @@ void FinestraClienteSelezionato::apriModificaAnagraficaCliente() {
     // aggiorna anagrafica cliente nella finestra
     lineEditRagioneSociale->setText(QString::fromStdString(cl->getRagioneSociale()));
     lineEditCap->setText(QString::fromStdString(cl->getIndirizzo().getCap()));
-    lineEditCittà->setText(QString::fromStdString(cl->getIndirizzo().getCittà()));
+    lineEditCitta->setText(QString::fromStdString(cl->getIndirizzo().getCitta()));
     lineEditEmail->setText(QString::fromStdString(cl->getEmail()));
     lineEditFax->setText(QString::fromStdString(cl->getFax()));
     lineEditPIva->setText(QString::fromStdString(cl->getPIva()));

@@ -41,8 +41,8 @@ public:
     QLineEdit* lineEditStabilimento;
     QLabel* labelVia;
     QLineEdit* lineEditVia;
-    QLabel* labelCittà;
-    QLineEdit* lineEditCittà;
+    QLabel* labelCitta;
+    QLineEdit* lineEditCitta;
     QLabel* labelCap;
     QLineEdit* lineEditCap;
     QLabel* labelProvincia;

@@ -2,6 +2,7 @@
 
 FinestraPrincipale::FinestraPrincipale(QDialog* parent): QDialog(parent){
     dbc = new DatabaseClienti();
+    dbc->loadClienti(DatabaseClienti::Json); // carica il dbc da file
     this->setWindowTitle("Finestra Principale");
     this->setMinimumSize(320,240);
 

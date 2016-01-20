@@ -2,6 +2,11 @@
 #define DATABASECLIENTI_H
 
 #include "cliente.h"
+#include<QJsonObject>
+#include<QJsonArray>
+#include<QJsonDocument>
+#include<QFile>
+
 
 class DatabaseClienti{
 private:
@@ -9,13 +14,21 @@ private:
 public:
     DatabaseClienti();
 
+    void read(const QJsonObject& json);
+    void write(QJsonObject &json) const;
+
+    enum SaveFormat{
+       Json
+     };
+
+    bool loadClienti(SaveFormat saveFormat);
+    bool saveClienti(SaveFormat saveFormat) const;
+
     // add e remove dal vector
     void aggiungiCliente(const Cliente &);
-    void rimuoviCliente(int);
     vector<Cliente>& getDatabase() const; // ritorno vector per rif
     Cliente& getCliente(int) const;
+
 };
-
-
 
 #endif // DATABASECLIENTI_H

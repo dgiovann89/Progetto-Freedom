@@ -17,7 +17,7 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     labelModello = new QLabel("Modello:");
     labelAnno = new QLabel("Anno:");
     labelPressione = new QLabel("Pressione:");
-    labelPortata_Capacità = new QLabel("Portata o Capacità:");
+    labelPortata_Capacita = new QLabel("Portata o Capacita:");
     labelKw = new QLabel("Kw:");
 
 //    lineEditTipo = new QLineEdit(comboBoxTipo->currentText());
@@ -31,8 +31,8 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     lineEditAnno->setDisabled(true);
     lineEditPressione = new QLineEdit(QString::number(c->getPressione()));
     lineEditPressione->setDisabled(true);
-    lineEditPortata_Capacità = new QLineEdit(QString::number(c->getPortata_capacità()));
-    lineEditPortata_Capacità->setDisabled(true);
+    lineEditPortata_Capacita = new QLineEdit(QString::number(c->getPortata_capacita()));
+    lineEditPortata_Capacita->setDisabled(true);
     lineEditKw = new QLineEdit(this);
     lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
@@ -62,8 +62,8 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     layoutDatiComponente->addWidget(lineEditAnno,3,1);
     layoutDatiComponente->addWidget(labelPressione,4,0);
     layoutDatiComponente->addWidget(lineEditPressione,4,1);
-    layoutDatiComponente->addWidget(labelPortata_Capacità,5,0);
-    layoutDatiComponente->addWidget(lineEditPortata_Capacità,5,1);
+    layoutDatiComponente->addWidget(labelPortata_Capacita,5,0);
+    layoutDatiComponente->addWidget(lineEditPortata_Capacita,5,1);
     layoutDatiComponente->addWidget(labelKw,6,0);
     layoutDatiComponente->addWidget(lineEditKw,6,1);
 
@@ -72,7 +72,7 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     lineEditModello->setDisabled(true);
     lineEditAnno->setDisabled(true);
     lineEditPressione->setDisabled(true);
-    lineEditPortata_Capacità->setDisabled(true);
+    lineEditPortata_Capacita->setDisabled(true);
     lineEditKw->setDisabled(true);
 
     // associazione a layoutBottoni

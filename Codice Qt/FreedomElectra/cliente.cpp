@@ -61,8 +61,38 @@ bool Cliente::operator==(const Cliente& c) const {
 
 void Cliente::aggiungiSala(const SalaCompressori& s) {
     sala.push_back(s);
+    cout << sala.size() << endl;
 }
 void Cliente::rimuoviSala(int i) {
     vector<SalaCompressori>::iterator it=sala.begin()+i;
     sala.erase(it);
+}
+
+//metodi per file
+void Cliente::read(const QJsonObject &json){
+    ragioneSociale=(json["jRagioneSociale"].toString()).toStdString();
+    telefono=(json["jTelefono"].toString()).toStdString();
+    email=(json["jEmail"].toString()).toStdString();
+    fax=(json["jFax"].toString()).toStdString();
+    pIva=(json["jPIva"].toString()).toStdString();
+    stabilimento=(json["jStabilimento"].toString()).toStdString();
+
+    ind.setVia(json["jVia"].toString().toStdString());
+    ind.setCap(json["jCAP"].toString().toStdString());
+    ind.setCitta(json["jCitta"].toString().toStdString());
+    ind.setProvincia(json["jProvincia"].toString().toStdString());
+}
+
+void Cliente::write(QJsonObject &json) const{
+    json["jRagioneSociale"]=QString::fromStdString(ragioneSociale);
+    json["jTelefono"]=QString::fromStdString(telefono);
+    json["jEmail"]=QString::fromStdString(email);
+    json["jFax"]=QString::fromStdString(fax);
+    json["jPIva"]=QString::fromStdString(pIva);
+    json["jStabilimento"]=QString::fromStdString(stabilimento);
+
+    json["jVia"]=QString::fromStdString(ind.getVia());
+    json["jCAP"]=QString::fromStdString(ind.getCap());
+    json["jCitta"]=QString::fromStdString(ind.getCitta());
+    json["jProvincia"]=QString::fromStdString(ind.getProvincia());
 }

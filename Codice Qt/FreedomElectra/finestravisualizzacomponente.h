@@ -31,7 +31,7 @@ public:
     QLabel* labelModello;
     QLabel* labelAnno;
     QLabel* labelPressione;
-    QLabel* labelPortata_Capacità;
+    QLabel* labelPortata_Capacita;
     QLabel* labelKw;
 
     // lineEdit
@@ -40,7 +40,7 @@ public:
     QLineEdit* lineEditModello;
     QLineEdit* lineEditAnno;
     QLineEdit* lineEditPressione;
-    QLineEdit* lineEditPortata_Capacità;
+    QLineEdit* lineEditPortata_Capacita;
     QLineEdit* lineEditKw;
 
     // bottoni

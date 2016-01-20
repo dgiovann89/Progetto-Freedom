@@ -1,6 +1,6 @@
 #include "finestraconfigurasala.h"
 
-FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, SalaCompressori* sl, QDialog *parent): dbc(d), cl(c), sala(sl), QDialog(parent){
+FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, SalaCompressori* sl, QDialog *parent): QDialog(parent), dbc(d), cl(c), sala(sl) {
     db = new DatabaseComponenti();
 
     this->setWindowTitle("Finestra Configurazione sala compressori");
@@ -159,9 +159,9 @@ void FinestraConfiguraSala::riempiTabellaComponenti(){
         tabellaComponenti->setItem(row, 3, itemPressione);
         itemPressione->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-        QTableWidgetItem* itemPortata_Capacità= new QTableWidgetItem (QString::number(sala->getComponente(i)->getPortata_capacità()));
-        tabellaComponenti->setItem(row, 4, itemPortata_Capacità);
-        itemPortata_Capacità->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        QTableWidgetItem* itemPortata_Capacita= new QTableWidgetItem (QString::number(sala->getComponente(i)->getPortata_capacita()));
+        tabellaComponenti->setItem(row, 4, itemPortata_Capacita);
+        itemPortata_Capacita->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
         QTableWidgetItem* itemCadDiPress= new QTableWidgetItem (QString::number(sala->getComponente(i)->getCadutaDiPressione()));
         tabellaComponenti->setItem(row, 5, itemCadDiPress);
@@ -176,7 +176,21 @@ void FinestraConfiguraSala::riempiTabellaComponenti(){
 }
 
 void FinestraConfiguraSala::eliminaComponente(){
-//    if (tabellaComponenti->selectedItems().isEmpty());
+    if (tabellaComponenti->currentItem()!= 0){
+           int riga=tabellaComponenti->currentRow();
+
+           Componente* r=*(db->cercaComponente(tabellaComponenti->item(riga,0)->text().toStdString()));
+
+           if(r){
+               db->rimuoviComponente(r); //rimuove dal contenitore
+               sala->rimuoviComponente(riga); //rimuove dal vector
+           }
+
+       tabellaComponenti->clearContents();
+       tabellaComponenti->setRowCount(0);
+       riempiTabellaComponenti();
+       }
+
 }
 
 void FinestraConfiguraSala::apriModificaInfoSala(){

@@ -1,6 +1,6 @@
 #include "componente.h"
 
-Componente::Componente(string ma, string mod, int a, int press, int port, float cdp,Cliente* cl, SalaCompressori* s):marca(ma), modello(mod), anno(a), pressione(press), portata_capacità(port), cadutaDiPressione(cdp), proprietario(cl), sala(s){}
+Componente::Componente(string ma, string mod, int a, int press, int port, float cdp,Cliente* cl, SalaCompressori* s):marca(ma), modello(mod), anno(a), pressione(press), portata_capacita(port), cadutaDiPressione(cdp), proprietario(cl), sala(s){}
 Componente::~Componente(){}
 
 // get
@@ -16,8 +16,8 @@ int Componente::getAnno() const {
 int Componente::getPressione() const {
     return pressione;
 }
-int Componente::getPortata_capacità() const {
-    return portata_capacità;
+int Componente::getPortata_capacita() const {
+    return portata_capacita;
 }
 float Componente::getCadutaDiPressione() const {
     return cadutaDiPressione;
@@ -42,8 +42,8 @@ void Componente::setAnno(int i) {
 void Componente::setPressione(int i) {
     pressione = i;
 }
-void Componente::setPortata_capacità(int i) {
-    portata_capacità = i;
+void Componente::setPortata_capacita(int i) {
+    portata_capacita = i;
 }
 void Componente::setCadutaDiPressione(float c) {
     cadutaDiPressione = c;

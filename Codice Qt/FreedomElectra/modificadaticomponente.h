@@ -3,7 +3,7 @@
 
 #include<finestrainseriscisala.h>
 #include<finestrainseriscicomponente.h>
-#include "modificadaticomponente.h"
+//#include "modificadaticomponente.h"
 #include<databasecomponenti.h>
 #include<QComboBox>
 #include<QString>
@@ -31,7 +31,7 @@ public:
     QLabel* labelModello;
     QLabel* labelAnno;
     QLabel* labelPressione;
-    QLabel* labelPortata_Capacità;
+    QLabel* labelPortata_Capacita;
     QLabel* labelKw;
 
     // lineEdit
@@ -39,16 +39,13 @@ public:
     QLineEdit* lineEditModello;
     QLineEdit* lineEditAnno;
     QLineEdit* lineEditPressione;
-    QLineEdit* lineEditPortata_Capacità;
+    QLineEdit* lineEditPortata_Capacita;
     QLineEdit* lineEditKw;
     QLineEdit* lineEditTipo;
 
     // bottoni
     QPushButton* bottoneIndietro;
     QPushButton* bottoneSalva;
-
-    // combobox
-    QComboBox* comboBoxTipo;
 
 public slots:
     void salva();

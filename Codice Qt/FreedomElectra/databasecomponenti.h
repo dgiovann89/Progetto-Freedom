@@ -3,8 +3,15 @@
 
 #include<iostream>
 #include<componente.h>
+#include <QString>
+#include "eccezioni.h"
+#include <sstream>
+#include <fstream>
+#include <iostream>
 
-using std::string;
+using namespace std;
+
+
 // Item == Nodo
 
 class DatabaseComponenti{
@@ -66,7 +73,10 @@ public:
 
         bool inserisciComponente(Componente*);
         bool rimuoviComponente(Componente*);
-        Iteratore cercaComponente(string); //cerca per tipologia
+        Iteratore cercaComponente(string);
+
+        void save() const;
+        void load() throw(EccezioniFile);
 
 };
 

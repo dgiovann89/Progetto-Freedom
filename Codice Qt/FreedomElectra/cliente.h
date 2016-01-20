@@ -5,9 +5,14 @@
 #include<vector>
 #include "indirizzo.h"
 #include "salacompressori.h"
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QFile>
 
 using std::vector;
 using std::string;
+using namespace std;
 
 class Cliente{
 private:
@@ -49,6 +54,10 @@ public:
     //metodi per aggiungere/rimuovere una sala dal vector
     void aggiungiSala(const SalaCompressori&);
     void rimuoviSala(int);
+
+    // metodi per i file
+    void read(const QJsonObject& json);
+    void write(QJsonObject &json) const;
 };
 
 #endif // CLIENTE_H

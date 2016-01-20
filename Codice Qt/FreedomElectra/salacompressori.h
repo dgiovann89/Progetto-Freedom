@@ -1,4 +1,4 @@
-    #ifndef SALACOMPRESSORI_H
+#ifndef SALACOMPRESSORI_H
 #define SALACOMPRESSORI_H
 
 #include<iostream>

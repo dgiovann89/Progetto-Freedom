@@ -12,7 +12,7 @@ private:
     string modello;
     int anno;
     int pressione;
-    int portata_capacità;
+    int portata_capacita;
     float cadutaDiPressione;
     Cliente* proprietario;
     SalaCompressori* sala;
@@ -26,7 +26,7 @@ public:
     string getModello() const;
     int getAnno() const;
     int getPressione() const;
-    int getPortata_capacità() const;
+    int getPortata_capacita() const;
     float getCadutaDiPressione() const;
     Cliente* getCliente() const;
     SalaCompressori* getSala() const;
@@ -37,7 +37,7 @@ public:
     void setModello(string);
     void setAnno(int);
     void setPressione(int);
-    void setPortata_capacità(int);
+    void setPortata_capacita(int);
     void setCadutaDiPressione(float);
     void setProprietario(Cliente*);
     void setSala(SalaCompressori*);

@@ -9,12 +9,16 @@
 #include<QLineEdit>
 #include<QFormLayout>
 #include<databaseclienti.h>
+#include "QJsonDocument"
+#include "QJsonObject"
 
 class FinestraCercaCliente : public QDialog{
     Q_OBJECT
 private:
     DatabaseClienti* dbc;
     void riempiTabellaClienti(); //+ eventualmente header
+    DatabaseClienti fromJasonClienti;
+
 public:
     explicit FinestraCercaCliente(DatabaseClienti*, QDialog* parent=0);
 
@@ -37,7 +41,6 @@ public:
     // Bottoni
     QPushButton* bottoneCercaCliente;
     QPushButton* bottoneApriCliente;
-    QPushButton* bottoneEliminaCliente;
     QPushButton* bottoneIndietro;
 
     // tabella
@@ -46,10 +49,10 @@ public:
 public slots:
     void apriFinestraClienteSelezionato();
     void cercaCliente();
-    // metodo per eliminare il cliente selezionato
-    void rimuoviClienteSelezionato();
     void mostraBottoneVisualizza();
     void torna();
+    void abilitaLineEditPIva();
+    void abilitaLineEditRagioneSociale();
 
 };
 

@@ -15,7 +15,7 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     labelModello = new QLabel("Modello:");
     labelAnno = new QLabel("Anno:");
     labelPressione = new QLabel("Pressione:");
-    labelPortata_Capacità = new QLabel("Portata o Capacità:");
+    labelPortata_Capacita = new QLabel("Portata o Capacita:");
     labelCadDiPress = new QLabel("Caduta di pressione:");
     lineEditCadDiPress = new QLineEdit(this);
     labelKw = new QLabel("Kw:");
@@ -23,7 +23,7 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     lineEditModello = new QLineEdit(this);
     lineEditAnno = new QLineEdit(this);
     lineEditPressione = new QLineEdit(this);
-    lineEditPortata_Capacità = new QLineEdit(this);
+    lineEditPortata_Capacita = new QLineEdit(this);
     lineEditKw = new QLineEdit(this);
     lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
@@ -58,8 +58,8 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     layoutDatiComponente->addWidget(lineEditAnno,3,1);
     layoutDatiComponente->addWidget(labelPressione,4,0);
     layoutDatiComponente->addWidget(lineEditPressione,4,1);
-    layoutDatiComponente->addWidget(labelPortata_Capacità,5,0);
-    layoutDatiComponente->addWidget(lineEditPortata_Capacità,5,1);
+    layoutDatiComponente->addWidget(labelPortata_Capacita,5,0);
+    layoutDatiComponente->addWidget(lineEditPortata_Capacita,5,1);
     layoutDatiComponente->addWidget(labelCadDiPress,6,0);
     layoutDatiComponente->addWidget(lineEditCadDiPress,6,1);
     layoutDatiComponente->addWidget(labelKw,7,0);
@@ -76,7 +76,7 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     lineEditModello->setDisabled(true);
     lineEditAnno->setDisabled(true);
     lineEditCadDiPress->setDisabled(true);
-    lineEditPortata_Capacità->setDisabled(true);
+    lineEditPortata_Capacita->setDisabled(true);
     lineEditPressione->setDisabled(true);
     lineEditKw->setDisabled(true);
 
@@ -91,7 +91,7 @@ void FinestraInserisciComponente::sbloccaLineEdit(){
         lineEditModello->setDisabled(true);
         lineEditAnno->setDisabled(true);
         lineEditCadDiPress->setDisabled(true);
-        lineEditPortata_Capacità->setDisabled(true);
+        lineEditPortata_Capacita->setDisabled(true);
         lineEditKw->setDisabled(true);
         lineEditPressione->setDisabled(true);
     }
@@ -101,7 +101,7 @@ void FinestraInserisciComponente::sbloccaLineEdit(){
             lineEditModello->setDisabled(false);
             lineEditAnno->setDisabled(false);
             lineEditCadDiPress->setDisabled(false);
-            lineEditPortata_Capacità->setDisabled(false);
+            lineEditPortata_Capacita->setDisabled(false);
             lineEditKw->setDisabled(false);
             lineEditPressione->setDisabled(false);
         }
@@ -110,7 +110,7 @@ void FinestraInserisciComponente::sbloccaLineEdit(){
             lineEditModello->setDisabled(false);
             lineEditAnno->setDisabled(false);
             lineEditCadDiPress->setDisabled(false);
-            lineEditPortata_Capacità->setDisabled(false);
+            lineEditPortata_Capacita->setDisabled(false);
             lineEditKw->setDisabled(true);
             lineEditPressione->setDisabled(false);
         }
@@ -123,7 +123,7 @@ void FinestraInserisciComponente::salva(){
     string modello = lineEditModello->text().toStdString();
     int anno = lineEditAnno->text().toInt();
     int pressione = lineEditPressione->text().toInt();
-    int portataCapacità = lineEditPortata_Capacità->text().toInt();
+    int portataCapacita = lineEditPortata_Capacita->text().toInt();
     float cdp = lineEditCadDiPress->text().toFloat();
     int kw = lineEditKw->text().toInt();
 
@@ -133,27 +133,27 @@ void FinestraInserisciComponente::salva(){
 
      if (lineEditMarca->text()!=""){
         if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==2){
-            Componente* a = new OnOff(marca, modello, anno, pressione, portataCapacità, cdp, kw,cl,sala);
+            Componente* a = new OnOff(marca, modello, anno, pressione, portataCapacita, cdp, kw,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==3 || comboBoxTipo->currentIndex()==4){
-            Componente* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacità, cdp ,kw,cl,sala);
+            Componente* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacita, cdp ,kw,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==5){
-            Componente* a = new Impianto(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            Componente* a = new Impianto(marca, modello, anno, pressione, portataCapacita,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==6){
-            Componente* a = new Filtro(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            Componente* a = new Filtro(marca, modello, anno, pressione, portataCapacita,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }
         else if (comboBoxTipo->currentIndex()==7){
-            Componente* a = new Serbatoio(marca, modello, anno, pressione, portataCapacità,cdp,cl,sala);
+            Componente* a = new Serbatoio(marca, modello, anno, pressione, portataCapacita,cdp,cl,sala);
             inserito = db->inserisciComponente(a);
             sala->aggiungiComponente(a);
         }

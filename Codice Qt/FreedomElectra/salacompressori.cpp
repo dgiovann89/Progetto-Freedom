@@ -56,7 +56,6 @@ void SalaCompressori::setPortataRichiesta(int p) {
 void SalaCompressori::setImpianto(string i) {
     impianto = i;
 }
-
 void SalaCompressori::aggiungiComponente(Componente * c){
     componenti.push_back(c);
 }

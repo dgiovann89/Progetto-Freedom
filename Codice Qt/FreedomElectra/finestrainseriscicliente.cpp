@@ -24,8 +24,8 @@ FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* 
     lineEditStabilimento=new QLineEdit(this);
     labelVia=new QLabel("Via:",this);
     lineEditVia=new QLineEdit(this);
-    labelCittà=new QLabel("Città:",this);
-    lineEditCittà=new QLineEdit(this);
+    labelCitta=new QLabel("Citta:",this);
+    lineEditCitta=new QLineEdit(this);
     labelCap=new QLabel("CAP:",this);
     lineEditCap=new QLineEdit(this);
     labelProvincia=new QLabel("Provincia:",this);
@@ -51,8 +51,8 @@ FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* 
     layoutInfoCliente->addWidget(lineEditStabilimento,1,1);
     layoutInfoCliente->addWidget(labelVia,2,1);
     layoutInfoCliente->addWidget(lineEditVia,3,1);
-    layoutInfoCliente->addWidget(labelCittà,4,1);
-    layoutInfoCliente->addWidget(lineEditCittà,5,1);
+    layoutInfoCliente->addWidget(labelCitta,4,1);
+    layoutInfoCliente->addWidget(lineEditCitta,5,1);
     layoutInfoCliente->addWidget(labelCap,6,1);
     layoutInfoCliente->addWidget(lineEditCap,7,1);
     layoutInfoCliente->addWidget(labelProvincia,8,1);
@@ -85,17 +85,20 @@ void FinestraInserisciCliente::salva(){
               lineEditStabilimento->text().toStdString());
 
     Indirizzo i(lineEditVia->text().toStdString(),
-                lineEditCittà->text().toStdString(),
+                lineEditCitta->text().toStdString(),
                 lineEditProvincia->text().toStdString(),
                 lineEditCap->text().toStdString());
 
     cli.setInd(i);
 
+
+
     if(lineEditRagioneSociale->text()!="" && lineEditPIva->text()!="" &&
        lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
-       lineEditVia->text()!="" && lineEditCittà->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
+       lineEditVia->text()!="" && lineEditCitta->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
 
        dbc->aggiungiCliente(cli);
+       dbc->saveClienti(DatabaseClienti::Json); // salva sul file
        QMessageBox messageBox(this);
             messageBox.setText("Dati inseriti correttamente");
             messageBox.exec();

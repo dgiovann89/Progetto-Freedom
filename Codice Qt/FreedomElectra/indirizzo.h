@@ -10,7 +10,7 @@ using std::endl;
 class Indirizzo{
 private:
     string via;
-    string città;
+    string citta;
     string provincia;
     string cap;
 
@@ -19,13 +19,13 @@ public:
 
     // get
     string getVia() const;
-    string getCittà() const;
+    string getCitta() const;
     string getProvincia() const;
     string getCap() const;
 
     // set
     void setVia(string s);
-    void setCittà(string s);
+    void setCitta(string s);
     void setProvincia(string s);
     void setCap(string s);
 
