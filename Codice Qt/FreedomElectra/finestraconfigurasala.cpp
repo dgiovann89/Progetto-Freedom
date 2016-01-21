@@ -4,7 +4,7 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     db = new DatabaseComponenti();
 
     this->setWindowTitle("Finestra Configurazione sala compressori");
-    this->setMinimumSize(1200,600);
+    this->showMaximized(); // metti la finestra a tutto schermo
 
     // new layout e groupBox
     layoutInfoSala = new QGridLayout(this);
@@ -61,6 +61,8 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     QStringList header;
     header=QStringList() << "Marca" << "Modello" << "Anno" << "Pressione" << "Portata/Capacita" << "Caduta di pressione";
     tabellaComponenti->setHorizontalHeaderLabels(header);
+    QHeaderView* q=tabellaComponenti->horizontalHeader();
+    q->setStretchLastSection(true);
 
     // new bottoni
     bottoneModificaSala=new QPushButton("Modifica Info Sala",this);

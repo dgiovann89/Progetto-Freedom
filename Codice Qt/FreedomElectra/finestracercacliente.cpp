@@ -2,17 +2,18 @@
 
 FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent): QDialog(parent), dbc(d){
     this->setWindowTitle("Finestra Cerca Cliente");
-    this->setMinimumSize(620,440);
+    this->showMaximized(); // metti la finestra a tutto schermo
 
 //    fromJasonClienti.loadClienti(DatabaseClienti::Json); // tira su i dati da file json
 
     // new layout e groupbox
-    layoutSfondo=new QHBoxLayout(this);
-//    layoutCompilazione=new QFormLayout();
-    layoutCompilazione=new QGridLayout();
+    layoutSfondo=new QVBoxLayout(this);
+    layoutCompilazione=new QHBoxLayout();
+    layoutBottoni = new QHBoxLayout();
     boxCompilazione=new QGroupBox(this);
     layoutLista= new QVBoxLayout(this);
     boxLista= new QGroupBox("",this);
+    boxBottoni = new QGroupBox(this);
 
     // new label
     labelRagioneSociale=new QLabel("Ragione Sociale:",this);
@@ -29,33 +30,41 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     bottoneIndietro=new QPushButton("Torna indietro",this);
 
     // tabella clienti
-    tabellaClienti=new QTableWidget(0,3);
+    tabellaClienti=new QTableWidget(0,4);
     tabellaClienti->setColumnWidth(0,200);
     QStringList header;
-    header=QStringList() << "Rag. Sociale" << "Stabilimento" << "Partita Iva";
+    header=QStringList() << "Rag. Sociale" << "Stabilimento" << "Via" << "Partita Iva";
     tabellaClienti->setHorizontalHeaderLabels(header);
+    QHeaderView* q=tabellaClienti->horizontalHeader();
+    q->setStretchLastSection(true);
+    tabellaClienti->setHorizontalHeader(q);
+    tabellaClienti->setColumnWidth(0,250);
+    tabellaClienti->setColumnWidth(1,250);
+    tabellaClienti->setColumnWidth(2,250);
 
     // associazioni box e layout
     boxCompilazione->setLayout(layoutCompilazione);
     boxLista->setLayout(layoutLista);
+    boxBottoni->setLayout(layoutBottoni);
+    layoutBottoni->addWidget(bottoneIndietro);
+    layoutBottoni->addWidget(bottoneApriCliente);
+    layoutSfondo->addWidget(labelTitolo);
     layoutSfondo->addWidget(boxCompilazione);
     layoutSfondo->addWidget(boxLista);
+    layoutSfondo->addWidget(boxBottoni);
 
     // layout compilazione
-    layoutCompilazione->addWidget(labelTitolo,0,0,1,0);
-    layoutCompilazione->addWidget(labelRagioneSociale,1,0);
-    layoutCompilazione->addWidget(lineEditRagioneSociale,1,1);
-    layoutCompilazione->addWidget(labelPIva,2,0);
-    layoutCompilazione->addWidget(lineEditPIva,2,1);
-    layoutCompilazione->addWidget(bottoneCercaCliente,3,0,1,0,Qt::AlignBottom);
-    layoutCompilazione->addWidget(bottoneIndietro,4,0,1,0,Qt::AlignBottom);
+    layoutCompilazione->addWidget(labelRagioneSociale);
+    layoutCompilazione->addWidget(lineEditRagioneSociale);
+    layoutCompilazione->addWidget(labelPIva);
+    layoutCompilazione->addWidget(lineEditPIva);
+    layoutCompilazione->addWidget(bottoneCercaCliente);
 
     layoutCompilazione->setAlignment(Qt::AlignTop);
 
     // layout lista
     layoutLista->addWidget(labelLista);
     layoutLista->addWidget(tabellaClienti);
-    layoutLista->addWidget(bottoneApriCliente);
 
     lineEditRagioneSociale->setCursorPosition(0);
 
@@ -85,9 +94,12 @@ void FinestraCercaCliente::riempiTabellaClienti() {
          QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getStabilimento()));
          itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          tabellaClienti->setItem(row, 1, itemStabilimento);
+         QTableWidgetItem* itemVia= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getIndirizzo().getVia()));
+         itemVia->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+         tabellaClienti->setItem(row, 2, itemVia);
          QTableWidgetItem* itemPartitaIva= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getPIva()));
          itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-         tabellaClienti->setItem(row, 2, itemPartitaIva);
+         tabellaClienti->setItem(row, 3, itemPartitaIva);
          ++row;
    }
    cout << "row dopo il for:" << row << endl;
@@ -134,11 +146,15 @@ void FinestraCercaCliente::cercaCliente() {
                     itemRagioneSociale->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
                     QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getStabilimento()));
-                    tabellaClienti->setItem(0, 1, itemStabilimento);
+                    tabellaClienti->setItem(0, 1, itemStabilimento);\
                     itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
+                    QTableWidgetItem* itemVia= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getIndirizzo().getVia()));
+                    tabellaClienti->setItem(0, 2, itemVia);
+                    itemVia->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
                     QTableWidgetItem* itemPartitaIva= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getPIva()));
-                    tabellaClienti->setItem(0, 2, itemPartitaIva);
+                    tabellaClienti->setItem(0, 3, itemPartitaIva);
                     itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
                     cout << "entrato" << endl;
                 }
@@ -153,8 +169,12 @@ void FinestraCercaCliente::cercaCliente() {
                     tabellaClienti->setItem(row, 1, itemStabilimento);
                     itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
+                    QTableWidgetItem* itemVia= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getIndirizzo().getVia()));
+                    tabellaClienti->setItem(0, 2, itemVia);
+                    itemVia->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
                     QTableWidgetItem* itemPartitaIva= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getPIva()));
-                    tabellaClienti->setItem(row, 2, itemPartitaIva);
+                    tabellaClienti->setItem(row, 3, itemPartitaIva);
                     itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
                 }
             row++;
@@ -169,7 +189,6 @@ void FinestraCercaCliente::cercaCliente() {
            err.setText("Utente non trovato");
            err.exec();
        }
-
    }
    else
        if (lineEditPIva->text()!=""){
@@ -193,8 +212,12 @@ void FinestraCercaCliente::cercaCliente() {
                     tabellaClienti->setItem(0, 1, itemStabilimento);
                     itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
+                    QTableWidgetItem* itemVia= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getIndirizzo().getVia()));
+                    tabellaClienti->setItem(0, 2, itemVia);
+                    itemVia->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
                     QTableWidgetItem* itemPartitaIva= new QTableWidgetItem (QString::fromStdString(dbc->getCliente(i).getPIva()));
-                    tabellaClienti->setItem(0, 2, itemPartitaIva);
+                    tabellaClienti->setItem(0, 3, itemPartitaIva);
                     itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
                 }
@@ -205,7 +228,6 @@ void FinestraCercaCliente::cercaCliente() {
                err.setText("Utente non trovato");
                err.exec();
            }
-
        }
 }
 
@@ -230,7 +252,6 @@ void FinestraCercaCliente::apriFinestraClienteSelezionato(){
         tabellaClienti->clearContents();
         tabellaClienti->setRowCount(0);
         riempiTabellaClienti();
-
 }
 
 void FinestraCercaCliente::torna(){

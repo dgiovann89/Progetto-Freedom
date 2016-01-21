@@ -2,7 +2,7 @@
 
 FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Cliente* c, QDialog *parent):QDialog(parent), dbc(d), cl(c){
     this->setWindowTitle("Finestra Cliente Selezionato");
-    this->setMinimumSize(720,440);
+    this->showMaximized(); // metti la finestra a tutto schermo
 
     // new layout e groupbox
     layoutSfondo=new QVBoxLayout(this);
@@ -48,11 +48,21 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     lineEditProvincia->setDisabled(true);
 
     // new tabella
-    tabellaSale=new QTableWidget(0,5);
+    tabellaSale=new QTableWidget(0,7);
     tabellaSale->setColumnWidth(0,150);
     QStringList header;
-    header=QStringList() << "Nome" << "Stabilimento" << "Tipo Impianto" << "KW Totali" << "Lt/minuto";
+    header=QStringList() << "Nome" << "Stabilimento" << "Tipo Impianto" << "KW Totali" << "Lt/minuto" << "Pressione Richiesta" << "Portata Richiesta";
     tabellaSale->setHorizontalHeaderLabels(header);
+    QHeaderView* q=tabellaSale->horizontalHeader();
+    q->setStretchLastSection(true);
+    tabellaSale->setHorizontalHeader(q);
+    tabellaSale->setColumnWidth(0,300);
+    tabellaSale->setColumnWidth(1,200);
+    tabellaSale->setColumnWidth(2,200);
+    tabellaSale->setColumnWidth(3,100);
+    tabellaSale->setColumnWidth(4,100);
+    tabellaSale->setColumnWidth(5,150);
+    tabellaSale->setColumnWidth(6,100);
 
     // new bottoni
     bottoneModificaDatiCliente= new QPushButton("Modifica",this);
@@ -142,6 +152,14 @@ void FinestraClienteSelezionato::riempiTabellaSale() {
          QTableWidgetItem* itemLtMin= new QTableWidgetItem (QString::number(cl->getSala(i).getPortataTot()));
          tabellaSale->setItem(row, 4, itemLtMin);
          itemLtMin->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+         QTableWidgetItem* itemPressRic= new QTableWidgetItem (QString::number(cl->getSala(i).getPressioneRichiesta()));
+         tabellaSale->setItem(row, 5, itemPressRic);
+         itemPressRic->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+         QTableWidgetItem* itemPortRic= new QTableWidgetItem (QString::number(cl->getSala(i).getPortataRichiesta()));
+         tabellaSale->setItem(row, 6, itemPortRic);
+         itemPortRic->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          ++row;
    }
 }
@@ -166,6 +184,7 @@ void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
         riempiTabellaSale();
     }
 }
+
 
 void FinestraClienteSelezionato::apriModificaAnagraficaCliente() {
     ModificaAnagraficaCliente modAnaCli(dbc,cl);

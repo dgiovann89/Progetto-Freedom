@@ -31,9 +31,9 @@
             "jFax": "g",
             "jPIva": "g",
             "jProvincia": "g",
-            "jRagioneSociale": "g",
+            "jRagioneSociale": "r",
             "jStabilimento": "g",
-            "jTelefono": "g",
+            "jTelefono": "34",
             "jVia": "g"
         },
         {
@@ -455,6 +455,18 @@
             "jStabilimento": "g",
             "jTelefono": "g",
             "jVia": "g"
+        },
+        {
+            "jCAP": "o",
+            "jCitta": "o",
+            "jEmail": "sd",
+            "jFax": "sdf",
+            "jPIva": "12",
+            "jProvincia": "o",
+            "jRagioneSociale": "pinco pallo",
+            "jStabilimento": "stabilimento",
+            "jTelefono": "sdfsdf",
+            "jVia": "le mani dal naso"
         }
     ]
 }

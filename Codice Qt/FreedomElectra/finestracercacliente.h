@@ -11,6 +11,7 @@
 #include<databaseclienti.h>
 #include "QJsonDocument"
 #include "QJsonObject"
+#include <QHeaderView>
 
 class FinestraCercaCliente : public QDialog{
     Q_OBJECT
@@ -23,12 +24,14 @@ public:
     explicit FinestraCercaCliente(DatabaseClienti*, QDialog* parent=0);
 
     // Layout e groupBox
-    QHBoxLayout* layoutSfondo;
+    QVBoxLayout* layoutSfondo;
     // QFormLayout* layoutCompilazione;
-    QGridLayout* layoutCompilazione;
+    QHBoxLayout* layoutCompilazione;
     QVBoxLayout* layoutLista;
+    QHBoxLayout* layoutBottoni;
     QGroupBox* boxCompilazione;
     QGroupBox* boxLista;
+    QGroupBox* boxBottoni;
 
     // Label e LineEdit
     QLabel* labelTitolo;
