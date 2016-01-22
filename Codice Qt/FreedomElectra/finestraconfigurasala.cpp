@@ -40,12 +40,16 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     lineEditImpianto = new QLineEdit(QString::fromStdString(sala->getImpianto()));
     labelKwTot = new QLabel("Kw Tot:",this);
     lineEditKwTot = new QLineEdit(QString::number(sala->getKwTot()));
+    lineEditKwTot->setDisabled(true);
     labelPortatEffettiva = new QLabel("Portata effettiva:", this);
     lineEditPortataEffettiva = new QLineEdit(this);
+    lineEditPortataEffettiva->setDisabled(true);
     labelPressioneEffettiva = new QLabel("Pressione Effettiva:", this);
     lineEditPressioneEffettiva = new QLineEdit(this);
+    lineEditPressioneEffettiva->setDisabled(true);
     labelCadutaDiPressioneTot = new QLabel("Caduta di pressione Totale:",this);
     lineEditCadutaDiPressioneTot = new QLineEdit(this);
+    lineEditCadutaDiPressioneTot->setDisabled(true);
 
     // disabilito le lineEdit del cliente
     lineEditNomeSala->setDisabled(true);
@@ -145,7 +149,7 @@ void FinestraConfiguraSala::aggiornaKwSala(){
         const Macchinario* macc = dynamic_cast <const Macchinario*>  (sala->getComponente(it));
         if (macc){
             kw_parziale = kw_parziale + macc->getKw();
-            cout << "kw:parziale=" << kw_parziale << "     kw_tot=" << kw_tot << endl;
+//            cout << "kw:parziale=" << kw_parziale << "     kw_tot=" << kw_tot << endl;
             sala->setKwTot(kw_parziale);
             cout << "kwtot post incremento= " << sala->getKwTot() << endl;
         }
@@ -260,6 +264,8 @@ void FinestraConfiguraSala::apriFinestraVisualizzaComponente(){
              }
         FinestraVisualizzaComponente finVisComp(db,r,this);
         finVisComp.exec();
+        aggiornaKwSala();
+        lineEditKwTot->setText(QString::number(sala->getKwTot()));
         }
         tabellaComponenti->clearContents();
         tabellaComponenti->setRowCount(0);

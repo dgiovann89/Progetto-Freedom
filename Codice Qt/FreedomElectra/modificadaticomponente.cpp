@@ -23,7 +23,18 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     lineEditAnno = new QLineEdit(QString::number(c->getAnno()));
     lineEditPressione = new QLineEdit(QString::number(c->getPressione()));
     lineEditPortata_Capacita = new QLineEdit(QString::number(c->getPortata_capacita()));
-    lineEditKw = new QLineEdit(this);
+
+    Macchinario* comp = dynamic_cast <Macchinario*>  (c);
+    if (comp){
+        cout << "è un macchinario" << endl;
+        lineEditKw = new QLineEdit(QString::number(comp->getKw()));
+    }
+    else{
+        lineEditKw->setDisabled(true);
+        lineEditKw = new QLineEdit(this);
+        cout << "NON è un macchinario" << endl;
+    }
+
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneSalva = new QPushButton("Salva",this);
     lineEditTipo = new QLineEdit(QString::fromStdString(c->getTipo()));
@@ -71,11 +82,24 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
 
 void ModificaDatiComponente::salva(){
     if (lineEditMarca->text()!=""){
-    c->setMarca(lineEditMarca->text().toStdString());
-    c->setModello(lineEditModello->text().toStdString());
-    c->setAnno(lineEditAnno->text().toInt());
-    c->setPressione(lineEditPressione->text().toInt());
-    c->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
+        Macchinario* comp = dynamic_cast <Macchinario*>  (c);
+        if (comp){
+            cout << "comp" << endl;
+            comp->setMarca(lineEditMarca->text().toStdString());
+            comp->setModello(lineEditModello->text().toStdString());
+            comp->setAnno(lineEditAnno->text().toInt());
+            comp->setPressione(lineEditPressione->text().toInt());
+            comp->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
+            comp->setKw(lineEditKw->text().toInt());
+        }
+        else{
+            c->setMarca(lineEditMarca->text().toStdString());
+            c->setModello(lineEditModello->text().toStdString());
+            c->setAnno(lineEditAnno->text().toInt());
+            c->setPressione(lineEditPressione->text().toInt());
+            c->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
+            cout << "NON è un macchinario" << endl;
+        }
 
     QMessageBox messageBox(this);
         messageBox.setText("Dati aggiornati correttamente");

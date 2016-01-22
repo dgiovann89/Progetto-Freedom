@@ -33,8 +33,9 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     lineEditPressione->setDisabled(true);
     lineEditPortata_Capacita = new QLineEdit(QString::number(c->getPortata_capacita()));
     lineEditPortata_Capacita->setDisabled(true);
-    lineEditKw = new QLineEdit(this);
-    lineEditKw->setDisabled(true);
+
+//    lineEditKw = new QLineEdit(this);
+//    lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneModifica = new QPushButton("Modifica",this);
 //    comboBoxTipo = new QComboBox(this);
@@ -43,7 +44,17 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
 //    QStringList list= (QStringList()<< "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
 //    comboBoxTipo->addItems(list);
 
-
+    const Macchinario* comp = dynamic_cast <const Macchinario*>  (c);
+    if (comp){
+        cout << "è un macchinario" << endl;
+        lineEditKw = new QLineEdit(QString::number(comp->getKw()));
+        lineEditKw->setDisabled(true);
+    }
+    else{
+        lineEditKw = new QLineEdit(this);
+        lineEditKw->setDisabled(true);
+        cout << "NON è un macchinario" << endl;
+    }
     // associazione box e layout
     layoutSfondo->addWidget(boxDatiComponente);
     layoutSfondo->addWidget(boxBottoni);
@@ -73,7 +84,8 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     lineEditAnno->setDisabled(true);
     lineEditPressione->setDisabled(true);
     lineEditPortata_Capacita->setDisabled(true);
-    lineEditKw->setDisabled(true);
+
+
 
     // associazione a layoutBottoni
     layoutBottoni->addWidget(bottoneIndietro);
