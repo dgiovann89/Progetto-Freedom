@@ -28,6 +28,7 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneSalva = new QPushButton("Salva",this);
+    bottoneSalva->setDefault(true);
     comboBoxTipo = new QComboBox();
 
    comboBoxTipo->insertItem(0,"Seleziona il tipo");

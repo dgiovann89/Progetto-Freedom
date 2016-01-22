@@ -46,12 +46,13 @@ public:
     void setPressioneRichiesta(int);
     void setPortataRichiesta(int);
     void setImpianto(string);
+    void setKwTot(int);
 
     // AAA nella rimuovi, rimouvo solo il componente puntato che sta in questo vector, o rimuovo anche quello nella classe DB_componenti
     void aggiungiComponente(Componente*);
     void rimuoviComponente(int);
 
-//    void setKwTot(int);
+//    void aggiornaKwTot(int);
 //    void setPortataTot(int);
 };
 

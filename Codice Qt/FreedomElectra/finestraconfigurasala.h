@@ -23,6 +23,7 @@ private:
     Cliente* cl;
     SalaCompressori* sala;
     void riempiTabellaComponenti();
+    void aggiornaKwSala();
 public:
     explicit FinestraConfiguraSala(DatabaseClienti*, Cliente*, SalaCompressori* , QDialog* parent=0);
 

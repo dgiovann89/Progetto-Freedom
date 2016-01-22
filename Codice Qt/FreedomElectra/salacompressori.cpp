@@ -3,12 +3,6 @@
 SalaCompressori::SalaCompressori(string n, Cliente* cl, int k, int p, int press, int port, string i):nome(n), proprietario(cl), kwTot(k), portataTot(p), pressioneRichiesta(press), portataRichiesta(port), impianto(i){}
 
 SalaCompressori::~SalaCompressori(){
-//    // scorro i componenti
-//    vector<Componente*>::iterator it=componenti.begin();
-//    for (;it!=componenti.end();i++){
-
-//        componenti.erase(it);
-//    }
 }
 
 // get
@@ -63,21 +57,29 @@ void SalaCompressori::rimuoviComponente(int i){
     vector<Componente*>::iterator it=componenti.begin()+i;
     componenti.erase(it);
 }
-
-/*
-void SalaCompressori::setKwTot(...) {
-    int kw_compr, kw_essicc = 0;
-    for (int i=0;i<compressori){
-        kw_compr = kw_compr+compressore.getKw();
-    }
-    for (int i=0;i<essiccatori){
-        kw_essicc = kw_essicc+essiccatore.getKw();
-    }
-    kwTot = kwTot + kw_compr + kw_essicc;
+void SalaCompressori::setKwTot(int i) {
+    kwTot = i;
 }
 
-scorro il vector di componenti
- per ogni elemento del vector verifico se è compressore o essiccatore
-    aggiorno i kw_totali e porata totale
- esco
-*/
+//void SalaCompressori::setKwTot() {
+//    int kw_compr = 0;
+//    intkw_essicc = 0;
+
+//    vector<Componente>::const_iterator it=.begin();
+//    int row = tabellaClienti->rowCount();
+//    for(;it!=dbc->getDatabase().end();++it){
+
+//    for (int i=0;i<compressori){
+//        kw_compr = kw_compr+compressore.getKw();
+//    }
+//    for (int i=0;i<essiccatori){
+//        kw_essicc = kw_essicc+essiccatore.getKw();
+//    }
+//    kwTot = kwTot + kw_compr + kw_essicc;
+//}
+
+//scorro il vector di componenti
+// per ogni elemento del vector verifico se è compressore o essiccatore
+//    aggiorno i kw_totali e porata totale
+// esco
+

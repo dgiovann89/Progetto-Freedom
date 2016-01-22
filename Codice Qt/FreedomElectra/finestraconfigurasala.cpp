@@ -137,11 +137,24 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
 }
 
+void FinestraConfiguraSala::aggiornaKwSala(){
+//    vector<Componente*>::const_iterator it=sala->getComponenti().begin();
+    sala->setKwTot(0);
+    int kw_parziale=sala->getKwTot();
+    for(unsigned int it=0;it<sala->getComponenti().size();++it){
+        const Macchinario* macc = dynamic_cast <const Macchinario*>  (sala->getComponente(it));
+        if (macc){
+            kw_parziale = kw_parziale + macc->getKw();
+            cout << "kw:parziale=" << kw_parziale << "     kw_tot=" << kw_tot << endl;
+            sala->setKwTot(kw_parziale);
+            cout << "kwtot post incremento= " << sala->getKwTot() << endl;
+        }
+    }
+}
+
 // metodo privato riempiTabellaComponenti
 void FinestraConfiguraSala::riempiTabellaComponenti(){
     int row = tabellaComponenti->rowCount();
-//    cout << "rowwasdasdasdasd:" << row;
-//    cout << sala->getComponenti().size() << endl;
 
     for (unsigned int i=0; i<sala->getComponenti().size();++i){
         tabellaComponenti->setRowCount(row+1);
@@ -192,6 +205,8 @@ void FinestraConfiguraSala::eliminaComponente(){
        tabellaComponenti->setRowCount(0);
        riempiTabellaComponenti();
        }
+    aggiornaKwSala();
+    lineEditKwTot->setText(QString::number(sala->getKwTot()));
 
 }
 
@@ -203,6 +218,7 @@ void FinestraConfiguraSala::apriModificaInfoSala(){
     lineEditPortataRichiesta->setText(QString::number(sala->getPortataRichiesta()));
     lineEditPressioneRichiesta->setText(QString::number(sala->getPressioneRichiesta()));
     lineEditImpianto->setText(QString::fromStdString(sala->getImpianto()));
+
 }
 
 void FinestraConfiguraSala::apriFinestraInserisciComponente(){
@@ -211,6 +227,8 @@ void FinestraConfiguraSala::apriFinestraInserisciComponente(){
     tabellaComponenti->clearContents();
     tabellaComponenti->setRowCount(0);
     riempiTabellaComponenti();
+    aggiornaKwSala();
+    lineEditKwTot->setText(QString::number(sala->getKwTot()));
 }
 
 void FinestraConfiguraSala::apriFinestraVisualizzaComponente(){

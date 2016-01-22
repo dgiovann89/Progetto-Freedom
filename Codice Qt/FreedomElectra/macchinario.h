@@ -10,10 +10,10 @@ public:
     Macchinario(string, string, int, int, int, float, int, Cliente* =0, SalaCompressori* =0);
 //    string getTipo() const;
     // get
-    int getKw() const;
+    virtual int getKw() const;
 
     // set
-    void setKw(int);
+    virtual void setKw(int);
 };
 
 #endif // MACCHINARIO_H
