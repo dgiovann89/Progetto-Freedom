@@ -139,6 +139,8 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     connect(bottoneVisualizzaComponente,SIGNAL(clicked()),this,SLOT(apriFinestraVisualizzaComponente()));
     connect(bottoneEliminaComponente,SIGNAL(clicked()),this,SLOT(eliminaComponente()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
+    connect(tabellaComponenti,SIGNAL(cellDoubleClicked(int,int)), this,SLOT(apriFinestraVisualizzaComponente()));
+
 }
 
 void FinestraConfiguraSala::aggiornaKwSala(){

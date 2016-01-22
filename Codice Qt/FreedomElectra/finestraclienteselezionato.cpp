@@ -125,6 +125,8 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     connect(bottoneConfiguraSala,SIGNAL(clicked()),this,SLOT(apriFinestraConfiguraSala()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
     connect(bottoneModificaDatiCliente,SIGNAL(clicked()),this,SLOT(apriModificaAnagraficaCliente()));
+    connect(tabellaSale,SIGNAL(cellDoubleClicked(int,int)), this,SLOT(apriFinestraConfiguraSala()));
+
 }
 
 //metodo privato riempiTabellaSale

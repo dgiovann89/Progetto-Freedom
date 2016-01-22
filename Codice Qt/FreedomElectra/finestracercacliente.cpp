@@ -79,6 +79,7 @@ FinestraCercaCliente::FinestraCercaCliente(DatabaseClienti* d, QDialog* parent):
     connect(bottoneCercaCliente,SIGNAL(clicked()),this,SLOT(cercaCliente()));
     connect(lineEditRagioneSociale,SIGNAL(textEdited(QString)),this,SLOT(abilitaLineEditPIva()));
     connect(lineEditPIva,SIGNAL(textEdited(QString)),this,SLOT(abilitaLineEditRagioneSociale()));
+    connect(tabellaClienti,SIGNAL(cellDoubleClicked(int,int)), this,SLOT(apriFinestraClienteSelezionato()));
 
 }
 // metodi privati
