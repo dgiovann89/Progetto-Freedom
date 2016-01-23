@@ -26,28 +26,29 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     // new label e lineEdit
     labelInfoSala = new QLabel("Info Sala:");
     labelTabella = new QLabel("Componenti sala:");
+    labelPannelloDatiTot = new QLabel("Dati significativi TOTALI:");
     labelRagioneSociale = new QLabel("Ragione Sociale",this);
     lineEditRagioneSociale = new QLineEdit(QString::fromStdString(cl->getRagioneSociale()));
     labelStabilimento = new QLabel("Stabilimento",this);
     lineEditStabilimento = new QLineEdit(QString::fromStdString(cl->getStabilimento()));
     labelNomeSala = new QLabel("Nome Sala:",this);
     lineEditNomeSala = new QLineEdit(QString::fromStdString(sala->getNome()));
-    labelPressioneRichiesta = new QLabel("Pressione Richiesta:", this);
+    labelPressioneRichiesta = new QLabel("Pressione Richiesta (Bar):", this);
     lineEditPressioneRichiesta = new QLineEdit(QString::number(sala->getPressioneRichiesta()));
-    labelPortataRichiesta = new QLabel("Portata Richiesta:", this);
+    labelPortataRichiesta = new QLabel("Portata Richiesta (Lt/s):", this);
     lineEditPortataRichiesta = new QLineEdit(QString::number(sala->getPortataRichiesta()));
     labelImpianto = new QLabel("Impianto:",this);
     lineEditImpianto = new QLineEdit(QString::fromStdString(sala->getImpianto()));
     labelKwTot = new QLabel("Kw Tot:",this);
     lineEditKwTot = new QLineEdit(QString::number(sala->getKwTot()));
     lineEditKwTot->setDisabled(true);
-    labelPortatEffettiva = new QLabel("Portata effettiva:", this);
+    labelPortatEffettiva = new QLabel("Portata Effettiva: (Lt/s)", this);
     lineEditPortataEffettiva = new QLineEdit(this);
     lineEditPortataEffettiva->setDisabled(true);
-    labelPressioneEffettiva = new QLabel("Pressione Effettiva:", this);
+    labelPressioneEffettiva = new QLabel("Pressione Effettiva (Bar):", this);
     lineEditPressioneEffettiva = new QLineEdit(this);
     lineEditPressioneEffettiva->setDisabled(true);
-    labelCadutaDiPressioneTot = new QLabel("Caduta di pressione Totale:",this);
+    labelCadutaDiPressioneTot = new QLabel("Caduta di pressione Tot (Bar):",this);
     lineEditCadutaDiPressioneTot = new QLineEdit(this);
     lineEditCadutaDiPressioneTot->setDisabled(true);
 
@@ -61,9 +62,9 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
 
     // new tabella
     tabellaComponenti = new QTableWidget(0,6);
-    tabellaComponenti->setColumnWidth(0,250);
+    tabellaComponenti->setColumnWidth(0,200);
     QStringList header;
-    header=QStringList() << "Marca" << "Modello" << "Anno" << "Pressione" << "Portata/Capacita" << "Caduta di pressione";
+    header=QStringList() << "Marca" << "Modello" << "Anno" << "Pressione (Bar)" << "Portata/Capacita (Lt/s)" << "Caduta di pressione (Bar)";
     tabellaComponenti->setHorizontalHeaderLabels(header);
     QHeaderView* q=tabellaComponenti->horizontalHeader();
     q->setStretchLastSection(true);
@@ -121,14 +122,21 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     layoutInfoSala->addWidget(lineEditImpianto,2,5);
     layoutInfoSala->addWidget(bottoneModificaSala,1,6);
 
-    layoutParametriSala->addWidget(labelKwTot,0,0);
-    layoutParametriSala->addWidget(lineEditKwTot,0,1);
-    layoutParametriSala->addWidget(labelPortatEffettiva,1,0);
-    layoutParametriSala->addWidget(lineEditPortataEffettiva,1,1);
-    layoutParametriSala->addWidget(labelCadutaDiPressioneTot,2,0);
-    layoutParametriSala->addWidget(lineEditCadutaDiPressioneTot,2,1);
-    layoutParametriSala->addWidget(labelPressioneEffettiva,3,0);
-    layoutParametriSala->addWidget(lineEditPressioneEffettiva,3,1);
+//    boxParametriSala->setTitle("Totali:");
+    layoutParametriSala->addWidget(labelKwTot,1,0);
+    layoutParametriSala->addWidget(lineEditKwTot,1,1);
+    layoutParametriSala->addWidget(labelPortatEffettiva,2,0);
+    layoutParametriSala->addWidget(lineEditPortataEffettiva,2,1);
+    layoutParametriSala->addWidget(labelCadutaDiPressioneTot,3,0);
+    layoutParametriSala->addWidget(lineEditCadutaDiPressioneTot,3,1);
+    layoutParametriSala->addWidget(labelPressioneEffettiva,4,0);
+    layoutParametriSala->addWidget(lineEditPressioneEffettiva,4,1);
+
+    // colori
+    paletteRosso.setColor(QPalette::Base,Qt::red);
+    paletteRosso.setColor(QPalette::Text,Qt::black);
+    paletteVerde.setColor(QPalette::Base,Qt::green);
+    paletteVerde.setColor(QPalette::Text,Qt::black);
 
     this->setLayout(layoutSfondo);
 
@@ -172,13 +180,19 @@ void FinestraConfiguraSala::aggiornaCDPTot(){
 
 void FinestraConfiguraSala::aggiornaPortataTot(){
     lineEditPortataEffettiva->setText(QString::number(0));
+    float portata_richiesta = lineEditPortataRichiesta->text().toFloat();
     int portata_partziale=0;
     for(unsigned int it=0;it<sala->getComponenti().size();++it){
         const Serbatoio* serb = dynamic_cast <const Serbatoio*>  (sala->getComponente(it));
         if (!serb)
             portata_partziale = portata_partziale + sala->getComponente(it)->getPortata_capacita();
+            sala->setPortataTot(portata_partziale);
     }
     lineEditPortataEffettiva->setText(QString::number(portata_partziale));
+    if (portata_partziale<portata_richiesta)
+        lineEditPortataEffettiva->setPalette(paletteRosso);
+    else
+        lineEditPortataEffettiva->setPalette(paletteVerde);
 }
 
 void FinestraConfiguraSala::aggiornaPressioneEff(){
@@ -186,6 +200,10 @@ void FinestraConfiguraSala::aggiornaPressioneEff(){
     int cdp_tot = lineEditCadutaDiPressioneTot->text().toInt();
     double press_eff = press_rich-cdp_tot;
     lineEditPressioneEffettiva->setText(QString::number(press_eff));
+    if (press_eff>=press_rich)
+        lineEditPressioneEffettiva->setPalette(paletteVerde);
+    else
+        lineEditPressioneEffettiva->setPalette(paletteRosso);
 }
 
 // metodo privato riempiTabellaComponenti

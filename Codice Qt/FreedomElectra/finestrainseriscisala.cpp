@@ -15,9 +15,9 @@ FinestraInserisciSala::FinestraInserisciSala(DatabaseClienti* d, Cliente* c, QDi
     labelNomeSala = new QLabel("Nome Sala:");
     labelCliente = new QLabel("Cliente");
     labelStabilimento = new QLabel("Stablimento");
-    labelPressioneRichiesta = new QLabel("Pressione richiesta:");
-    labelPortataRichiesta = new QLabel("Portata richiesta:");
-    labelImpianto = new QLabel("Impianto:");
+    labelPressioneRichiesta = new QLabel("Pressione richiesta (Bar):");
+    labelPortataRichiesta = new QLabel("Portata richiesta (Lt/s):");
+    labelImpianto = new QLabel("Tipologia di impianto:");
     lineEditNomeSala = new QLineEdit(this);
     lineEditCliente = new QLineEdit(QString::fromStdString(c->getRagioneSociale()));
     lineEditCliente->setDisabled(true);

@@ -15,9 +15,9 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     labelMarca=new QLabel("Marca:");
     labelModello = new QLabel("Modello:");
     labelAnno = new QLabel("Anno:");
-    labelPressione = new QLabel("Pressione:");
-    labelPortata_Capacita = new QLabel("Portata o Capacita:");
-    labelCadDiPress = new QLabel("Caduta di pressione:");
+    labelPressione = new QLabel("Pressione (Bar):");
+    labelPortata_Capacita = new QLabel("Portata o Capacita (Lt/s):");
+    labelCadDiPress = new QLabel("Caduta di pressione (Bar):");
     labelKw = new QLabel("Kw:");
     lineEditMarca = new QLineEdit(QString::fromStdString(c->getMarca()));
     lineEditModello = new QLineEdit(QString::fromStdString(c->getModello()));

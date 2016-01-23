@@ -11,6 +11,7 @@
 #include<QMessageBox>
 #include<QLabel>
 #include<QPushButton>
+#include<QPalette>
 
 #include<iostream>
 
@@ -55,6 +56,9 @@ public:
     QPushButton* bottoneIndietro;
     QPushButton* bottoneSalva;
 
+    //palette
+    QPalette paletteRosso;
+    QPalette paletteVerde;
 
 public slots:
     void salva();

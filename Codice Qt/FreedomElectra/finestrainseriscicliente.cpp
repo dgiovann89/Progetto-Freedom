@@ -14,10 +14,13 @@ FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* 
     lineEditRagioneSociale=new QLineEdit(this);
     labelPIva=new QLabel("Partita Iva:",this);
     lineEditPIva=new QLineEdit(this);
+    lineEditPIva->setInputMask("9999999999"); //settare input di soli numeri 0-9
     labelTelefono=new QLabel("Telefono:",this);
     lineEditTelefono=new QLineEdit(this);
+    lineEditTelefono->setInputMask("999999999999");
     labelFax=new QLabel("Fax:",this);
     lineEditFax=new QLineEdit(this);
+    lineEditFax->setInputMask("99999999999");
     labelEmail=new QLabel("Email:",this);
     lineEditEmail=new QLineEdit(this);
     labelStabilimento=new QLabel("Stabilimento:",this);
@@ -28,6 +31,7 @@ FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* 
     lineEditCitta=new QLineEdit(this);
     labelCap=new QLabel("CAP:",this);
     lineEditCap=new QLineEdit(this);
+    lineEditCap->setInputMask("99999");
     labelProvincia=new QLabel("Provincia:",this);
     lineEditProvincia=new QLineEdit(this);
 
@@ -65,6 +69,12 @@ FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* 
     layoutBottoni->addWidget(bottoneIndietro);
     layoutBottoni->addWidget(bottoneSalva);
 
+    //palette colori
+    paletteRosso.setColor(QPalette::Base,Qt::red);
+    paletteRosso.setColor(QPalette::Text,Qt::black);
+    paletteVerde.setColor(QPalette::Base,Qt::green);
+    paletteVerde.setColor(QPalette::Text,Qt::black);
+
     this->setLayout(layoutSfondo);
 
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
@@ -77,25 +87,23 @@ void FinestraInserisciCliente::torna(){
 
 void FinestraInserisciCliente::salva(){
 
-    Cliente cli(lineEditRagioneSociale->text().toStdString(),
-              lineEditTelefono->text().toStdString(),
-              lineEditEmail->text().toStdString(),
-              lineEditFax->text().toStdString(),
-              lineEditPIva->text().toStdString(),
-              lineEditStabilimento->text().toStdString());
-
-    Indirizzo i(lineEditVia->text().toStdString(),
-                lineEditCitta->text().toStdString(),
-                lineEditProvincia->text().toStdString(),
-                lineEditCap->text().toStdString());
-
-    cli.setInd(i);
-
-
-
     if(lineEditRagioneSociale->text()!="" && lineEditPIva->text()!="" &&
        lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
        lineEditVia->text()!="" && lineEditCitta->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
+
+        Cliente cli(lineEditRagioneSociale->text().toStdString(),
+                  lineEditTelefono->text().toStdString(),
+                  lineEditEmail->text().toStdString(),
+                  lineEditFax->text().toStdString(),
+                  lineEditPIva->text().toStdString(),
+                  lineEditStabilimento->text().toStdString());
+
+        Indirizzo i(lineEditVia->text().toStdString(),
+                    lineEditCitta->text().toStdString(),
+                    lineEditProvincia->text().toStdString(),
+                    lineEditCap->text().toStdString());
+
+        cli.setInd(i);
 
        dbc->aggiungiCliente(cli);
        dbc->saveClienti(DatabaseClienti::Json); // salva sul file
@@ -109,5 +117,25 @@ void FinestraInserisciCliente::salva(){
         QMessageBox messageBox(this);
         messageBox.setText("Compilare tutti i campi");
         messageBox.exec();
+        if(lineEditRagioneSociale->text()=="") lineEditRagioneSociale->setPalette(paletteRosso);
+        else lineEditRagioneSociale->setPalette(paletteVerde);
+        if (lineEditPIva->text()=="") lineEditPIva->setPalette(paletteRosso);
+        else lineEditPIva->setPalette(paletteVerde);
+        if (lineEditTelefono->text()=="") lineEditTelefono->setPalette(paletteRosso);
+        else lineEditTelefono->setPalette(paletteVerde);
+        if (lineEditFax->text()=="") lineEditFax->setPalette(paletteRosso);
+        else lineEditFax->setPalette(paletteVerde);
+        if (lineEditEmail->text()=="") lineEditEmail->setPalette(paletteRosso);
+        else lineEditEmail->setPalette(paletteVerde);
+        if (lineEditStabilimento->text()=="") lineEditStabilimento->setPalette(paletteRosso);
+        else lineEditStabilimento->setPalette(paletteVerde);
+        if (lineEditVia->text()=="") lineEditVia->setPalette(paletteRosso);
+        else lineEditVia->setPalette(paletteVerde);
+        if (lineEditCitta->text()=="") lineEditCitta->setPalette(paletteRosso);
+        else lineEditCitta->setPalette(paletteVerde);
+        if (lineEditCap->text()=="") lineEditCap->setPalette(paletteRosso);
+        else lineEditCap->setPalette(paletteVerde);
+        if (lineEditProvincia->text()=="") lineEditProvincia->setPalette(paletteRosso);
+        else lineEditProvincia->setPalette(paletteVerde);
   }
 }

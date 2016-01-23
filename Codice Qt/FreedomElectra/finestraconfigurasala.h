@@ -11,6 +11,7 @@
 #include<QGroupBox>
 #include<QString>
 #include<iostream>
+#include <QPalette>
 
 using namespace std;
 
@@ -50,6 +51,7 @@ public:
     // label e lineEdit
     QLabel* labelInfoSala;
     QLabel* labelTabella;
+    QLabel* labelPannelloDatiTot;
     QLabel* labelRagioneSociale;
     QLineEdit* lineEditRagioneSociale;
     QLabel* labelStabilimento;
@@ -82,6 +84,10 @@ public:
 
     // tabella
     QTableWidget* tabellaComponenti;
+
+    //palette
+    QPalette paletteRosso;
+    QPalette paletteVerde;
 
 public slots:
     void apriModificaInfoSala();

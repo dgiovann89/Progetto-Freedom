@@ -51,16 +51,16 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     tabellaSale=new QTableWidget(0,7);
     tabellaSale->setColumnWidth(0,150);
     QStringList header;
-    header=QStringList() << "Nome" << "Stabilimento" << "Tipo Impianto" << "KW Totali" << "Lt/minuto" << "Pressione Richiesta" << "Portata Richiesta";
+    header=QStringList() << "Nome" << "Stabilimento" << "Tipo Impianto" << "Kw Totali" << "Portata Effettiva (Lt/s)" << "Pressione Richiesta (Bar)" << "Portata Richiesta (Bar)";
     tabellaSale->setHorizontalHeaderLabels(header);
     QHeaderView* q=tabellaSale->horizontalHeader();
     q->setStretchLastSection(true);
     tabellaSale->setHorizontalHeader(q);
-    tabellaSale->setColumnWidth(0,300);
+    tabellaSale->setColumnWidth(0,250);
     tabellaSale->setColumnWidth(1,200);
     tabellaSale->setColumnWidth(2,200);
     tabellaSale->setColumnWidth(3,100);
-    tabellaSale->setColumnWidth(4,100);
+    tabellaSale->setColumnWidth(4,150);
     tabellaSale->setColumnWidth(5,150);
     tabellaSale->setColumnWidth(6,100);
 

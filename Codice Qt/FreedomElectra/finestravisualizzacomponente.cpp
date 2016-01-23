@@ -16,10 +16,10 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     labelMarca=new QLabel("Marca:");
     labelModello = new QLabel("Modello:");
     labelAnno = new QLabel("Anno:");
-    labelPressione = new QLabel("Pressione:");
-    labelPortata_Capacita = new QLabel("Portata o Capacita:");
+    labelPressione = new QLabel("Pressione: (Bar)");
+    labelPortata_Capacita = new QLabel("Portata o Capacita (Lt/s):");
     labelKw = new QLabel("Kw:");
-    labelCdP = new QLabel("Caduta di Pressione:");
+    labelCdP = new QLabel("Caduta di Pressione (Bar):");
 
 //    lineEditTipo = new QLineEdit(comboBoxTipo->currentText());
     lineEditTipo = new QLineEdit(QString::fromStdString(c->getTipo()));

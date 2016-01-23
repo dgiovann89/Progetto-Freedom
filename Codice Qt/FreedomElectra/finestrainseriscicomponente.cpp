@@ -15,14 +15,16 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
    labelMarca=new QLabel("Marca:");
    labelModello = new QLabel("Modello:");
    labelAnno = new QLabel("Anno:");
-   labelPressione = new QLabel("Pressione:");
-   labelPortata_Capacita = new QLabel("Portata o Capacita:");
-   labelCadDiPress = new QLabel("Caduta di pressione:");
+   labelPressione = new QLabel("Pressione (Bar):");
+   labelPortata_Capacita = new QLabel("Portata o Capacita (Lt/s):");
+   labelCadDiPress = new QLabel("Caduta di pressione (Bar):");
    labelKw = new QLabel("Kw:");
    lineEditMarca = new QLineEdit(this);
    lineEditModello = new QLineEdit(this);
    lineEditAnno = new QLineEdit(this);
-   lineEditPressione = new QLineEdit(this);
+   lineEditAnno->setInputMask("9999");
+   lineEditPressione = new QLineEdit("07.0");
+   lineEditPressione->setInputMask("xx.x");
    lineEditPortata_Capacita = new QLineEdit(this);
    lineEditCadDiPress = new QLineEdit(this);
    lineEditKw = new QLineEdit(this);
@@ -128,8 +130,8 @@ void FinestraInserisciComponente::salva(){
     string marca = lineEditMarca->text().toStdString();
     string modello = lineEditModello->text().toStdString();
     int anno = lineEditAnno->text().toInt();
-    int pressione = lineEditPressione->text().toInt();
-    int portataCapacita = lineEditPortata_Capacita->text().toInt();
+    float pressione = lineEditPressione->text().toFloat();
+    float portataCapacita = lineEditPortata_Capacita->text().toFloat();
     float cdp = lineEditCadDiPress->text().toFloat();
     int kw = lineEditKw->text().toInt();
 
@@ -181,7 +183,6 @@ void FinestraInserisciComponente::salva(){
          messageBox.setText("Inserire una marca non vuota.");
          messageBox.exec();
      }
-
 }
 
 void FinestraInserisciComponente::torna(){

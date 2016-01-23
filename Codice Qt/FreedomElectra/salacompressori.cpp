@@ -60,6 +60,9 @@ void SalaCompressori::rimuoviComponente(int i){
 void SalaCompressori::setKwTot(int i) {
     kwTot = i;
 }
+void SalaCompressori::setPortataTot(int i){
+    portataTot=i;
+}
 
 //void SalaCompressori::setKwTot() {
 //    int kw_compr = 0;
