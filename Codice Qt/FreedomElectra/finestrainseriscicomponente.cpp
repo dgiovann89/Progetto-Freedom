@@ -5,31 +5,31 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     this->setMinimumSize(340,340);
 
     // new
-    layoutSfondo=new QVBoxLayout(this);
-    layoutDatiComponente = new QGridLayout();
-    layoutBottoni = new QHBoxLayout(this);
-    boxDatiComponente = new QGroupBox(this);
-    boxBottoni = new QGroupBox(this);
-    labelTipo = new QLabel("Tipo:");
-    labelMarca=new QLabel("Marca:");
-    labelModello = new QLabel("Modello:");
-    labelAnno = new QLabel("Anno:");
-    labelPressione = new QLabel("Pressione:");
-    labelPortata_Capacita = new QLabel("Portata o Capacita:");
-    labelCadDiPress = new QLabel("Caduta di pressione:");
-    lineEditCadDiPress = new QLineEdit(this);
-    labelKw = new QLabel("Kw:");
-    lineEditMarca = new QLineEdit(this);
-    lineEditModello = new QLineEdit(this);
-    lineEditAnno = new QLineEdit(this);
-    lineEditPressione = new QLineEdit(this);
-    lineEditPortata_Capacita = new QLineEdit(this);
-    lineEditKw = new QLineEdit(this);
-    lineEditKw->setDisabled(true);
-    bottoneIndietro=new QPushButton("Torna indietro",this);
-    bottoneSalva = new QPushButton("Salva",this);
-    bottoneSalva->setDefault(true);
-    comboBoxTipo = new QComboBox();
+   layoutSfondo=new QVBoxLayout(this);
+   layoutDatiComponente = new QGridLayout();
+   layoutBottoni = new QHBoxLayout(this);
+   boxDatiComponente = new QGroupBox(this);
+   boxBottoni = new QGroupBox(this);
+   comboBoxTipo = new QComboBox();
+   labelTipo = new QLabel("Tipo:");
+   labelMarca=new QLabel("Marca:");
+   labelModello = new QLabel("Modello:");
+   labelAnno = new QLabel("Anno:");
+   labelPressione = new QLabel("Pressione:");
+   labelPortata_Capacita = new QLabel("Portata o Capacita:");
+   labelCadDiPress = new QLabel("Caduta di pressione:");
+   labelKw = new QLabel("Kw:");
+   lineEditMarca = new QLineEdit(this);
+   lineEditModello = new QLineEdit(this);
+   lineEditAnno = new QLineEdit(this);
+   lineEditPressione = new QLineEdit(this);
+   lineEditPortata_Capacita = new QLineEdit(this);
+   lineEditCadDiPress = new QLineEdit(this);
+   lineEditKw = new QLineEdit(this);
+   lineEditKw->setDisabled(true);
+   bottoneIndietro=new QPushButton("Torna indietro",this);
+   bottoneSalva = new QPushButton("Salva",this);
+   bottoneSalva->setDefault(true);
 
    comboBoxTipo->insertItem(0,"Seleziona il tipo");
    comboBoxTipo->insertItem(1,"Compressore On-Off");
@@ -75,7 +75,6 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     layoutBottoni->addWidget(bottoneIndietro);
     layoutBottoni->addWidget(bottoneSalva);
 
-
     this->setLayout(layoutSfondo);
 
     lineEditMarca->setDisabled(true);
@@ -98,8 +97,8 @@ void FinestraInserisciComponente::sbloccaLineEdit(){
         lineEditAnno->setDisabled(true);
         lineEditCadDiPress->setDisabled(true);
         lineEditPortata_Capacita->setDisabled(true);
-        lineEditKw->setDisabled(true);
         lineEditPressione->setDisabled(true);
+        lineEditKw->setDisabled(true);
     }
     else
         if (comboBoxTipo->currentIndex()!=5 && comboBoxTipo->currentIndex()!=6 && comboBoxTipo->currentIndex()!=7){
@@ -108,8 +107,8 @@ void FinestraInserisciComponente::sbloccaLineEdit(){
             lineEditAnno->setDisabled(false);
             lineEditCadDiPress->setDisabled(false);
             lineEditPortata_Capacita->setDisabled(false);
-            lineEditKw->setDisabled(false);
             lineEditPressione->setDisabled(false);
+            lineEditKw->setDisabled(false);
         }
         else{
             lineEditMarca->setDisabled(false);
@@ -117,8 +116,9 @@ void FinestraInserisciComponente::sbloccaLineEdit(){
             lineEditAnno->setDisabled(false);
             lineEditCadDiPress->setDisabled(false);
             lineEditPortata_Capacita->setDisabled(false);
-            lineEditKw->setDisabled(true);
             lineEditPressione->setDisabled(false);
+            labelKw->setDisabled(true);
+            lineEditKw->setDisabled(true);
         }
 
 }

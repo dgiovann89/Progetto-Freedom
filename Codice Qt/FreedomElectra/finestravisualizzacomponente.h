@@ -33,6 +33,7 @@ public:
     QLabel* labelPressione;
     QLabel* labelPortata_Capacita;
     QLabel* labelKw;
+    QLabel* labelCdP;
 
     // lineEdit
     QLineEdit* lineEditTipo;
@@ -42,6 +43,7 @@ public:
     QLineEdit* lineEditPressione;
     QLineEdit* lineEditPortata_Capacita;
     QLineEdit* lineEditKw;
+    QLineEdit* lineEditCdP;
 
     // bottoni
     QPushButton* bottoneIndietro;

@@ -17,12 +17,14 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     labelAnno = new QLabel("Anno:");
     labelPressione = new QLabel("Pressione:");
     labelPortata_Capacita = new QLabel("Portata o Capacita:");
+    labelCadDiPress = new QLabel("Caduta di pressione:");
     labelKw = new QLabel("Kw:");
     lineEditMarca = new QLineEdit(QString::fromStdString(c->getMarca()));
     lineEditModello = new QLineEdit(QString::fromStdString(c->getModello()));
     lineEditAnno = new QLineEdit(QString::number(c->getAnno()));
     lineEditPressione = new QLineEdit(QString::number(c->getPressione()));
     lineEditPortata_Capacita = new QLineEdit(QString::number(c->getPortata_capacita()));
+    lineeditCadDiPress = new QLineEdit(QString::number(c->getCadutaDiPressione()));
 
     Macchinario* comp = dynamic_cast <Macchinario*>  (c);
     if (comp){
@@ -30,8 +32,9 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
         lineEditKw = new QLineEdit(QString::number(comp->getKw()));
     }
     else{
-        lineEditKw->setDisabled(true);
+        labelKw->setDisabled(true);
         lineEditKw = new QLineEdit(this);
+        lineEditKw->setDisabled(true);
         cout << "NON è un macchinario" << endl;
     }
 
@@ -59,16 +62,10 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     layoutDatiComponente->addWidget(lineEditPressione,4,1);
     layoutDatiComponente->addWidget(labelPortata_Capacita,5,0);
     layoutDatiComponente->addWidget(lineEditPortata_Capacita,5,1);
-    layoutDatiComponente->addWidget(labelKw,6,0);
-    layoutDatiComponente->addWidget(lineEditKw,6,1);
-
-    // disabilito lineEdit
-//    lineEditMarca->setDisabled(false);
-//    lineEditModello->setDisabled(false);
-//    lineEditAnno->setDisabled(false);
-//    lineEditPressione->setDisabled(false);
-//    lineEditPortata_Capacita->setDisabled(false);
-//    lineEditKw->setDisabled(false);
+    layoutDatiComponente->addWidget(labelCadDiPress,6,0);
+    layoutDatiComponente->addWidget(lineeditCadDiPress,6,1);
+    layoutDatiComponente->addWidget(labelKw,7,0);
+    layoutDatiComponente->addWidget(lineEditKw,7,1);
 
     // associazione a layoutBottoni
     layoutBottoni->addWidget(bottoneIndietro);
@@ -90,6 +87,7 @@ void ModificaDatiComponente::salva(){
             comp->setAnno(lineEditAnno->text().toInt());
             comp->setPressione(lineEditPressione->text().toInt());
             comp->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
+            comp->setCadutaDiPressione(lineeditCadDiPress->text().toInt());
             comp->setKw(lineEditKw->text().toInt());
         }
         else{
@@ -98,6 +96,7 @@ void ModificaDatiComponente::salva(){
             c->setAnno(lineEditAnno->text().toInt());
             c->setPressione(lineEditPressione->text().toInt());
             c->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
+            c->setCadutaDiPressione(lineeditCadDiPress->text().toInt());
             cout << "NON è un macchinario" << endl;
         }
 

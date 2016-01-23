@@ -24,6 +24,9 @@ private:
     SalaCompressori* sala;
     void riempiTabellaComponenti();
     void aggiornaKwSala();
+    void aggiornaCDPTot();
+    void aggiornaPortataTot();
+    void aggiornaPressioneEff();
 public:
     explicit FinestraConfiguraSala(DatabaseClienti*, Cliente*, SalaCompressori* , QDialog* parent=0);
 

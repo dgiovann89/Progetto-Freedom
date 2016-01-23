@@ -19,6 +19,7 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     labelPressione = new QLabel("Pressione:");
     labelPortata_Capacita = new QLabel("Portata o Capacita:");
     labelKw = new QLabel("Kw:");
+    labelCdP = new QLabel("Caduta di Pressione:");
 
 //    lineEditTipo = new QLineEdit(comboBoxTipo->currentText());
     lineEditTipo = new QLineEdit(QString::fromStdString(c->getTipo()));
@@ -33,6 +34,9 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     lineEditPressione->setDisabled(true);
     lineEditPortata_Capacita = new QLineEdit(QString::number(c->getPortata_capacita()));
     lineEditPortata_Capacita->setDisabled(true);
+    lineEditCdP = new QLineEdit(QString::number(c->getCadutaDiPressione()));
+    lineEditCdP->setDisabled(true);
+
 
 //    lineEditKw = new QLineEdit(this);
 //    lineEditKw->setDisabled(true);
@@ -77,15 +81,8 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     layoutDatiComponente->addWidget(lineEditPortata_Capacita,5,1);
     layoutDatiComponente->addWidget(labelKw,6,0);
     layoutDatiComponente->addWidget(lineEditKw,6,1);
-
-    // disabilito lineEdit
-    lineEditMarca->setDisabled(true);
-    lineEditModello->setDisabled(true);
-    lineEditAnno->setDisabled(true);
-    lineEditPressione->setDisabled(true);
-    lineEditPortata_Capacita->setDisabled(true);
-
-
+    layoutDatiComponente->addWidget(labelCdP,7,0);
+    layoutDatiComponente->addWidget(lineEditCdP,7,1);
 
     // associazione a layoutBottoni
     layoutBottoni->addWidget(bottoneIndietro);

@@ -133,6 +133,10 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     this->setLayout(layoutSfondo);
 
     riempiTabellaComponenti();
+    aggiornaKwSala();
+    aggiornaCDPTot();
+    aggiornaPortataTot();
+    aggiornaPressioneEff();
 
     connect(bottoneModificaSala,SIGNAL(clicked()),this,SLOT(apriModificaInfoSala()));
     connect(bottoneInserisciComponente,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciComponente()));
@@ -151,11 +155,37 @@ void FinestraConfiguraSala::aggiornaKwSala(){
         const Macchinario* macc = dynamic_cast <const Macchinario*>  (sala->getComponente(it));
         if (macc){
             kw_parziale = kw_parziale + macc->getKw();
-//            cout << "kw:parziale=" << kw_parziale << "     kw_tot=" << kw_tot << endl;
             sala->setKwTot(kw_parziale);
-            cout << "kwtot post incremento= " << sala->getKwTot() << endl;
         }
     }
+    lineEditKwTot->setText(QString::number(sala->getKwTot()));
+}
+
+void FinestraConfiguraSala::aggiornaCDPTot(){
+    lineEditCadutaDiPressioneTot->setText(QString::number(0));
+    int pressione_parziale=0;
+    for(unsigned int it=0;it<sala->getComponenti().size();++it){
+            pressione_parziale = pressione_parziale + sala->getComponente(it)->getCadutaDiPressione();
+    }
+    lineEditCadutaDiPressioneTot->setText(QString::number(pressione_parziale));
+}
+
+void FinestraConfiguraSala::aggiornaPortataTot(){
+    lineEditPortataEffettiva->setText(QString::number(0));
+    int portata_partziale=0;
+    for(unsigned int it=0;it<sala->getComponenti().size();++it){
+        const Serbatoio* serb = dynamic_cast <const Serbatoio*>  (sala->getComponente(it));
+        if (!serb)
+            portata_partziale = portata_partziale + sala->getComponente(it)->getPortata_capacita();
+    }
+    lineEditPortataEffettiva->setText(QString::number(portata_partziale));
+}
+
+void FinestraConfiguraSala::aggiornaPressioneEff(){
+    int press_rich = lineEditPressioneRichiesta->text().toInt();
+    int cdp_tot = lineEditCadutaDiPressioneTot->text().toInt();
+    double press_eff = press_rich-cdp_tot;
+    lineEditPressioneEffettiva->setText(QString::number(press_eff));
 }
 
 // metodo privato riempiTabellaComponenti
@@ -199,21 +229,19 @@ void FinestraConfiguraSala::riempiTabellaComponenti(){
 void FinestraConfiguraSala::eliminaComponente(){
     if (tabellaComponenti->currentItem()!= 0){
            int riga=tabellaComponenti->currentRow();
-
            Componente* r=*(db->cercaComponente(tabellaComponenti->item(riga,0)->text().toStdString()));
-
            if(r){
                db->rimuoviComponente(r); //rimuove dal contenitore
                sala->rimuoviComponente(riga); //rimuove dal vector
            }
-
        tabellaComponenti->clearContents();
        tabellaComponenti->setRowCount(0);
        riempiTabellaComponenti();
        }
     aggiornaKwSala();
-    lineEditKwTot->setText(QString::number(sala->getKwTot()));
-
+    aggiornaCDPTot();
+    aggiornaPortataTot();
+    aggiornaPressioneEff();
 }
 
 void FinestraConfiguraSala::apriModificaInfoSala(){
@@ -234,7 +262,9 @@ void FinestraConfiguraSala::apriFinestraInserisciComponente(){
     tabellaComponenti->setRowCount(0);
     riempiTabellaComponenti();
     aggiornaKwSala();
-    lineEditKwTot->setText(QString::number(sala->getKwTot()));
+    aggiornaCDPTot();
+    aggiornaPortataTot();
+    aggiornaPressioneEff();
 }
 
 void FinestraConfiguraSala::apriFinestraVisualizzaComponente(){
@@ -267,7 +297,10 @@ void FinestraConfiguraSala::apriFinestraVisualizzaComponente(){
         FinestraVisualizzaComponente finVisComp(db,r,this);
         finVisComp.exec();
         aggiornaKwSala();
-        lineEditKwTot->setText(QString::number(sala->getKwTot()));
+        aggiornaCDPTot();
+        aggiornaPortataTot();
+        aggiornaPressioneEff();
+//        lineEditKwTot->setText(QString::number(sala->getKwTot()));
         }
         tabellaComponenti->clearContents();
         tabellaComponenti->setRowCount(0);
