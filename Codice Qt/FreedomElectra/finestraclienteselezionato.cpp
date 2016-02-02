@@ -46,6 +46,8 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     labelProvincia=new QLabel("Provincia:",this);
     lineEditProvincia=new QLineEdit(QString::fromStdString(c->getIndirizzo().getProvincia()));
     lineEditProvincia->setDisabled(true);
+    labelKwStabilimento = new QLabel("Kw tot stab.");
+    lineEditKwStabilimento = new QLineEdit("0");
 
     // new tabella
     tabellaSale=new QTableWidget(0,7);
@@ -65,7 +67,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     tabellaSale->setColumnWidth(6,100);
 
     // new bottoni
-    bottoneModificaDatiCliente= new QPushButton("Modifica",this);
+    bottoneModificaDatiCliente= new QPushButton("Modifica anagrafica cliente",this);
     bottoneInserisciNuovaSala=new QPushButton("Inserisci nuova Sala Compressori",this);
     bottoneConfiguraSala= new QPushButton("Visualizza",this);
     bottoneEliminaSala= new QPushButton("Elimina",this);
@@ -105,7 +107,9 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
 
     layoutCliente->addWidget(labelProvincia,0,6);
     layoutCliente->addWidget(lineEditProvincia,0,7);
-    layoutCliente->addWidget(bottoneModificaDatiCliente,1,6,1,2);
+    layoutCliente->addWidget(labelKwStabilimento,1,6);
+    layoutCliente->addWidget(lineEditKwStabilimento,1,7);
+    layoutCliente->addWidget(bottoneModificaDatiCliente,2,6,1,2);
 
     // associazione tabella a layoutTabella
     layoutTabella->addWidget(labelTitoloTabella);
@@ -120,13 +124,21 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     this->setLayout(layoutSfondo);
 
     riempiTabellaSale();
+    aggiornaKwStabilimento();
 
     connect(bottoneInserisciNuovaSala,SIGNAL(clicked()),this,SLOT(apriFinestraInserisciSala()));
     connect(bottoneConfiguraSala,SIGNAL(clicked()),this,SLOT(apriFinestraConfiguraSala()));
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
     connect(bottoneModificaDatiCliente,SIGNAL(clicked()),this,SLOT(apriModificaAnagraficaCliente()));
     connect(tabellaSale,SIGNAL(cellDoubleClicked(int,int)), this,SLOT(apriFinestraConfiguraSala()));
+}
 
+void FinestraClienteSelezionato::aggiornaKwStabilimento(){
+    int kw_parziale=0;
+    for(unsigned int it=0;it<cl->getSala().size();++it){
+        kw_parziale += cl->getSala(it).getKwTot();
+    }
+    lineEditKwStabilimento->setText(QString::number(kw_parziale));
 }
 
 //metodo privato riempiTabellaSale
@@ -184,6 +196,7 @@ void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
         tabellaSale->clearContents();
         tabellaSale->setRowCount(0);
         riempiTabellaSale();
+        aggiornaKwStabilimento();
     }
 }
 

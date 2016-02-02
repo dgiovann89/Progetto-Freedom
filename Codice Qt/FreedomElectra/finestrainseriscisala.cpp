@@ -23,8 +23,8 @@ FinestraInserisciSala::FinestraInserisciSala(DatabaseClienti* d, Cliente* c, QDi
     lineEditCliente->setDisabled(true);
     lineEditStabilimento = new QLineEdit(QString::fromStdString(c->getStabilimento()));
     lineEditStabilimento->setDisabled(true);
-    lineEditPressioneRichiesta = new QLineEdit(this);
-    lineEditPortataRichiesta = new QLineEdit(this);
+    lineEditPressioneRichiesta = new QLineEdit("0");
+    lineEditPortataRichiesta = new QLineEdit("0");
     lineEditImpianto = new QLineEdit(this);
 
     // new bottoni

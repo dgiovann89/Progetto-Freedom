@@ -14,6 +14,7 @@ private:
     DatabaseClienti* dbc;
     Cliente* cl;
     void riempiTabellaSale();
+    void aggiornaKwStabilimento();
 public:
     explicit FinestraClienteSelezionato(DatabaseClienti* , Cliente* , QDialog* parent=0);
 
@@ -49,6 +50,8 @@ public:
     QLineEdit* lineEditCap;
     QLabel* labelProvincia;
     QLineEdit* lineEditProvincia;
+    QLabel* labelKwStabilimento;
+    QLineEdit* lineEditKwStabilimento;
 
     // Bottoni
     QPushButton* bottoneModificaDatiCliente;

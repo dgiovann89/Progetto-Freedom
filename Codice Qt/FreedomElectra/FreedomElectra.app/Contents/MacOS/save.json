@@ -551,6 +551,54 @@
             "jStabilimento": "s",
             "jTelefono": "0422814782",
             "jVia": "s"
+        },
+        {
+            "jCAP": "652",
+            "jCitta": "gg",
+            "jEmail": "gggg",
+            "jFax": "555",
+            "jPIva": "1234",
+            "jProvincia": "pm",
+            "jRagioneSociale": "h",
+            "jStabilimento": "gg",
+            "jTelefono": "3345",
+            "jVia": "ggg"
+        },
+        {
+            "jCAP": "123",
+            "jCitta": "asd",
+            "jEmail": "asd",
+            "jFax": "4",
+            "jPIva": "1234567890",
+            "jProvincia": "fd",
+            "jRagioneSociale": "best",
+            "jStabilimento": "asd",
+            "jTelefono": "34",
+            "jVia": "asd"
+        },
+        {
+            "jCAP": "123",
+            "jCitta": "123",
+            "jEmail": "123",
+            "jFax": "123",
+            "jPIva": "123",
+            "jProvincia": "123",
+            "jRagioneSociale": "cappello",
+            "jStabilimento": "123",
+            "jTelefono": "123",
+            "jVia": "12"
+        },
+        {
+            "jCAP": "123",
+            "jCitta": "123",
+            "jEmail": "123",
+            "jFax": "123",
+            "jPIva": "123",
+            "jProvincia": "123",
+            "jRagioneSociale": "cappello",
+            "jStabilimento": "k",
+            "jTelefono": "123",
+            "jVia": "123"
         }
     ]
 }

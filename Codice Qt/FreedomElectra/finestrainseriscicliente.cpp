@@ -13,14 +13,14 @@ FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* 
     labelRagioneSociale=new QLabel("Ragione Sociale:",this);
     lineEditRagioneSociale=new QLineEdit(this);
     labelPIva=new QLabel("Partita Iva:",this);
-    lineEditPIva=new QLineEdit(this);
+    lineEditPIva=new QLineEdit("0000000000");
     lineEditPIva->setInputMask("9999999999"); //settare input di soli numeri 0-9
     labelTelefono=new QLabel("Telefono:",this);
-    lineEditTelefono=new QLineEdit(this);
-    lineEditTelefono->setInputMask("999999999999");
+    lineEditTelefono=new QLineEdit("0000000000");
+    lineEditTelefono->setInputMask("9999999999");
     labelFax=new QLabel("Fax:",this);
-    lineEditFax=new QLineEdit(this);
-    lineEditFax->setInputMask("99999999999");
+    lineEditFax=new QLineEdit("0000000000");
+    lineEditFax->setInputMask("9999999999");
     labelEmail=new QLabel("Email:",this);
     lineEditEmail=new QLineEdit(this);
     labelStabilimento=new QLabel("Stabilimento:",this);
@@ -30,7 +30,7 @@ FinestraInserisciCliente::FinestraInserisciCliente(DatabaseClienti* d, QDialog* 
     labelCitta=new QLabel("Citta:",this);
     lineEditCitta=new QLineEdit(this);
     labelCap=new QLabel("CAP:",this);
-    lineEditCap=new QLineEdit(this);
+    lineEditCap=new QLineEdit("00000");
     lineEditCap->setInputMask("99999");
     labelProvincia=new QLabel("Provincia:",this);
     lineEditProvincia=new QLineEdit(this);

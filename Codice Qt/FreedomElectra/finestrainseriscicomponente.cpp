@@ -21,13 +21,13 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
    labelKw = new QLabel("Kw:");
    lineEditMarca = new QLineEdit(this);
    lineEditModello = new QLineEdit(this);
-   lineEditAnno = new QLineEdit(this);
+   lineEditAnno = new QLineEdit("2000");
    lineEditAnno->setInputMask("9999");
    lineEditPressione = new QLineEdit("07.0");
    lineEditPressione->setInputMask("xx.x");
-   lineEditPortata_Capacita = new QLineEdit(this);
-   lineEditCadDiPress = new QLineEdit(this);
-   lineEditKw = new QLineEdit(this);
+   lineEditPortata_Capacita = new QLineEdit("0");
+   lineEditCadDiPress = new QLineEdit("0");
+   lineEditKw = new QLineEdit("0");
    lineEditKw->setDisabled(true);
    bottoneIndietro=new QPushButton("Torna indietro",this);
    bottoneSalva = new QPushButton("Salva",this);
