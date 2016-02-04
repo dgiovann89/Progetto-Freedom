@@ -7,7 +7,7 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     // new
     layoutSfondo=new QVBoxLayout(this);
     layoutDatiComponente = new QGridLayout();
-    layoutBottoni = new QHBoxLayout(this);
+    layoutBottoni = new QHBoxLayout();
     boxDatiComponente = new QGroupBox(this);
 //    boxDatiComponente->setDisabled(true);
     boxBottoni = new QGroupBox(this);
@@ -50,14 +50,12 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
 
     const Macchinario* comp = dynamic_cast <const Macchinario*>  (c);
     if (comp){
-        cout << "è un macchinario" << endl;
         lineEditKw = new QLineEdit(QString::number(comp->getKw()));
         lineEditKw->setDisabled(true);
     }
     else{
         lineEditKw = new QLineEdit(this);
         lineEditKw->setDisabled(true);
-        cout << "NON è un macchinario" << endl;
     }
     // associazione box e layout
     layoutSfondo->addWidget(boxDatiComponente);

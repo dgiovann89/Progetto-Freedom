@@ -12,11 +12,13 @@ class FinestraClienteSelezionato : public QDialog{
     Q_OBJECT
 private:
     DatabaseClienti* dbc;
+    DatabaseComponenti* dbComp;
     Cliente* cl;
+
     void riempiTabellaSale();
     void aggiornaKwStabilimento();
 public:
-    explicit FinestraClienteSelezionato(DatabaseClienti* , Cliente* , QDialog* parent=0);
+    explicit FinestraClienteSelezionato(DatabaseClienti* ,DatabaseComponenti*, Cliente* , QDialog* parent=0);
 
     // Layout e groupbox
     QVBoxLayout* layoutSfondo;
@@ -68,6 +70,7 @@ public slots:
     void apriFinestraConfiguraSala();
     void apriModificaAnagraficaCliente();
     void torna();
+    void elimina();
 };
 
 #endif // FINESTRACLIENTESELEZIONATO_H

@@ -19,7 +19,7 @@ using namespace std;
 class FinestraConfiguraSala : public QDialog{
     Q_OBJECT
 private:
-    DatabaseComponenti* db;
+    DatabaseComponenti* dbComp;
     DatabaseClienti* dbc;
     Cliente* cl;
     SalaCompressori* sala;
@@ -29,7 +29,7 @@ private:
     void aggiornaPortataTot();
     void aggiornaPressioneEff();
 public:
-    explicit FinestraConfiguraSala(DatabaseClienti*, Cliente*, SalaCompressori* , QDialog* parent=0);
+    explicit FinestraConfiguraSala(DatabaseClienti*, DatabaseComponenti*, Cliente*, SalaCompressori* , QDialog* parent=0);
 
     // layout e groupbox
     QGridLayout* layoutInfoSala;
@@ -78,7 +78,6 @@ public:
     QPushButton* bottoneInserisciComponente;
     QPushButton* bottoneVisualizzaComponente;
     QPushButton* bottoneEliminaComponente;
-    QPushButton* bottoneSalva;
     QPushButton* bottoneEsportaPDF;
     QPushButton* bottoneIndietro;
 

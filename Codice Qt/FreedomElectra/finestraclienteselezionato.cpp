@@ -1,14 +1,14 @@
 #include "finestraclienteselezionato.h"
 
-FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Cliente* c, QDialog *parent):QDialog(parent), dbc(d), cl(c){
+FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, DatabaseComponenti* db, Cliente* c, QDialog *parent):QDialog(parent), dbc(d), dbComp(db), cl(c){
     this->setWindowTitle("Finestra Cliente Selezionato");
     this->showMaximized(); // metti la finestra a tutto schermo
 
     // new layout e groupbox
     layoutSfondo=new QVBoxLayout(this);
     layoutCliente= new QGridLayout();
-    layoutBottoni= new QHBoxLayout(this);
-    layoutTabella = new QVBoxLayout(this);
+    layoutBottoni= new QHBoxLayout();
+    layoutTabella = new QVBoxLayout();
     boxCliente = new QGroupBox(this);
     boxTabella = new QGroupBox(this);
     boxBottoni = new QGroupBox(this);
@@ -48,6 +48,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     lineEditProvincia->setDisabled(true);
     labelKwStabilimento = new QLabel("Kw tot stab.");
     lineEditKwStabilimento = new QLineEdit("0");
+    lineEditKwStabilimento->setDisabled(true);
 
     // new tabella
     tabellaSale=new QTableWidget(0,7);
@@ -131,6 +132,7 @@ FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, Clien
     connect(bottoneIndietro,SIGNAL(clicked()),this,SLOT(torna()));
     connect(bottoneModificaDatiCliente,SIGNAL(clicked()),this,SLOT(apriModificaAnagraficaCliente()));
     connect(tabellaSale,SIGNAL(cellDoubleClicked(int,int)), this,SLOT(apriFinestraConfiguraSala()));
+    connect(bottoneEliminaSala,SIGNAL(clicked()), this,SLOT(elimina()));
 }
 
 void FinestraClienteSelezionato::aggiornaKwStabilimento(){
@@ -191,7 +193,7 @@ void FinestraClienteSelezionato::apriFinestraConfiguraSala() {
         SalaCompressori* s;
         int riga = tabellaSale->currentRow();
         s = &(cl->getSala(riga));
-        FinestraConfiguraSala finConfSala(dbc,cl,s);
+        FinestraConfiguraSala finConfSala(dbc,dbComp,cl,s);
         finConfSala.exec();
         tabellaSale->clearContents();
         tabellaSale->setRowCount(0);
@@ -215,6 +217,31 @@ void FinestraClienteSelezionato::apriModificaAnagraficaCliente() {
     lineEditStabilimento->setText(QString::fromStdString(cl->getStabilimento()));
     lineEditTelefono->setText(QString::fromStdString(cl->getTelefono()));
     lineEditVia->setText(QString::fromStdString(cl->getIndirizzo().getVia()));
+}
+
+void FinestraClienteSelezionato::elimina(){
+    if (tabellaSale->currentItem()!= 0){
+        int rigaSel=tabellaSale->currentRow();
+        SalaCompressori* a=&(cl->getSala(rigaSel));
+
+        vector<Componente*>::const_iterator it=a->getComponenti().end();
+       int i=0;
+
+       for(;it!=a->getComponenti().begin() && a->getComponenti().size()>0;--it){
+                   Componente* r=*dbComp->cercaComponente(a->getComponente(i)->getMarca(), a->getComponente(i)->getModello());
+                   dbComp->rimuoviComponente(r);
+                   delete r;
+                   a->getComponenti().pop_back();
+
+                   i++;
+               }
+
+        cl->rimuoviSala(rigaSel);
+        tabellaSale->clearContents();
+        tabellaSale->setRowCount(0);
+        riempiTabellaSale();
+    }
+
 }
 
 void FinestraClienteSelezionato::torna(){

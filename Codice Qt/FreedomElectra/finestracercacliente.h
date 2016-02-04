@@ -16,12 +16,15 @@
 class FinestraCercaCliente : public QDialog{
     Q_OBJECT
 private:
-    DatabaseClienti* dbc;
+    DatabaseClienti* dbCli;
+    DatabaseComponenti* dbComp;
     void riempiTabellaClienti(); //+ eventualmente header
+    void aggiornaTabellaClienti();
+    void intestazioneTabella();
     DatabaseClienti fromJasonClienti;
 
 public:
-    explicit FinestraCercaCliente(DatabaseClienti*, QDialog* parent=0);
+    explicit FinestraCercaCliente(DatabaseClienti*, DatabaseComponenti*, QDialog* parent=0);
 
     // Layout e groupBox
     QVBoxLayout* layoutSfondo;
@@ -45,6 +48,7 @@ public:
     QPushButton* bottoneCercaCliente;
     QPushButton* bottoneApriCliente;
     QPushButton* bottoneIndietro;
+    QPushButton* bottoneReset;
 
     // tabella
     QTableWidget* tabellaClienti;
@@ -56,6 +60,7 @@ public slots:
     void torna();
     void abilitaLineEditPIva();
     void abilitaLineEditRagioneSociale();
+    void resetCampi();
 
 };
 

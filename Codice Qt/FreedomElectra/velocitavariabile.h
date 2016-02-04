@@ -5,8 +5,10 @@
 
 class VelocitaVariabile : public Macchinario{
 public:
-    VelocitaVariabile(string, string, int, int, int, float, int, Cliente* =0, SalaCompressori* =0);
+    VelocitaVariabile(string, string, int, int, int, float, int, bool, Cliente* =0, SalaCompressori* =0);
     string getTipo() const;
+
+    virtual bool isCompressore() const;
 };
 
 #endif // VELOCITAVARIABILE_H

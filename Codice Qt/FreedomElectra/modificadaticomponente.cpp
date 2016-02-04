@@ -7,7 +7,7 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     // new
     layoutSfondo=new QVBoxLayout(this);
     layoutDatiComponente = new QGridLayout();
-    layoutBottoni = new QHBoxLayout(this);
+    layoutBottoni = new QHBoxLayout();
     boxDatiComponente = new QGroupBox(this);
 //    boxDatiComponente->setDisabled(true);
     boxBottoni = new QGroupBox(this);
@@ -28,14 +28,12 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
 
     Macchinario* comp = dynamic_cast <Macchinario*>  (c);
     if (comp){
-        cout << "è un macchinario" << endl;
         lineEditKw = new QLineEdit(QString::number(comp->getKw()));
     }
     else{
         labelKw->setDisabled(true);
         lineEditKw = new QLineEdit(this);
         lineEditKw->setDisabled(true);
-        cout << "NON è un macchinario" << endl;
     }
 
     bottoneIndietro=new QPushButton("Torna indietro",this);
@@ -81,7 +79,6 @@ void ModificaDatiComponente::salva(){
     if (lineEditMarca->text()!=""){
         Macchinario* comp = dynamic_cast <Macchinario*>  (c);
         if (comp){
-            cout << "comp" << endl;
             comp->setMarca(lineEditMarca->text().toStdString());
             comp->setModello(lineEditModello->text().toStdString());
             comp->setAnno(lineEditAnno->text().toInt());
@@ -97,7 +94,6 @@ void ModificaDatiComponente::salva(){
             c->setPressione(lineEditPressione->text().toInt());
             c->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
             c->setCadutaDiPressione(lineeditCadDiPress->text().toInt());
-            cout << "NON è un macchinario" << endl;
         }
 
     QMessageBox messageBox(this);

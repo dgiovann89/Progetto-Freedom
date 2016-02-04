@@ -163,23 +163,24 @@ bool DatabaseComponenti::rimuoviComponente(Componente* r){
 }
 
 // cerca Componente (ritorna l'iteratore che punta al Componente (se c'è))
-DatabaseComponenti::Iteratore DatabaseComponenti::cercaComponente(string q) {
+//DatabaseComponenti::Iteratore DatabaseComponenti::cercaComponente(string q) {
+//   Iteratore it= this->begin();
+//   while (it!= this->end()) {
+//      if ((*it)->getMarca() == q)
+//         return it;
+//      ++it;
+//   }
+//   return this->end();
+//}
+
+// cerca Riparazione (ritorna l'iteratore che punta al componente (se c'è))
+DatabaseComponenti::Iteratore DatabaseComponenti::cercaComponente(const string& marca,const string& modello){
    Iteratore it= this->begin();
    while (it!= this->end()) {
-      if ((*it)->getMarca() == q)
-         return it;
+      if (((*it)->getMarca()== marca) && ((*it)->getModello()== modello)){
+          return it;
+      }
       ++it;
    }
    return this->end();
 }
-
-//void DatabaseClienti::save() const{
-//    ofstream OUT1("Clienti:");
-//    if (OUT1)
-//        remove("Clienti");
-//    DatabaseComponenti::Iteratore it;
-//    for (it=
-
-//    }
-
-//}

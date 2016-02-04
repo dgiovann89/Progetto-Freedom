@@ -7,7 +7,7 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     // new
    layoutSfondo=new QVBoxLayout(this);
    layoutDatiComponente = new QGridLayout();
-   layoutBottoni = new QHBoxLayout(this);
+   layoutBottoni = new QHBoxLayout();
    boxDatiComponente = new QGroupBox(this);
    boxBottoni = new QGroupBox(this);
    comboBoxTipo = new QComboBox();
@@ -141,14 +141,25 @@ void FinestraInserisciComponente::salva(){
 
      if (lineEditMarca->text()!=""){
         if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==2){
-            Componente* a = new OnOff(marca, modello, anno, pressione, portataCapacita, cdp, kw,cl,sala);
-            inserito = db->inserisciComponente(a);
-            sala->aggiungiComponente(a);
+            if (comboBoxTipo->currentIndex()==1){
+                Componente* a = new OnOff(marca, modello, anno, pressione, portataCapacita, cdp, kw,true,cl,sala);
+                inserito = db->inserisciComponente(a);
+                sala->aggiungiComponente(a);
+            }
+            else{
+                Componente* a = new OnOff(marca, modello, anno, pressione, portataCapacita, cdp, kw,false,cl,sala);
+                inserito = db->inserisciComponente(a);
+                sala->aggiungiComponente(a);}
         }
         else if (comboBoxTipo->currentIndex()==3 || comboBoxTipo->currentIndex()==4){
-            Componente* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacita, cdp ,kw,cl,sala);
-            inserito = db->inserisciComponente(a);
-            sala->aggiungiComponente(a);
+            if (comboBoxTipo->currentIndex()==3){
+                Componente* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacita, cdp ,kw,true,cl,sala);
+                inserito = db->inserisciComponente(a);
+                sala->aggiungiComponente(a);}
+            else{
+                Componente* a = new VelocitaVariabile(marca, modello, anno, pressione, portataCapacita, cdp ,kw,false,cl,sala);
+                inserito = db->inserisciComponente(a);
+                sala->aggiungiComponente(a);}
         }
         else if (comboBoxTipo->currentIndex()==5){
             Componente* a = new Impianto(marca, modello, anno, pressione, portataCapacita,cdp,cl,sala);

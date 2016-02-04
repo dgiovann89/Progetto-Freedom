@@ -46,7 +46,6 @@ private:
         };
 
     Smartp primo;
-
 public:
         DatabaseComponenti();
         DatabaseComponenti(const DatabaseComponenti&);
@@ -73,7 +72,8 @@ public:
 
         bool inserisciComponente(Componente*);
         bool rimuoviComponente(Componente*);
-        Iteratore cercaComponente(string);
+//        Iteratore cercaComponente(string);
+        Iteratore cercaComponente(const string&, const string&);
 
         void save() const;
         void load() throw(EccezioniFile);

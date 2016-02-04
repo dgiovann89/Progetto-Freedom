@@ -3,6 +3,7 @@
 FinestraPrincipale::FinestraPrincipale(QDialog* parent): QDialog(parent){
     dbc = new DatabaseClienti();
     dbc->loadClienti(DatabaseClienti::Json); // carica il dbc da file
+    dbComp=new DatabaseComponenti();
     this->setWindowTitle("Finestra Principale");
     this->setMinimumSize(320,240);
 
@@ -33,7 +34,7 @@ void FinestraPrincipale::apriFinestraInserisciCliente(){
 }
 
 void FinestraPrincipale::apriFinestraCercaCliente(){
-    FinestraCercaCliente finCerCli(dbc);
+    FinestraCercaCliente finCerCli(dbc,dbComp);
     finCerCli.exec();
 }
 

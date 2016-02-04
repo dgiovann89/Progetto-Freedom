@@ -1,18 +1,18 @@
 #include "finestraconfigurasala.h"
 
-FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, SalaCompressori* sl, QDialog *parent): QDialog(parent), dbc(d), cl(c), sala(sl) {
-    db = new DatabaseComponenti();
+FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, DatabaseComponenti* db, Cliente* c, SalaCompressori* sl, QDialog *parent): QDialog(parent), dbComp(db), dbc(d),cl(c), sala(sl) {
+//    db = new DatabaseComponenti();
 
     this->setWindowTitle("Finestra Configurazione sala compressori");
     this->showMaximized(); // metti la finestra a tutto schermo
 
     // new layout e groupBox
-    layoutInfoSala = new QGridLayout(this);
-    layoutTabella = new QVBoxLayout(this);
-    layoutSinistra = new QVBoxLayout(this);
-    layoutDestra = new QVBoxLayout(this);
-    layoutBottoniFinestra = new QVBoxLayout(this);
-    layoutBottoniTabella = new QHBoxLayout(this);
+    layoutInfoSala = new QGridLayout();
+    layoutTabella = new QVBoxLayout();
+    layoutSinistra = new QVBoxLayout();
+    layoutDestra = new QVBoxLayout();
+    layoutBottoniFinestra = new QVBoxLayout();
+    layoutBottoniTabella = new QHBoxLayout();
     layoutSfondo = new QHBoxLayout(this);
     layoutParametriSala = new QGridLayout();
     boxSinistra = new QGroupBox(this);
@@ -48,7 +48,7 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     labelPressioneEffettiva = new QLabel("Pressione Effettiva (Bar):", this);
     lineEditPressioneEffettiva = new QLineEdit(this);
     lineEditPressioneEffettiva->setDisabled(true);
-    labelCadutaDiPressioneTot = new QLabel("Caduta di pressione Tot (Bar):",this);
+    labelCadutaDiPressioneTot = new QLabel("Caduta di press. Tot (Bar):",this);
     lineEditCadutaDiPressioneTot = new QLineEdit(this);
     lineEditCadutaDiPressioneTot->setDisabled(true);
 
@@ -74,7 +74,6 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
     bottoneInserisciComponente=new QPushButton("Inserisci componente",this);
     bottoneVisualizzaComponente=new QPushButton("Visualizza componente",this);
     bottoneEliminaComponente=new QPushButton("Elimina Componente",this);
-    bottoneSalva=new QPushButton("Salva",this);
     bottoneEsportaPDF=new QPushButton("Esporta PDF",this);
     bottoneIndietro=new QPushButton("Torna indietro",this);
 
@@ -102,7 +101,6 @@ FinestraConfiguraSala::FinestraConfiguraSala(DatabaseClienti* d, Cliente* c, Sal
         boxParametriSala->setLayout(layoutParametriSala);
         layoutDestra->addWidget(boxBottoniFinestra);
         boxBottoniFinestra->setLayout(layoutBottoniFinestra);
-        layoutBottoniFinestra->addWidget(bottoneSalva);
         layoutBottoniFinestra->addWidget(bottoneEsportaPDF);
         layoutBottoniFinestra->addWidget(bottoneIndietro);
 
@@ -183,10 +181,12 @@ void FinestraConfiguraSala::aggiornaPortataTot(){
     float portata_richiesta = lineEditPortataRichiesta->text().toFloat();
     int portata_partziale=0;
     for(unsigned int it=0;it<sala->getComponenti().size();++it){
-        const Serbatoio* serb = dynamic_cast <const Serbatoio*>  (sala->getComponente(it));
-        if (!serb)
-            portata_partziale = portata_partziale + sala->getComponente(it)->getPortata_capacita();
-            sala->setPortataTot(portata_partziale);
+        const Macchinario* macc = dynamic_cast <const Macchinario*>  (sala->getComponente(it));
+        if (macc)
+            if (macc->isCompressore()){
+                portata_partziale = portata_partziale + sala->getComponente(it)->getPortata_capacita();
+                sala->setPortataTot(portata_partziale);
+            }
     }
     lineEditPortataEffettiva->setText(QString::number(portata_partziale));
     if (portata_partziale<portata_richiesta)
@@ -247,9 +247,9 @@ void FinestraConfiguraSala::riempiTabellaComponenti(){
 void FinestraConfiguraSala::eliminaComponente(){
     if (tabellaComponenti->currentItem()!= 0){
            int riga=tabellaComponenti->currentRow();
-           Componente* r=*(db->cercaComponente(tabellaComponenti->item(riga,0)->text().toStdString()));
+           Componente* r=*(dbComp->cercaComponente(tabellaComponenti->item(riga,0)->text().toStdString(),tabellaComponenti->item(riga,1)->text().toStdString()));
            if(r){
-               db->rimuoviComponente(r); //rimuove dal contenitore
+               dbComp->rimuoviComponente(r); //rimuove dal contenitore
                sala->rimuoviComponente(riga); //rimuove dal vector
            }
        tabellaComponenti->clearContents();
@@ -274,7 +274,7 @@ void FinestraConfiguraSala::apriModificaInfoSala(){
 }
 
 void FinestraConfiguraSala::apriFinestraInserisciComponente(){
-    FinestraInserisciComponente finInsComp(db,cl,sala);
+    FinestraInserisciComponente finInsComp(dbComp,cl,sala);
     finInsComp.exec();
     tabellaComponenti->clearContents();
     tabellaComponenti->setRowCount(0);
@@ -312,7 +312,7 @@ void FinestraConfiguraSala::apriFinestraVisualizzaComponente(){
                  }
                  i++;
              }
-        FinestraVisualizzaComponente finVisComp(db,r,this);
+        FinestraVisualizzaComponente finVisComp(dbComp,r,this);
         finVisComp.exec();
         aggiornaKwSala();
         aggiornaCDPTot();

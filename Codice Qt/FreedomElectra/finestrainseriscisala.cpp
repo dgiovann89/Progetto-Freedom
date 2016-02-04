@@ -7,7 +7,7 @@ FinestraInserisciSala::FinestraInserisciSala(DatabaseClienti* d, Cliente* c, QDi
     // new layout e groupbox
     layoutSfondo = new QVBoxLayout(this);
     layoutInfoSala = new QGridLayout();
-    layoutBottoni = new QHBoxLayout(this);
+    layoutBottoni = new QHBoxLayout();
     boxInfoSala = new QGroupBox(this);
     boxBottoni = new QGroupBox(this);
 
