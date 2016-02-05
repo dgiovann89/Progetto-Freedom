@@ -1,7 +1,7 @@
 #ifndef FILTRO_H
 #define FILTRO_H
 
-#include<componente.h>
+#include "componente.h"
 
 class Filtro : public Componente{
 

@@ -1,18 +1,19 @@
 #ifndef FINESTRAVISUALIZZACOMPONENTE_H
 #define FINESTRAVISUALIZZACOMPONENTE_H
 
-#include<finestrainseriscisala.h>
-#include<finestrainseriscicomponente.h>
+#include "finestrainseriscisala.h"
+#include "finestrainseriscicomponente.h"
 #include "modificadaticomponente.h"
-#include<databasecomponenti.h>
-#include<QComboBox>
-#include<QString>
+#include "databasecomponenti.h"
+#include <QComboBox>
+#include <QString>
 
 class FinestraVisualizzaComponente : public QDialog{
     Q_OBJECT
 private:
     DatabaseComponenti* db;
     Componente* c;
+
 public:
     explicit FinestraVisualizzaComponente(DatabaseComponenti*, Componente*, QDialog* parent=0);
 
@@ -48,9 +49,6 @@ public:
     // bottoni
     QPushButton* bottoneIndietro;
     QPushButton* bottoneModifica;
-
-    // combobox
-//    QComboBox* comboBoxTipo;
 
 public slots:
     void apriModificaDatiComponente();

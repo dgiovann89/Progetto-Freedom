@@ -3,19 +3,20 @@
 
 #include "finestraclienteselezionato.h"
 #include "finestracercacliente.h"
-#include<QGroupBox>
-#include<QVBoxLayout>
-#include<QGridLayout>
-#include<QHBoxLayout>
-#include<QLabel>
-#include<QLineEdit>
-#include<QPushButton>
+#include <QGroupBox>
+#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
 
 class ModificaAnagraficaCliente : public QDialog {
     Q_OBJECT
 private:
     DatabaseClienti* dbc;
     Cliente* cl;
+
 public:
     explicit ModificaAnagraficaCliente(DatabaseClienti*, Cliente* ,QDialog* parent=0);
 
@@ -50,7 +51,6 @@ public:
 
     QPushButton* bottoneIndietro;
     QPushButton* bottoneSalva;
-
 
 public slots:
     void salva();

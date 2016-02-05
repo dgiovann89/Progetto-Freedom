@@ -10,11 +10,11 @@ DatabaseComponenti::Smartp::Smartp(Nodo* p): it(p){
 
 //distruttore
 DatabaseComponenti::Smartp::~Smartp(){
-   if(it){
-       it->riferimenti--;
-       if(it->riferimenti==0)
-             delete it;
-      }
+    if(it){
+        it->riferimenti--;
+        if(it->riferimenti==0)
+            delete it;
+    }
 }
 
 //costruttore di copia
@@ -45,9 +45,9 @@ DatabaseComponenti::Nodo& DatabaseComponenti::Smartp::operator*() const{
 }
 
 //Operatore di accesso a membro
- DatabaseComponenti::Nodo* DatabaseComponenti::Smartp::operator->() const{
-     return it;
- }
+DatabaseComponenti::Nodo* DatabaseComponenti::Smartp::operator->() const{
+    return it;
+}
 //operatore di uguaglianza
 bool DatabaseComponenti::Smartp::operator==(const Smartp& s) const{
     return it==s.it;
@@ -66,7 +66,6 @@ DatabaseComponenti::Nodo::Nodo(Componente* r): info(r), riferimenti(0) {}
 
 //costruttore
 DatabaseComponenti::Nodo::Nodo(Componente* r, const Smartp & s):info(r), next(s), riferimenti(0){}
-
 
 
 //----------------------------------------------------
@@ -139,8 +138,8 @@ bool DatabaseComponenti::isEmpty() const {
 
 //inserimento
 bool DatabaseComponenti::inserisciComponente(Componente* r){
-           primo= new Nodo(r,primo);
-           return true;
+    primo= new Nodo(r,primo);
+    return true;
 }
 
 //cancellazione di un Componente
@@ -152,47 +151,24 @@ bool DatabaseComponenti::rimuoviComponente(Componente* r){
     }
     ++it;
     while (it!=this->end()) { // scorro gli elementi successivi
-       if(it.iit->info==r){
-           itPrec.iit->next= it.iit->next;
-           return true;
-       }
-       ++it;
-       ++itPrec;
+        if(it.iit->info==r){
+            itPrec.iit->next= it.iit->next;
+            return true;
+        }
+        ++it;
+        ++itPrec;
     }
     return false;
 }
 
-// cerca Componente (ritorna l'iteratore che punta al Componente (se c'è))
-//DatabaseComponenti::Iteratore DatabaseComponenti::cercaComponente(string q) {
-//   Iteratore it= this->begin();
-//   while (it!= this->end()) {
-//      if ((*it)->getMarca() == q)
-//         return it;
-//      ++it;
-//   }
-//   return this->end();
-//}
-
-// cerca Riparazione (ritorna l'iteratore che punta al componente (se c'è)) cerca per marca e modello
-//DatabaseComponenti::Iteratore DatabaseComponenti::cercaComponente(const string& marca,const string& modello){
-//   Iteratore it= this->begin();
-//   while (it!= this->end()) {
-//      if (((*it)->getMarca()== marca) && ((*it)->getModello()== modello)){
-//          return it;
-//      }
-//      ++it;
-//   }
-//   return this->end();
-//}
-
 // cerca Riparazione (ritorna l'iteratore che punta al componente (se c'è)) e cerca per id
-DatabaseComponenti::Iteratore DatabaseComponenti::cercaComponente(const int& idComp){
-   Iteratore it= this->begin();
-   while (it!= this->end()) {
-      if (((*it)->getIdComponente()==idComp)){
-          return it;
-      }
-      ++it;
-   }
-   return this->end();
+DatabaseComponenti::Iteratore DatabaseComponenti::cercaComponente(int idComp){
+    Iteratore it= this->begin();
+    while (it!= this->end()) {
+        if (((*it)->getIdComponente()==idComp)){
+            return it;
+        }
+        ++it;
+    }
+    return this->end();
 }

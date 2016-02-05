@@ -1,7 +1,7 @@
 #ifndef IMPIANTO_H
 #define IMPIANTO_H
 
-#include<componente.h>
+#include "componente.h"
 
 class Impianto : public Componente{
 public:

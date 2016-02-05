@@ -1,17 +1,17 @@
 #ifndef FINESTRAINSERISCICOMPONENTE_H
 #define FINESTRAINSERISCICOMPONENTE_H
 
-#include<finestrainseriscisala.h>
-#include<QComboBox>
-#include<QString>
-#include<databasecomponenti.h>
-#include<componente.h>
-#include<onoff.h>
-#include<velocitavariabile.h>
-#include<salacompressori.h>
-#include<serbatoio.h>
-#include<filtro.h>
-#include<impianto.h>
+#include "finestrainseriscisala.h"
+#include <QComboBox>
+#include <QString>
+#include "databasecomponenti.h"
+#include "componente.h"
+#include "onoff.h"
+#include "velocitavariabile.h"
+#include "salacompressori.h"
+#include "serbatoio.h"
+#include "filtro.h"
+#include "impianto.h"
 
 class FinestraInserisciComponente : public QDialog{
     Q_OBJECT

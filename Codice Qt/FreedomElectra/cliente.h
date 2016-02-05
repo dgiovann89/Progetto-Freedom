@@ -1,8 +1,8 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 #include "indirizzo.h"
 #include "salacompressori.h"
 #include <QJsonObject>
@@ -13,7 +13,6 @@
 using std::vector;
 using std::string;
 using namespace std;
-
 
 class Cliente{
 private:
@@ -28,7 +27,6 @@ private:
 
 public:
     Cliente(string="", string="", string="", string="", string="", string="", Indirizzo=Indirizzo());
-//    ~Cliente();
 
     //get
     string getRagioneSociale() const;
@@ -59,16 +57,6 @@ public:
     // metodi per i file
     void read(const QJsonObject& json);
     void write(QJsonObject &json) const;
-
-    void readSala(const QJsonObject& json);
-    void writeSala(QJsonObject &json) const;
-
-    enum SaveFormat{
-        Json
-    };
-
-    bool loadSala(SaveFormat saveFormat);
-    bool saveSala(SaveFormat saveFormat) const;
 };
 
 #endif // CLIENTE_H

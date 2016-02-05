@@ -2,7 +2,7 @@
 
 FinestraClienteSelezionato::FinestraClienteSelezionato(DatabaseClienti* d, DatabaseComponenti* db, Cliente* c, QDialog *parent):QDialog(parent), dbc(d), dbComp(db), cl(c){
     this->setWindowTitle("Finestra Cliente Selezionato");
-    this->showMaximized(); // metti la finestra a tutto schermo
+    this->showMaximized();
 
     // new layout e groupbox
     layoutSfondo=new QVBoxLayout(this);
@@ -145,39 +145,39 @@ void FinestraClienteSelezionato::aggiornaKwStabilimento(){
 
 //metodo privato riempiTabellaSale
 void FinestraClienteSelezionato::riempiTabellaSale() {
-   int row = tabellaSale->rowCount();
-   for (unsigned int i= 0; i<cl->getSala().size();++i) {
-         tabellaSale->setRowCount(row+1);
+    int row = tabellaSale->rowCount();
+    for (unsigned int i= 0; i<cl->getSala().size();++i) {
+        tabellaSale->setRowCount(row+1);
 
-         QTableWidgetItem* itemNome= new QTableWidgetItem (QString::fromStdString(cl->getSala(i).getNome()));
-         tabellaSale->setItem(row, 0, itemNome);
-         itemNome->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        QTableWidgetItem* itemNome= new QTableWidgetItem (QString::fromStdString(cl->getSala(i).getNome()));
+        tabellaSale->setItem(row, 0, itemNome);
+        itemNome->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-         QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(cl->getStabilimento()));
-         tabellaSale->setItem(row, 1, itemStabilimento);
-         itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(cl->getStabilimento()));
+        tabellaSale->setItem(row, 1, itemStabilimento);
+        itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-         QTableWidgetItem* itemImpianto= new QTableWidgetItem (QString::fromStdString(cl->getSala(i).getImpianto()));
-         tabellaSale->setItem(row, 2, itemImpianto);
-         itemImpianto->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        QTableWidgetItem* itemImpianto= new QTableWidgetItem (QString::fromStdString(cl->getSala(i).getImpianto()));
+        tabellaSale->setItem(row, 2, itemImpianto);
+        itemImpianto->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-         QTableWidgetItem* itemKwTot= new QTableWidgetItem (QString::number(cl->getSala(i).getKwTot()));
-         tabellaSale->setItem(row, 3, itemKwTot);
-         itemKwTot->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        QTableWidgetItem* itemKwTot= new QTableWidgetItem (QString::number(cl->getSala(i).getKwTot()));
+        tabellaSale->setItem(row, 3, itemKwTot);
+        itemKwTot->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-         QTableWidgetItem* itemLtMin= new QTableWidgetItem (QString::number(cl->getSala(i).getPortataTot()));
-         tabellaSale->setItem(row, 4, itemLtMin);
-         itemLtMin->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        QTableWidgetItem* itemLtMin= new QTableWidgetItem (QString::number(cl->getSala(i).getPortataTot()));
+        tabellaSale->setItem(row, 4, itemLtMin);
+        itemLtMin->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-         QTableWidgetItem* itemPressRic= new QTableWidgetItem (QString::number(cl->getSala(i).getPressioneRichiesta()));
-         tabellaSale->setItem(row, 5, itemPressRic);
-         itemPressRic->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        QTableWidgetItem* itemPressRic= new QTableWidgetItem (QString::number(cl->getSala(i).getPressioneRichiesta()));
+        tabellaSale->setItem(row, 5, itemPressRic);
+        itemPressRic->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-         QTableWidgetItem* itemPortRic= new QTableWidgetItem (QString::number(cl->getSala(i).getPortataRichiesta()));
-         tabellaSale->setItem(row, 6, itemPortRic);
-         itemPortRic->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-         ++row;
-   }
+        QTableWidgetItem* itemPortRic= new QTableWidgetItem (QString::number(cl->getSala(i).getPortataRichiesta()));
+        tabellaSale->setItem(row, 6, itemPortRic);
+        itemPortRic->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        ++row;
+    }
 }
 
 void FinestraClienteSelezionato::apriFinestraInserisciSala(){
@@ -225,16 +225,16 @@ void FinestraClienteSelezionato::elimina(){
         SalaCompressori* a=&(cl->getSala(rigaSel));
 
         vector<Componente*>::const_iterator it=a->getComponenti().end();
-       int i=0;
+        int i=0;
 
-       for(;it!=a->getComponenti().begin() && a->getComponenti().size()>0;--it){
-                   Componente* r=*dbComp->cercaComponente(a->getComponente(i)->getIdComponente());
-                   dbComp->rimuoviComponente(r);
-                   delete r;
-                   a->getComponenti().pop_back();
+        for(;it!=a->getComponenti().begin() && a->getComponenti().size()>0;--it){
+            Componente* r=*dbComp->cercaComponente(a->getComponente(i)->getIdComponente());
+            dbComp->rimuoviComponente(r);
+            delete r;
+            a->getComponenti().pop_back();
 
-                   i++;
-               }
+            i++;
+        }
 
         cl->rimuoviSala(rigaSel);
         tabellaSale->clearContents();

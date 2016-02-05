@@ -7,7 +7,7 @@ ModificaInfoSala::ModificaInfoSala(DatabaseClienti* d, Cliente* c, SalaCompresso
     // new layout e groupbox
     layoutSfondo = new QVBoxLayout(this);
     layoutInfoSala = new QGridLayout();
-    layoutBottoni = new QHBoxLayout(this);
+    layoutBottoni = new QHBoxLayout();
     boxInfoSala = new QGroupBox(this);
     boxBottoni = new QGroupBox(this);
 
@@ -65,22 +65,21 @@ void ModificaInfoSala::torna() {
 }
 
 void ModificaInfoSala::salva(){
-
     if(lineEditNomeSala->text()!="" && lineEditPressioneRichiesta->text()!="" &&
-       lineEditPortataRichiesta->text()!="" && lineEditImpianto->text()!=""){
+            lineEditPortataRichiesta->text()!="" && lineEditImpianto->text()!=""){
         sala->setNome(lineEditNomeSala->text().toStdString());
         sala->setPortataRichiesta(lineEditPortataRichiesta->text().toInt());
         sala->setPressioneRichiesta(lineEditPressioneRichiesta->text().toInt());
         sala->setImpianto(lineEditImpianto->text().toStdString());
 
-       QMessageBox messageBox(this);
-            messageBox.setText("Dati aggiornati correttamente");
-            messageBox.exec();
-            this->close();
+        QMessageBox messageBox(this);
+        messageBox.setText("Dati aggiornati correttamente");
+        messageBox.exec();
+        this->close();
     }
     else{
         QMessageBox messageBox(this);
         messageBox.setText("Compilare tutti i campi");
         messageBox.exec();
-  }
+    }
 }

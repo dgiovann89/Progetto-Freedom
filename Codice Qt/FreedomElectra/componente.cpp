@@ -32,7 +32,6 @@ int Componente::getIdComponente() const {
     return idComponente;
 }
 
-
 // set
 void Componente::setMarca(string s) {
     marca = s;
@@ -52,7 +51,6 @@ void Componente::setPortata_capacita(float i) {
 void Componente::setCadutaDiPressione(float c) {
     cadutaDiPressione = c;
 }
-
 void Componente::setProprietario(Cliente * punt){
     proprietario = punt;
 }

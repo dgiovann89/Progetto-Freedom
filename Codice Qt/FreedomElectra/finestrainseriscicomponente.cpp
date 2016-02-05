@@ -5,49 +5,42 @@ FinestraInserisciComponente::FinestraInserisciComponente(DatabaseComponenti* d, 
     this->setMinimumSize(340,340);
 
     // new
-   layoutSfondo=new QVBoxLayout(this);
-   layoutDatiComponente = new QGridLayout();
-   layoutBottoni = new QHBoxLayout();
-   boxDatiComponente = new QGroupBox(this);
-   boxBottoni = new QGroupBox(this);
-   comboBoxTipo = new QComboBox();
-   labelTipo = new QLabel("Tipo:");
-   labelMarca=new QLabel("Marca:");
-   labelModello = new QLabel("Modello:");
-   labelAnno = new QLabel("Anno:");
-   labelPressione = new QLabel("Pressione (Bar):");
-   labelPortata_Capacita = new QLabel("Portata o Capacita (Lt/s):");
-   labelCadDiPress = new QLabel("Caduta di pressione (Bar):");
-   labelKw = new QLabel("Kw:");
-   lineEditMarca = new QLineEdit(this);
-   lineEditModello = new QLineEdit(this);
-   lineEditAnno = new QLineEdit("2000");
-   lineEditAnno->setInputMask("9999");
-   lineEditPressione = new QLineEdit("07.0");
-   lineEditPressione->setInputMask("xx.x");
-   lineEditPortata_Capacita = new QLineEdit("0");
-   lineEditCadDiPress = new QLineEdit("0");
-   lineEditKw = new QLineEdit("0");
-   lineEditKw->setDisabled(true);
-   bottoneIndietro=new QPushButton("Torna indietro",this);
-   bottoneSalva = new QPushButton("Salva",this);
-   bottoneSalva->setDefault(true);
+    layoutSfondo=new QVBoxLayout(this);
+    layoutDatiComponente = new QGridLayout();
+    layoutBottoni = new QHBoxLayout();
+    boxDatiComponente = new QGroupBox(this);
+    boxBottoni = new QGroupBox(this);
+    comboBoxTipo = new QComboBox();
+    labelTipo = new QLabel("Tipo:");
+    labelMarca=new QLabel("Marca:");
+    labelModello = new QLabel("Modello:");
+    labelAnno = new QLabel("Anno:");
+    labelPressione = new QLabel("Pressione (Bar):");
+    labelPortata_Capacita = new QLabel("Portata o Capacita (Lt/s):");
+    labelCadDiPress = new QLabel("Caduta di pressione (Bar):");
+    labelKw = new QLabel("Kw:");
+    lineEditMarca = new QLineEdit(this);
+    lineEditModello = new QLineEdit(this);
+    lineEditAnno = new QLineEdit("2000");
+    lineEditAnno->setInputMask("9999");
+    lineEditPressione = new QLineEdit("07.0");
+    lineEditPressione->setInputMask("xx.x");
+    lineEditPortata_Capacita = new QLineEdit("0");
+    lineEditCadDiPress = new QLineEdit("0");
+    lineEditKw = new QLineEdit("0");
+    lineEditKw->setDisabled(true);
+    bottoneIndietro=new QPushButton("Torna indietro",this);
+    bottoneSalva = new QPushButton("Salva",this);
+    bottoneSalva->setDefault(true);
 
-   comboBoxTipo->insertItem(0,"Seleziona il tipo");
-   comboBoxTipo->insertItem(1,"Compressore On-Off");
-   comboBoxTipo->insertItem(2,"Essiccatore On-Off");
-   comboBoxTipo->insertItem(3,"Compressorie Vel variable");
-   comboBoxTipo->insertItem(4,"Essiccatore Vel variabile");
-   comboBoxTipo->insertItem(5,"Impianto");
-   comboBoxTipo->insertItem(6,"Filtro");
-   comboBoxTipo->insertItem(7,"Serbatoio");
-
-
-//    selezionato = comboBoxTipo->currentText();
-//    if (selezionato=="Compressore On-Off")
-//        lineEditKw->setDisabled(true);
-//    else
-//        lineEditKw->setDisabled(false);
+    comboBoxTipo->insertItem(0,"Seleziona il tipo");
+    comboBoxTipo->insertItem(1,"Compressore On-Off");
+    comboBoxTipo->insertItem(2,"Essiccatore On-Off");
+    comboBoxTipo->insertItem(3,"Compressorie Vel variable");
+    comboBoxTipo->insertItem(4,"Essiccatore Vel variabile");
+    comboBoxTipo->insertItem(5,"Impianto");
+    comboBoxTipo->insertItem(6,"Filtro");
+    comboBoxTipo->insertItem(7,"Serbatoio");
 
     // associazione box e layout
     layoutSfondo->addWidget(boxDatiComponente);
@@ -122,7 +115,6 @@ void FinestraInserisciComponente::sbloccaLineEdit(){
             labelKw->setDisabled(true);
             lineEditKw->setDisabled(true);
         }
-
 }
 
 int FinestraInserisciComponente::calcolaIdComponente() const{
@@ -154,7 +146,7 @@ void FinestraInserisciComponente::salva(){
 
     FinestraInserisciComponente::sbloccaLineEdit();
 
-     if (lineEditMarca->text()!=""){
+    if (lineEditMarca->text()!=""){
         if (comboBoxTipo->currentIndex()==1 || comboBoxTipo->currentIndex()==2){
             if (comboBoxTipo->currentIndex()==1){
                 Componente* a = new OnOff(marca, modello, anno, pressione, portataCapacita, cdp, kw,true,cl,sala,idComponente);
@@ -195,20 +187,20 @@ void FinestraInserisciComponente::salva(){
             inserito=false;
         QMessageBox messageBox(this);
         if (inserito) {
-           messageBox.setText("Componente inserito con successo!");
-           messageBox.exec();
-           this->close();
+            messageBox.setText("Componente inserito con successo!");
+            messageBox.exec();
+            this->close();
         }
         else {
-           messageBox.setText("Compilare i campi.");
-           messageBox.exec();
+            messageBox.setText("Compilare i campi.");
+            messageBox.exec();
         }
-     }
-     else {
-         QMessageBox messageBox(this);
-         messageBox.setText("Inserire una marca non vuota.");
-         messageBox.exec();
-     }
+    }
+    else {
+        QMessageBox messageBox(this);
+        messageBox.setText("Inserire una marca non vuota.");
+        messageBox.exec();
+    }
 }
 
 void FinestraInserisciComponente::torna(){

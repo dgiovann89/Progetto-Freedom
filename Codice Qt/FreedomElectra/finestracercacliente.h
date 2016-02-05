@@ -1,16 +1,16 @@
 #ifndef FINESTRACERCACLIENTE_H
 #define FINESTRACERCACLIENTE_H
 
-#include<finestraprincipale.h>
-#include<finestraclienteselezionato.h>
-#include<QTableWidget>
-#include<QStringList>
-#include<QGroupBox>
-#include<QLineEdit>
-#include<QFormLayout>
-#include<databaseclienti.h>
-#include "QJsonDocument"
-#include "QJsonObject"
+#include "finestraprincipale.h"
+#include "finestraclienteselezionato.h"
+#include <QTableWidget>
+#include <QStringList>
+#include <QGroupBox>
+#include <QLineEdit>
+#include <QFormLayout>
+#include "databaseclienti.h"
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QHeaderView>
 
 class FinestraCercaCliente : public QDialog{
@@ -18,7 +18,7 @@ class FinestraCercaCliente : public QDialog{
 private:
     DatabaseClienti* dbCli;
     DatabaseComponenti* dbComp;
-    void riempiTabellaClienti(); //+ eventualmente header
+    void riempiTabellaClienti();
     void aggiornaTabellaClienti();
     void intestazioneTabella();
     DatabaseClienti fromJasonClienti;
@@ -28,6 +28,7 @@ public:
 
     // Layout e groupBox
     QVBoxLayout* layoutSfondo;
+
     // QFormLayout* layoutCompilazione;
     QHBoxLayout* layoutCompilazione;
     QVBoxLayout* layoutLista;
@@ -61,7 +62,6 @@ public slots:
     void abilitaLineEditPIva();
     void abilitaLineEditRagioneSociale();
     void resetCampi();
-
 };
 
 #endif // FINESTRACERCACLIENTE_H

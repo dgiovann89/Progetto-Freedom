@@ -209,6 +209,7 @@ DIST          = /Applications/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/qt_config.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/default_pre.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -391,6 +392,7 @@ Makefile: FreedomElectra.pro /Applications/Qt/5.3/clang_64/mkspecs/macx-clang/qm
 		/Applications/Qt/5.3/clang_64/mkspecs/features/qt_config.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/default_pre.prf \
 		/Applications/Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -511,6 +513,7 @@ Makefile: FreedomElectra.pro /Applications/Qt/5.3/clang_64/mkspecs/macx-clang/qm
 /Applications/Qt/5.3/clang_64/mkspecs/features/qt_config.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Applications/Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/default_pre.prf:
 /Applications/Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -554,7 +557,7 @@ FreedomElectra.app/Contents/Info.plist:
 	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@ICON@,,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.FreedomElectra,g" -e "s,@EXECUTABLE@,FreedomElectra,g" -e "s,@TYPEINFO@,????,g" /Applications/Qt/5.3/clang_64/mkspecs/macx-clang/Info.plist.app >FreedomElectra.app/Contents/Info.plist
 dist: 
 	@test -d .tmp/FreedomElectra1.0.0 || mkdir -p .tmp/FreedomElectra1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents cliente.h componente.h salacompressori.h databaseclienti.h databasecomponenti.h macchinario.h filtro.h serbatoio.h impianto.h onoff.h velocitavariabile.h indirizzo.h finestraprincipale.h finestracercacliente.h finestrainseriscicliente.h finestraclienteselezionato.h finestrainseriscicomponente.h finestravisualizzacomponente.h finestrainseriscisala.h finestraconfigurasala.h modificaanagraficacliente.h modificainfosala.h modificadaticomponente.h eccezioni.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents cliente.cpp componente.cpp salacompressori.cpp databaseclienti.cpp databasecomponenti.cpp main.cpp macchinario.cpp filtro.cpp serbatoio.cpp impianto.cpp onoff.cpp velocitavariabile.cpp indirizzo.cpp finestraprincipale.cpp finestracercacliente.cpp finestrainseriscicliente.cpp finestraclienteselezionato.cpp finestrainseriscicomponente.cpp finestravisualizzacomponente.cpp finestrainseriscisala.cpp finestraconfigurasala.cpp modificaanagraficacliente.cpp modificainfosala.cpp modificadaticomponente.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents cliente.h componente.h salacompressori.h databaseclienti.h databasecomponenti.h macchinario.h filtro.h serbatoio.h impianto.h onoff.h velocitavariabile.h indirizzo.h finestraprincipale.h finestracercacliente.h finestrainseriscicliente.h finestraclienteselezionato.h finestrainseriscicomponente.h finestravisualizzacomponente.h finestrainseriscisala.h finestraconfigurasala.h modificaanagraficacliente.h modificainfosala.h modificadaticomponente.h .tmp/FreedomElectra1.0.0/ && $(COPY_FILE) --parents cliente.cpp componente.cpp salacompressori.cpp databaseclienti.cpp databasecomponenti.cpp main.cpp macchinario.cpp filtro.cpp serbatoio.cpp impianto.cpp onoff.cpp velocitavariabile.cpp indirizzo.cpp finestraprincipale.cpp finestracercacliente.cpp finestrainseriscicliente.cpp finestraclienteselezionato.cpp finestrainseriscicomponente.cpp finestravisualizzacomponente.cpp finestrainseriscisala.cpp finestraconfigurasala.cpp modificaanagraficacliente.cpp modificainfosala.cpp modificadaticomponente.cpp .tmp/FreedomElectra1.0.0/ && (cd `dirname .tmp/FreedomElectra1.0.0` && $(TAR) FreedomElectra1.0.0.tar FreedomElectra1.0.0 && $(COMPRESS) FreedomElectra1.0.0.tar) && $(MOVE) `dirname .tmp/FreedomElectra1.0.0`/FreedomElectra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FreedomElectra1.0.0
 
 
 clean:compiler_clean 
@@ -595,7 +598,14 @@ moc_finestraprincipale.cpp: /Applications/Qt/5.3/clang_64/lib/QtWidgets.framewor
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -605,8 +615,14 @@ moc_finestraprincipale.cpp: /Applications/Qt/5.3/clang_64/lib/QtWidgets.framewor
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
 		finestracercacliente.h \
 		finestraprincipale.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		finestraclienteselezionato.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
@@ -614,10 +630,6 @@ moc_finestraprincipale.cpp: /Applications/Qt/5.3/clang_64/lib/QtWidgets.framewor
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -633,6 +645,8 @@ moc_finestraprincipale.cpp: /Applications/Qt/5.3/clang_64/lib/QtWidgets.framewor
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraprincipale.h
 	/Applications/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/giovannidamo/Dropbox/P2 Drop/Progetto Freedom/Codice Qt/FreedomElectra' -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Headers -F/Applications/Qt/5.3/clang_64/lib finestraprincipale.h -o moc_finestraprincipale.cpp
 
@@ -650,7 +664,14 @@ moc_finestracercacliente.cpp: finestraprincipale.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -660,6 +681,8 @@ moc_finestracercacliente.cpp: finestraprincipale.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
 		finestracercacliente.h \
 		finestraclienteselezionato.h \
 		finestrainseriscisala.h \
@@ -687,6 +710,8 @@ moc_finestracercacliente.cpp: finestraprincipale.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestracercacliente.h
 	/Applications/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/giovannidamo/Dropbox/P2 Drop/Progetto Freedom/Codice Qt/FreedomElectra' -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Headers -F/Applications/Qt/5.3/clang_64/lib finestracercacliente.h -o moc_finestracercacliente.cpp
 
@@ -694,7 +719,14 @@ moc_finestrainseriscicliente.cpp: databaseclienti.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
@@ -710,6 +742,8 @@ moc_finestrainseriscicliente.cpp: databaseclienti.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QPushButton \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
 		finestrainseriscicliente.h
 	/Applications/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/giovannidamo/Dropbox/P2 Drop/Progetto Freedom/Codice Qt/FreedomElectra' -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Headers -F/Applications/Qt/5.3/clang_64/lib finestrainseriscicliente.h -o moc_finestrainseriscicliente.cpp
 
@@ -728,7 +762,14 @@ moc_finestraclienteselezionato.cpp: finestracercacliente.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -738,6 +779,12 @@ moc_finestraclienteselezionato.cpp: finestracercacliente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		finestraclienteselezionato.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
@@ -745,10 +792,6 @@ moc_finestraclienteselezionato.cpp: finestracercacliente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -764,6 +807,8 @@ moc_finestraclienteselezionato.cpp: finestracercacliente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraclienteselezionato.h
 	/Applications/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/giovannidamo/Dropbox/P2 Drop/Progetto Freedom/Codice Qt/FreedomElectra' -I/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Headers -F/Applications/Qt/5.3/clang_64/lib finestraclienteselezionato.h -o moc_finestraclienteselezionato.cpp
 
@@ -784,7 +829,14 @@ moc_finestrainseriscicomponente.cpp: finestrainseriscisala.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -794,21 +846,25 @@ moc_finestrainseriscicomponente.cpp: finestrainseriscisala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -838,7 +894,14 @@ moc_finestravisualizzacomponente.cpp: finestrainseriscisala.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -848,21 +911,25 @@ moc_finestravisualizzacomponente.cpp: finestrainseriscisala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -891,7 +958,14 @@ moc_finestrainseriscisala.cpp: finestraclienteselezionato.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -901,22 +975,26 @@ moc_finestrainseriscisala.cpp: finestraclienteselezionato.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -945,7 +1023,14 @@ moc_finestraconfigurasala.cpp: finestraclienteselezionato.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -955,22 +1040,26 @@ moc_finestraconfigurasala.cpp: finestraclienteselezionato.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -999,7 +1088,14 @@ moc_modificaanagraficacliente.cpp: finestraclienteselezionato.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1009,22 +1105,26 @@ moc_modificaanagraficacliente.cpp: finestraclienteselezionato.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1053,7 +1153,14 @@ moc_modificainfosala.cpp: finestraclienteselezionato.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1063,22 +1170,26 @@ moc_modificainfosala.cpp: finestraclienteselezionato.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1108,7 +1219,14 @@ moc_modificadaticomponente.cpp: finestrainseriscisala.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1118,21 +1236,25 @@ moc_modificadaticomponente.cpp: finestrainseriscisala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1163,23 +1285,54 @@ compiler_clean: compiler_moc_header_clean
 
 cliente.o: cliente.cpp cliente.h \
 		indirizzo.h \
-		salacompressori.h
+		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cliente.o cliente.cpp
 
 componente.o: componente.cpp componente.h \
 		cliente.h \
 		indirizzo.h \
-		salacompressori.h
+		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o componente.o componente.cpp
 
-salacompressori.o: salacompressori.cpp salacompressori.h
+salacompressori.o: salacompressori.cpp salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o salacompressori.o salacompressori.cpp
 
 databaseclienti.o: databaseclienti.cpp databaseclienti.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databaseclienti.o databaseclienti.cpp
 
 databasecomponenti.o: databasecomponenti.cpp databasecomponenti.h \
@@ -1187,6 +1340,14 @@ databasecomponenti.o: databasecomponenti.cpp databasecomponenti.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databasecomponenti.o databasecomponenti.cpp
@@ -1207,7 +1368,14 @@ main.o: main.cpp /Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1217,6 +1385,8 @@ main.o: main.cpp /Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
 		finestracercacliente.h \
 		finestraclienteselezionato.h \
 		finestrainseriscisala.h \
@@ -1243,35 +1413,69 @@ main.o: main.cpp /Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
-		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 macchinario.o: macchinario.cpp macchinario.h \
 		componente.h \
 		cliente.h \
 		indirizzo.h \
-		salacompressori.h
+		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o macchinario.o macchinario.cpp
 
 filtro.o: filtro.cpp filtro.h \
 		componente.h \
 		cliente.h \
 		indirizzo.h \
-		salacompressori.h
+		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filtro.o filtro.cpp
 
 serbatoio.o: serbatoio.cpp serbatoio.h \
 		componente.h \
 		cliente.h \
 		indirizzo.h \
-		salacompressori.h
+		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serbatoio.o serbatoio.cpp
 
 impianto.o: impianto.cpp impianto.h \
 		componente.h \
 		cliente.h \
 		indirizzo.h \
-		salacompressori.h
+		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o impianto.o impianto.cpp
 
 onoff.o: onoff.cpp onoff.h \
@@ -1279,7 +1483,15 @@ onoff.o: onoff.cpp onoff.h \
 		componente.h \
 		cliente.h \
 		indirizzo.h \
-		salacompressori.h
+		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o onoff.o onoff.cpp
 
 velocitavariabile.o: velocitavariabile.cpp velocitavariabile.h \
@@ -1287,7 +1499,15 @@ velocitavariabile.o: velocitavariabile.cpp velocitavariabile.h \
 		componente.h \
 		cliente.h \
 		indirizzo.h \
-		salacompressori.h
+		salacompressori.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o velocitavariabile.o velocitavariabile.cpp
 
 indirizzo.o: indirizzo.cpp indirizzo.h
@@ -1307,7 +1527,14 @@ finestraprincipale.o: finestraprincipale.cpp finestraprincipale.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1317,6 +1544,8 @@ finestraprincipale.o: finestraprincipale.cpp finestraprincipale.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
 		finestracercacliente.h \
 		finestraclienteselezionato.h \
 		finestrainseriscisala.h \
@@ -1343,7 +1572,9 @@ finestraprincipale.o: finestraprincipale.cpp finestraprincipale.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
-		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestraprincipale.o finestraprincipale.cpp
 
 finestracercacliente.o: finestracercacliente.cpp finestracercacliente.h \
@@ -1361,7 +1592,14 @@ finestracercacliente.o: finestracercacliente.cpp finestracercacliente.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1371,6 +1609,12 @@ finestracercacliente.o: finestracercacliente.cpp finestracercacliente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		finestraclienteselezionato.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
@@ -1378,10 +1622,6 @@ finestracercacliente.o: finestracercacliente.cpp finestracercacliente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1396,7 +1636,9 @@ finestracercacliente.o: finestracercacliente.cpp finestracercacliente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
-		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestracercacliente.o finestracercacliente.cpp
 
 finestrainseriscicliente.o: finestrainseriscicliente.cpp finestrainseriscicliente.h \
@@ -1404,7 +1646,14 @@ finestrainseriscicliente.o: finestrainseriscicliente.cpp finestrainserisciclient
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
@@ -1419,7 +1668,9 @@ finestrainseriscicliente.o: finestrainseriscicliente.cpp finestrainserisciclient
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QPushButton \
-		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o finestrainseriscicliente.o finestrainseriscicliente.cpp
 
 finestraclienteselezionato.o: finestraclienteselezionato.cpp finestraclienteselezionato.h \
@@ -1438,7 +1689,14 @@ finestraclienteselezionato.o: finestraclienteselezionato.cpp finestraclientesele
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1448,22 +1706,26 @@ finestraclienteselezionato.o: finestraclienteselezionato.cpp finestraclientesele
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1493,7 +1755,14 @@ finestrainseriscicomponente.o: finestrainseriscicomponente.cpp finestrainserisci
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1503,19 +1772,23 @@ finestrainseriscicomponente.o: finestrainseriscicomponente.cpp finestrainserisci
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		modificadaticomponente.h \
-		databasecomponenti.h \
-		componente.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
 		modificainfosala.h \
@@ -1546,7 +1819,14 @@ finestravisualizzacomponente.o: finestravisualizzacomponente.cpp finestravisuali
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1556,20 +1836,24 @@ finestravisualizzacomponente.o: finestravisualizzacomponente.cpp finestravisuali
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraconfigurasala.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1598,7 +1882,14 @@ finestrainseriscisala.o: finestrainseriscisala.cpp finestrainseriscisala.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1608,21 +1899,25 @@ finestrainseriscisala.o: finestrainseriscisala.cpp finestrainseriscisala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1651,7 +1946,14 @@ finestraconfigurasala.o: finestraconfigurasala.cpp finestraconfigurasala.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1661,22 +1963,26 @@ finestraconfigurasala.o: finestraconfigurasala.cpp finestraconfigurasala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestrainseriscisala.h \
 		modificaanagraficacliente.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1704,7 +2010,14 @@ modificaanagraficacliente.o: modificaanagraficacliente.cpp modificaanagraficacli
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1714,22 +2027,26 @@ modificaanagraficacliente.o: modificaanagraficacliente.cpp modificaanagraficacli
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1757,7 +2074,14 @@ modificainfosala.o: modificainfosala.cpp modificainfosala.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1767,22 +2091,26 @@ modificainfosala.o: modificainfosala.cpp modificainfosala.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestrainseriscisala.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \
@@ -1811,7 +2139,14 @@ modificadaticomponente.o: modificadaticomponente.cpp modificadaticomponente.h \
 		cliente.h \
 		indirizzo.h \
 		salacompressori.h \
-		eccezioni.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonObject \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonobject.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonArray \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsonarray.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QJsonDocument \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qjsondocument.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGridLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgridlayout.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHBoxLayout \
@@ -1821,21 +2156,25 @@ modificadaticomponente.o: modificadaticomponente.cpp modificadaticomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QPalette \
+		/Applications/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		databasecomponenti.h \
+		componente.h \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTableWidget \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtablewidget.h \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QStringList \
 		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstringlist.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFormLayout \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qformlayout.h \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QHeaderView \
+		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qheaderview.h \
 		finestraconfigurasala.h \
 		finestravisualizzacomponente.h \
 		finestrainseriscicomponente.h \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QComboBox \
 		/Applications/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcombobox.h \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		/Applications/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		databasecomponenti.h \
-		componente.h \
 		onoff.h \
 		macchinario.h \
 		velocitavariabile.h \

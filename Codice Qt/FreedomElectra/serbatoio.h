@@ -1,7 +1,7 @@
 #ifndef SERBATOIO_H
 #define SERBATOIO_H
 
-#include<componente.h>
+#include "componente.h"
 
 class Serbatoio : public Componente{
 public:

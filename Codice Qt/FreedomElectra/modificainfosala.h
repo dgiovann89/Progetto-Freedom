@@ -1,9 +1,9 @@
 #ifndef MODIFICAINFOSALA_H
 #define MODIFICAINFOSALA_H
 
-#include<finestraclienteselezionato.h>
-#include<QGroupBox>
-#include<QLineEdit>
+#include "finestraclienteselezionato.h"
+#include <QGroupBox>
+#include <QLineEdit>
 
 class ModificaInfoSala : public QDialog{
     Q_OBJECT
@@ -11,6 +11,7 @@ private:
     DatabaseClienti* dbc;
     Cliente* cl;
     SalaCompressori* sala;
+
 public:
     explicit ModificaInfoSala(DatabaseClienti*, Cliente*, SalaCompressori*, QDialog* parent=0);
 

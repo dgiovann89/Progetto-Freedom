@@ -1,8 +1,8 @@
 #ifndef SALACOMPRESSORI_H
 #define SALACOMPRESSORI_H
 
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 //#include<componente.h>
 //#include<cliente.h> // quando funzionava era commentato
 #include <QJsonObject>
@@ -25,7 +25,7 @@ private:
     int pressioneRichiesta;
     int portataRichiesta;
     string impianto;
-    vector<Componente*> componenti; //tipo puntatore o classe??
+    vector<Componente*> componenti;
 public:
     SalaCompressori(string,Cliente*,int=0,int=0,int=0,int=0,string="");
     ~SalaCompressori();
@@ -52,12 +52,8 @@ public:
     void setKwTot(int);
     void setPortataTot(int);
 
-    // AAA nella rimuovi, rimouvo solo il componente puntato che sta in questo vector, o rimuovo anche quello nella classe DB_componenti
     void aggiungiComponente(Componente*);
     void rimuoviComponente(int);
-
-    void readSala(const QJsonObject& json);
-    void writeSala(QJsonObject &json) const;
 };
 
 #endif // SALACOMPRESSORI_H

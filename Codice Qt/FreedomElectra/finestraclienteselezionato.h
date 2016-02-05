@@ -1,12 +1,12 @@
 #ifndef FINESTRACLIENTESELEZIONATO_H
 #define FINESTRACLIENTESELEZIONATO_H
 
-#include<finestracercacliente.h>
-#include<finestrainseriscisala.h>
-#include<finestraconfigurasala.h>
+#include "finestracercacliente.h"
+#include "finestrainseriscisala.h"
+#include "finestraconfigurasala.h"
 #include "modificaanagraficacliente.h"
-#include<QTableWidget>
-#include<QGroupBox>
+#include <QTableWidget>
+#include <QGroupBox>
 
 class FinestraClienteSelezionato : public QDialog{
     Q_OBJECT
@@ -14,9 +14,9 @@ private:
     DatabaseClienti* dbc;
     DatabaseComponenti* dbComp;
     Cliente* cl;
-
     void riempiTabellaSale();
     void aggiornaKwStabilimento();
+
 public:
     explicit FinestraClienteSelezionato(DatabaseClienti* ,DatabaseComponenti*, Cliente* , QDialog* parent=0);
 

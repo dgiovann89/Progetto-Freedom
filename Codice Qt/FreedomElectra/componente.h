@@ -1,14 +1,13 @@
 #ifndef COMPONENTE_H
 #define COMPONENTE_H
 
-#include<iostream>
-#include<cliente.h>
+#include <iostream>
+#include "cliente.h"
 
 using std::string;
 
 class Componente{
 private:
-    int idComponente;
     string marca;
     string modello;
     int anno;
@@ -17,6 +16,8 @@ private:
     float cadutaDiPressione;
     Cliente* proprietario;
     SalaCompressori* sala;
+    int idComponente;
+
 public:
     Componente(string, string, int, float, float, float, Cliente* =0, SalaCompressori* =0, int =0);
     // distruttore virtuale
@@ -43,8 +44,6 @@ public:
     void setCadutaDiPressione(float);
     void setProprietario(Cliente*);
     void setSala(SalaCompressori*);
-//    void setTipo(string);
-//    void virtual setKw(int);
 };
 
 #endif // COMPONENTE_H

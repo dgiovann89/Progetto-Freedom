@@ -1,7 +1,7 @@
 #ifndef MACCHINARIO_H
 #define MACCHINARIO_H
 
-#include<componente.h>
+#include "componente.h"
 
 class Macchinario : public Componente{
 private:
@@ -9,9 +9,10 @@ private:
 
 protected:
     bool compressore;
+
 public:
     Macchinario(string, string, int, int, int, float, int, bool, Cliente* =0, SalaCompressori* =0, int =0);
-//    string getTipo() const;
+
     // get
     virtual int getKw() const;
 

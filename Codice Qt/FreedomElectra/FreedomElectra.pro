@@ -21,8 +21,7 @@ HEADERS += \
     finestraconfigurasala.h \
     modificaanagraficacliente.h \
     modificainfosala.h \
-    modificadaticomponente.h \
-    eccezioni.h
+    modificadaticomponente.h
 
 SOURCES += \
     cliente.cpp \

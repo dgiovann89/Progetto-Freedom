@@ -1,7 +1,7 @@
 #ifndef VELOCITAVARIABILE_H
 #define VELOCITAVARIABILE_H
 
-#include<macchinario.h>
+#include "macchinario.h"
 
 class VelocitaVariabile : public Macchinario{
 public:

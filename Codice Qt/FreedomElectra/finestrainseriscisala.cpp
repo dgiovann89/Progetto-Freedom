@@ -66,7 +66,7 @@ void FinestraInserisciSala::torna() {
 
 void FinestraInserisciSala::salva(){
     if(lineEditNomeSala->text()!="" && lineEditPressioneRichiesta->text()!="" &&
-       lineEditPortataRichiesta->text()!="" && lineEditImpianto->text()!=""){
+            lineEditPortataRichiesta->text()!="" && lineEditImpianto->text()!=""){
 
         SalaCompressori sala(lineEditNomeSala->text().toStdString(),
                              cl,
@@ -76,16 +76,15 @@ void FinestraInserisciSala::salva(){
                              lineEditPortataRichiesta->text().toInt(),
                              lineEditImpianto->text().toStdString());
 
-       cl->aggiungiSala(sala);
-       cl->saveSala(Cliente::Json);
-       QMessageBox messageBox(this);
-            messageBox.setText("Dati inseriti correttamente");
-            messageBox.exec();
-            this->close();
+        cl->aggiungiSala(sala);
+        QMessageBox messageBox(this);
+        messageBox.setText("Dati inseriti correttamente");
+        messageBox.exec();
+        this->close();
     }
     else{
         QMessageBox messageBox(this);
         messageBox.setText("Compilare tutti i campi");
         messageBox.exec();
-  }
+    }
 }

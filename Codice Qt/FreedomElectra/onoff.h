@@ -1,7 +1,7 @@
 #ifndef ONOFF_H
 #define ONOFF_H
 
-#include<macchinario.h>
+#include "macchinario.h"
 
 class OnOff : public Macchinario{
 public:

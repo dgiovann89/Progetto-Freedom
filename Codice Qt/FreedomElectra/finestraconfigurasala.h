@@ -1,20 +1,19 @@
 #ifndef FINESTRACONFIGURASALA_H
 #define FINESTRACONFIGURASALA_H
 
-#include<finestraclienteselezionato.h>
-#include<finestrainseriscisala.h>
-#include<finestravisualizzacomponente.h>
-#include<finestrainseriscicomponente.h>
-#include<modificainfosala.h>
-#include<databasecomponenti.h>
-#include<QTableWidget>
-#include<QGroupBox>
-#include<QString>
-#include<iostream>
+#include "finestraclienteselezionato.h"
+#include "finestrainseriscisala.h"
+#include "finestravisualizzacomponente.h"
+#include "finestrainseriscicomponente.h"
+#include "modificainfosala.h"
+#include "databasecomponenti.h"
+#include <QTableWidget>
+#include <QGroupBox>
+#include <QString>
+#include <iostream>
 #include <QPalette>
 
 using namespace std;
-
 
 class FinestraConfiguraSala : public QDialog{
     Q_OBJECT
@@ -28,6 +27,7 @@ private:
     void aggiornaCDPTot();
     void aggiornaPortataTot();
     void aggiornaPressioneEff();
+
 public:
     explicit FinestraConfiguraSala(DatabaseClienti*, DatabaseComponenti*, Cliente*, SalaCompressori* , QDialog* parent=0);
 

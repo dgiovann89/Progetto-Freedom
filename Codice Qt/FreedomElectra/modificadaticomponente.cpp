@@ -9,7 +9,6 @@ ModificaDatiComponente::ModificaDatiComponente(DatabaseComponenti* d, Componente
     layoutDatiComponente = new QGridLayout();
     layoutBottoni = new QHBoxLayout();
     boxDatiComponente = new QGroupBox(this);
-//    boxDatiComponente->setDisabled(true);
     boxBottoni = new QGroupBox(this);
     labelTipo = new QLabel("Tipo:");
     labelMarca=new QLabel("Marca:");
@@ -96,7 +95,7 @@ void ModificaDatiComponente::salva(){
             c->setCadutaDiPressione(lineeditCadDiPress->text().toInt());
         }
 
-    QMessageBox messageBox(this);
+        QMessageBox messageBox(this);
         messageBox.setText("Dati aggiornati correttamente");
         messageBox.exec();
         this->close();

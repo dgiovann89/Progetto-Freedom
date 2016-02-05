@@ -1,15 +1,16 @@
 #ifndef FINESTRAINSERISCISALA_H
 #define FINESTRAINSERISCISALA_H
 
-#include<finestraclienteselezionato.h>
-#include<QGroupBox>
-#include<QLineEdit>
+#include "finestraclienteselezionato.h"
+#include <QGroupBox>
+#include <QLineEdit>
 
 class FinestraInserisciSala : public QDialog{
     Q_OBJECT
 private:
     DatabaseClienti* dbc;
     Cliente* cl;
+
 public:
     explicit FinestraInserisciSala(DatabaseClienti*, Cliente*, QDialog* parent=0);
 

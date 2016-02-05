@@ -2,8 +2,7 @@
 
 SalaCompressori::SalaCompressori(string n, Cliente* cl, int k, int p, int press, int port, string i):nome(n), proprietario(cl), kwTot(k), portataTot(p), pressioneRichiesta(press), portataRichiesta(port), impianto(i){}
 
-SalaCompressori::~SalaCompressori(){
-}
+SalaCompressori::~SalaCompressori(){}
 
 // get
 string SalaCompressori::getNome() const{
@@ -62,37 +61,4 @@ void SalaCompressori::setKwTot(int i) {
 }
 void SalaCompressori::setPortataTot(int i){
     portataTot=i;
-}
-
-//metodi per file
-void SalaCompressori::readSala(const QJsonObject &json){
-//    nome = (json["jNome"].toString().toStdString());
-////    &proprietario = (json["jProprietario"].toString().toStdString());
-//    kwTot = (json["jKwTot"].toInt());
-//    portataTot = (json["jPortataTot"].toInt());
-//    pressioneRichiesta = (json["jPressioneRichiesta"].toInt());
-//    portataRichiesta = (json["jPortataRichiesta"].toInt());
-//    impianto = (json["jImpianto"].toString().toStdString());
-//    // mancherebbe il load dei componenti nel vector
-}
-
-void SalaCompressori::writeSala(QJsonObject &json) const{
-//    json["jRagioneSociale"]=QString::fromStdString(getProprietario()->getRagioneSociale());
-    json["jRagioneSociale"]=QString::fromStdString("getProprietario()->getRagioneSociale()");
-//    json["jStabilimento"]=QString::fromStdString(getProprietario()->getStabilimento());
-    json["jStabilimento"]=QString::fromStdString("getProprietario()->getStabilimento()");
-
-//    Cliente* a = getProprietario();
-//    std::cout << &a << std::endl;
-//    string b = std::to_string(a);
-//    getProprietario().getIdCliente;
-//    json["jProprietario"] = QString::fromStdString(&a);
-    json["jNome"] = QString::fromStdString(getNome());
-    json["jKwTot"] = getKwTot();
-    json["jPortataTot"] = getPortataTot();
-    json["jPressioneRichiesta"]= getPressioneRichiesta();
-    json["jPortataRichiesta"]= getPortataRichiesta();
-    // mancherebbe il salvataggio del vector componenti che faccio a meno di farlo
-    json["jImpianto"]=QString::fromStdString(impianto);
-
 }

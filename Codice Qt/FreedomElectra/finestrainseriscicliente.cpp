@@ -86,17 +86,16 @@ void FinestraInserisciCliente::torna(){
 }
 
 void FinestraInserisciCliente::salva(){
-
     if(lineEditRagioneSociale->text()!="" && lineEditPIva->text()!="" &&
-       lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
-       lineEditVia->text()!="" && lineEditCitta->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
+            lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
+            lineEditVia->text()!="" && lineEditCitta->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
 
         Cliente cli(lineEditRagioneSociale->text().toStdString(),
-                  lineEditTelefono->text().toStdString(),
-                  lineEditEmail->text().toStdString(),
-                  lineEditFax->text().toStdString(),
-                  lineEditPIva->text().toStdString(),
-                  lineEditStabilimento->text().toStdString());
+                    lineEditTelefono->text().toStdString(),
+                    lineEditEmail->text().toStdString(),
+                    lineEditFax->text().toStdString(),
+                    lineEditPIva->text().toStdString(),
+                    lineEditStabilimento->text().toStdString());
 
         Indirizzo i(lineEditVia->text().toStdString(),
                     lineEditCitta->text().toStdString(),
@@ -105,13 +104,24 @@ void FinestraInserisciCliente::salva(){
 
         cli.setInd(i);
 
-       dbc->aggiungiCliente(cli);
-       dbc->saveClienti(DatabaseClienti::Json); // salva sul file
-       QMessageBox messageBox(this);
+        bool inseribile=true;
+        for (unsigned int i=0;i<dbc->getDatabase().size();i++){
+            if(cli.getRagioneSociale() == dbc->getCliente(i).getRagioneSociale() && cli.getStabilimento()==dbc->getCliente(i).getStabilimento()){
+                QMessageBox messageBox(this);
+                messageBox.setText("Cliente gia presente");
+                messageBox.exec();
+                inseribile=false;
+            }
+        }
+
+        if (inseribile==true){
+            dbc->aggiungiCliente(cli);
+            dbc->saveClienti(DatabaseClienti::Json); // salva sul file
+            QMessageBox messageBox(this);
             messageBox.setText("Dati inseriti correttamente");
             messageBox.exec();
             this->close();
-
+        }
     }
     else{
         QMessageBox messageBox(this);
@@ -137,5 +147,5 @@ void FinestraInserisciCliente::salva(){
         else lineEditCap->setPalette(paletteVerde);
         if (lineEditProvincia->text()=="") lineEditProvincia->setPalette(paletteRosso);
         else lineEditProvincia->setPalette(paletteVerde);
-  }
+    }
 }

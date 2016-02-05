@@ -1,18 +1,19 @@
 #ifndef MODIFICADATICOMPONENTE_H
 #define MODIFICADATICOMPONENTE_H
 
-#include<finestrainseriscisala.h>
-#include<finestrainseriscicomponente.h>
+#include "finestrainseriscisala.h"
+#include "finestrainseriscicomponente.h"
 //#include "modificadaticomponente.h"
-#include<databasecomponenti.h>
-#include<QComboBox>
-#include<QString>
+#include "databasecomponenti.h"
+#include <QComboBox>
+#include <QString>
 
 class ModificaDatiComponente : public QDialog{
     Q_OBJECT
 private:
     DatabaseComponenti* db;
     Componente* c;
+
 public:
     explicit ModificaDatiComponente(DatabaseComponenti*, Componente*, QDialog* parent=0);
 

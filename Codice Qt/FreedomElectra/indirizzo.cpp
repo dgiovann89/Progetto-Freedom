@@ -33,7 +33,6 @@ void Indirizzo::setCap(string s){
 ostream& operator<<(ostream &os, const Indirizzo &i) {
     return os << "Via:" << i.getVia() << endl << "Citta: " << i.getCitta() << endl << "Provincia: " << i.getProvincia() << endl << "Cap:" << i.getCap() << endl;
 }
-
 bool Indirizzo::operator==(const Indirizzo& i) const {
     return via==i.via && citta==i.citta && provincia==i.provincia && cap==i.cap;
 }

@@ -9,7 +9,6 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     layoutDatiComponente = new QGridLayout();
     layoutBottoni = new QHBoxLayout();
     boxDatiComponente = new QGroupBox(this);
-//    boxDatiComponente->setDisabled(true);
     boxBottoni = new QGroupBox(this);
 
     labelTipo = new QLabel("Tipo:");
@@ -21,7 +20,6 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     labelKw = new QLabel("Kw:");
     labelCdP = new QLabel("Caduta di Pressione (Bar):");
 
-//    lineEditTipo = new QLineEdit(comboBoxTipo->currentText());
     lineEditTipo = new QLineEdit(QString::fromStdString(c->getTipo()));
     lineEditTipo->setDisabled(true);
     lineEditMarca = new QLineEdit(QString::fromStdString(c->getMarca()));
@@ -37,16 +35,8 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
     lineEditCdP = new QLineEdit(QString::number(c->getCadutaDiPressione()));
     lineEditCdP->setDisabled(true);
 
-
-//    lineEditKw = new QLineEdit(this);
-//    lineEditKw->setDisabled(true);
     bottoneIndietro=new QPushButton("Torna indietro",this);
     bottoneModifica = new QPushButton("Modifica",this);
-//    comboBoxTipo = new QComboBox(this);
-
-//    // set comboBox
-//    QStringList list= (QStringList()<< "Compressore On-Off"<< "Compressorie Vel variable"<< "Essiccatore On-Off" << "Essiccatore Vel variabile" << "Impianto" << "Filtro" << "Serbatoio");
-//    comboBoxTipo->addItems(list);
 
     const Macchinario* comp = dynamic_cast <const Macchinario*>  (c);
     if (comp){
@@ -65,7 +55,6 @@ FinestraVisualizzaComponente::FinestraVisualizzaComponente(DatabaseComponenti* d
 
     // associazione a layoutDatiComponente
     layoutDatiComponente->addWidget(labelTipo,0,0);
-//    layoutDatiComponente->addWidget(comboBoxTipo,0,1);
     layoutDatiComponente->addWidget(lineEditTipo,0,1);
     layoutDatiComponente->addWidget(labelMarca,1,0);
     layoutDatiComponente->addWidget(lineEditMarca,1,1);
