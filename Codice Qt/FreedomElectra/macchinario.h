@@ -10,7 +10,7 @@ private:
 protected:
     bool compressore;
 public:
-    Macchinario(string, string, int, int, int, float, int, bool, Cliente* =0, SalaCompressori* =0);
+    Macchinario(string, string, int, int, int, float, int, bool, Cliente* =0, SalaCompressori* =0, int =0);
 //    string getTipo() const;
     // get
     virtual int getKw() const;

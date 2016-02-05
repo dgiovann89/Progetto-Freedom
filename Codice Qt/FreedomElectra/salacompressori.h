@@ -4,12 +4,15 @@
 #include<iostream>
 #include<vector>
 //#include<componente.h>
-//#include<cliente.h>
+//#include<cliente.h> // quando funzionava era commentato
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QFile>
 
 using std::string;
 using std::vector;
 
-// AAA 2 classi incomplete dicharate..va bene?
 class Cliente;
 class Componente;
 
@@ -53,7 +56,8 @@ public:
     void aggiungiComponente(Componente*);
     void rimuoviComponente(int);
 
-//    void aggiornaKwTot(int);
+    void readSala(const QJsonObject& json);
+    void writeSala(QJsonObject &json) const;
 };
 
 #endif // SALACOMPRESSORI_H

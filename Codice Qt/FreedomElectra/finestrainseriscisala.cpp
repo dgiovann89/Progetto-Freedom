@@ -77,6 +77,7 @@ void FinestraInserisciSala::salva(){
                              lineEditImpianto->text().toStdString());
 
        cl->aggiungiSala(sala);
+       cl->saveSala(Cliente::Json);
        QMessageBox messageBox(this);
             messageBox.setText("Dati inseriti correttamente");
             messageBox.exec();

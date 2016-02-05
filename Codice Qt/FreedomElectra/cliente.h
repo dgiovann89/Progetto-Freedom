@@ -14,6 +14,7 @@ using std::vector;
 using std::string;
 using namespace std;
 
+
 class Cliente{
 private:
     string ragioneSociale;
@@ -58,6 +59,16 @@ public:
     // metodi per i file
     void read(const QJsonObject& json);
     void write(QJsonObject &json) const;
+
+    void readSala(const QJsonObject& json);
+    void writeSala(QJsonObject &json) const;
+
+    enum SaveFormat{
+        Json
+    };
+
+    bool loadSala(SaveFormat saveFormat);
+    bool saveSala(SaveFormat saveFormat) const;
 };
 
 #endif // CLIENTE_H

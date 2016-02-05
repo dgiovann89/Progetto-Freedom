@@ -8,6 +8,7 @@ using std::string;
 
 class Componente{
 private:
+    int idComponente;
     string marca;
     string modello;
     int anno;
@@ -17,7 +18,7 @@ private:
     Cliente* proprietario;
     SalaCompressori* sala;
 public:
-    Componente(string, string, int, float, float, float, Cliente* =0, SalaCompressori* =0);
+    Componente(string, string, int, float, float, float, Cliente* =0, SalaCompressori* =0, int =0);
     // distruttore virtuale
     virtual ~Componente();
 
@@ -30,6 +31,7 @@ public:
     float getCadutaDiPressione() const;
     Cliente* getCliente() const;
     SalaCompressori* getSala() const;
+    int getIdComponente() const;
     virtual string getTipo() const=0;
 
     //set

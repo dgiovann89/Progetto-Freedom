@@ -73,7 +73,8 @@ public:
         bool inserisciComponente(Componente*);
         bool rimuoviComponente(Componente*);
 //        Iteratore cercaComponente(string);
-        Iteratore cercaComponente(const string&, const string&);
+//        Iteratore cercaComponente(const string&, const string&);
+        Iteratore cercaComponente(const int&);
 
         void save() const;
         void load() throw(EccezioniFile);

@@ -5,7 +5,7 @@
 
 class Serbatoio : public Componente{
 public:
-    Serbatoio(string, string, int, int, int, float, Cliente* =0, SalaCompressori* =0);
+    Serbatoio(string, string, int, int, int, float, Cliente* =0, SalaCompressori* =0,int =0);
     string getTipo() const;
 };
 

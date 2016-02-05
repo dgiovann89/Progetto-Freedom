@@ -96,3 +96,58 @@ void Cliente::write(QJsonObject &json) const{
     json["jCitta"]=QString::fromStdString(ind.getCitta());
     json["jProvincia"]=QString::fromStdString(ind.getProvincia());
 }
+
+
+//lettura e scrittura da file della sala
+void Cliente::readSala(const QJsonObject &json){
+//    sala.clear();
+//    QJsonArray sArray=json["Archivio Sale"].toArray();
+//    for(int i=0; i<sArray.size();++i){
+//        QJsonObject salaObject=sArray[i].toObject();
+//        Cliente * c = new Cliente();
+//        SalaCompressori s("prova",c);
+//        s.readSala(salaObject);
+//        sala.push_back(s);
+//    }
+}
+
+void Cliente::writeSala(QJsonObject &json) const{
+    QJsonArray salaArray;
+    foreach(const SalaCompressori s, sala){
+        QJsonObject salaObject;
+        s.writeSala(salaObject);
+        salaArray.append(salaObject);
+    }
+    json["Archivio Sale"]=salaArray;
+}
+
+bool Cliente::loadSala(Cliente::SaveFormat){
+
+    QFile loadFile(QStringLiteral("saveSale.json"));
+    if(!loadFile.open(QIODevice::ReadOnly)){
+        qWarning("Non posso aprire il file di salvataggio");
+        return false;
+    }
+
+    QByteArray saveData=loadFile.readAll();
+
+    QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+
+    readSala(loadDoc.object());
+
+    return true;
+}
+
+bool Cliente::saveSala(Cliente::SaveFormat) const{
+    QFile saveFile(QStringLiteral("saveSale.json"));
+    if(!saveFile.open(QIODevice::WriteOnly)){
+        qWarning("Non posso aprire il file di salvataggio");
+        return false;
+    }
+    QJsonObject dbSalaObject;
+    writeSala(dbSalaObject);
+    QJsonDocument saveDoc(dbSalaObject);
+    saveFile.write(saveDoc.toJson());
+    return true;
+}
+

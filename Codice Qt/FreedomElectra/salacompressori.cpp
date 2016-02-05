@@ -64,25 +64,35 @@ void SalaCompressori::setPortataTot(int i){
     portataTot=i;
 }
 
-//void SalaCompressori::setKwTot() {
-//    int kw_compr = 0;
-//    intkw_essicc = 0;
+//metodi per file
+void SalaCompressori::readSala(const QJsonObject &json){
+//    nome = (json["jNome"].toString().toStdString());
+////    &proprietario = (json["jProprietario"].toString().toStdString());
+//    kwTot = (json["jKwTot"].toInt());
+//    portataTot = (json["jPortataTot"].toInt());
+//    pressioneRichiesta = (json["jPressioneRichiesta"].toInt());
+//    portataRichiesta = (json["jPortataRichiesta"].toInt());
+//    impianto = (json["jImpianto"].toString().toStdString());
+//    // mancherebbe il load dei componenti nel vector
+}
 
-//    vector<Componente>::const_iterator it=.begin();
-//    int row = tabellaClienti->rowCount();
-//    for(;it!=dbc->getDatabase().end();++it){
+void SalaCompressori::writeSala(QJsonObject &json) const{
+//    json["jRagioneSociale"]=QString::fromStdString(getProprietario()->getRagioneSociale());
+    json["jRagioneSociale"]=QString::fromStdString("getProprietario()->getRagioneSociale()");
+//    json["jStabilimento"]=QString::fromStdString(getProprietario()->getStabilimento());
+    json["jStabilimento"]=QString::fromStdString("getProprietario()->getStabilimento()");
 
-//    for (int i=0;i<compressori){
-//        kw_compr = kw_compr+compressore.getKw();
-//    }
-//    for (int i=0;i<essiccatori){
-//        kw_essicc = kw_essicc+essiccatore.getKw();
-//    }
-//    kwTot = kwTot + kw_compr + kw_essicc;
-//}
+//    Cliente* a = getProprietario();
+//    std::cout << &a << std::endl;
+//    string b = std::to_string(a);
+//    getProprietario().getIdCliente;
+//    json["jProprietario"] = QString::fromStdString(&a);
+    json["jNome"] = QString::fromStdString(getNome());
+    json["jKwTot"] = getKwTot();
+    json["jPortataTot"] = getPortataTot();
+    json["jPressioneRichiesta"]= getPressioneRichiesta();
+    json["jPortataRichiesta"]= getPortataRichiesta();
+    // mancherebbe il salvataggio del vector componenti che faccio a meno di farlo
+    json["jImpianto"]=QString::fromStdString(impianto);
 
-//scorro il vector di componenti
-// per ogni elemento del vector verifico se è compressore o essiccatore
-//    aggiorno i kw_totali e porata totale
-// esco
-
+}

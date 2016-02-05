@@ -19,6 +19,8 @@ private:
     DatabaseComponenti* db;
     Cliente* cl;
     SalaCompressori* sala;
+    int calcolaIdComponente() const;
+
 public:
     explicit FinestraInserisciComponente(DatabaseComponenti*, Cliente*, SalaCompressori* ,QDialog* parent=0);
 

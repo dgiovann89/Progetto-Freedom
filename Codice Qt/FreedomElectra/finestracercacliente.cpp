@@ -106,15 +106,15 @@ void FinestraCercaCliente::riempiTabellaClienti() {
          tabellaClienti->setRowCount(row+1);
          QTableWidgetItem* itemRagioneSociale= new QTableWidgetItem (QString::fromStdString(dbCli->getCliente(i).getRagioneSociale()));
          tabellaClienti->setItem(row, 0, itemRagioneSociale);
-//         itemRagioneSociale->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+         itemRagioneSociale->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          QTableWidgetItem* itemStabilimento= new QTableWidgetItem (QString::fromStdString(dbCli->getCliente(i).getStabilimento()));
-//         itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+         itemStabilimento->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          tabellaClienti->setItem(row, 1, itemStabilimento);
          QTableWidgetItem* itemVia= new QTableWidgetItem (QString::fromStdString(dbCli->getCliente(i).getIndirizzo().getVia()));
-//         itemVia->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+         itemVia->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          tabellaClienti->setItem(row, 2, itemVia);
          QTableWidgetItem* itemPartitaIva= new QTableWidgetItem (QString::fromStdString(dbCli->getCliente(i).getPIva()));
-//         itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+         itemPartitaIva->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
          tabellaClienti->setItem(row, 3, itemPartitaIva);
          ++row;
    }

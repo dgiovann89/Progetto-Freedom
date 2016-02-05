@@ -5,7 +5,7 @@
 
 class Impianto : public Componente{
 public:
-    Impianto(string, string, int, int, int, float, Cliente* =0, SalaCompressori* =0);
+    Impianto(string, string, int, int, int, float, Cliente* =0, SalaCompressori* =0, int =0);
     string getTipo() const;
 };
 

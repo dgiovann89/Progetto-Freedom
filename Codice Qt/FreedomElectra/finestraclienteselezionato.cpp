@@ -228,7 +228,7 @@ void FinestraClienteSelezionato::elimina(){
        int i=0;
 
        for(;it!=a->getComponenti().begin() && a->getComponenti().size()>0;--it){
-                   Componente* r=*dbComp->cercaComponente(a->getComponente(i)->getMarca(), a->getComponente(i)->getModello());
+                   Componente* r=*dbComp->cercaComponente(a->getComponente(i)->getIdComponente());
                    dbComp->rimuoviComponente(r);
                    delete r;
                    a->getComponenti().pop_back();
