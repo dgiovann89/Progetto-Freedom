@@ -72,7 +72,7 @@ void FinestraInserisciSala::salva(){
                              cl,
                              0,
                              0,
-                             lineEditPressioneRichiesta->text().toInt(),
+                             lineEditPressioneRichiesta->text().toFloat(),
                              lineEditPortataRichiesta->text().toInt(),
                              lineEditImpianto->text().toStdString());
 

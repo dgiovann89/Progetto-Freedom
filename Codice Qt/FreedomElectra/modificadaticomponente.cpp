@@ -81,18 +81,18 @@ void ModificaDatiComponente::salva(){
             comp->setMarca(lineEditMarca->text().toStdString());
             comp->setModello(lineEditModello->text().toStdString());
             comp->setAnno(lineEditAnno->text().toInt());
-            comp->setPressione(lineEditPressione->text().toInt());
+            comp->setPressione(lineEditPressione->text().toFloat());
             comp->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
-            comp->setCadutaDiPressione(lineeditCadDiPress->text().toInt());
+            comp->setCadutaDiPressione(lineeditCadDiPress->text().toFloat());
             comp->setKw(lineEditKw->text().toInt());
         }
         else{
             c->setMarca(lineEditMarca->text().toStdString());
             c->setModello(lineEditModello->text().toStdString());
             c->setAnno(lineEditAnno->text().toInt());
-            c->setPressione(lineEditPressione->text().toInt());
+            c->setPressione(lineEditPressione->text().toFloat());
             c->setPortata_capacita(lineEditPortata_Capacita->text().toInt());
-            c->setCadutaDiPressione(lineeditCadDiPress->text().toInt());
+            c->setCadutaDiPressione(lineeditCadDiPress->text().toFloat());
         }
 
         QMessageBox messageBox(this);

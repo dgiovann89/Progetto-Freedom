@@ -69,7 +69,7 @@ void ModificaInfoSala::salva(){
             lineEditPortataRichiesta->text()!="" && lineEditImpianto->text()!=""){
         sala->setNome(lineEditNomeSala->text().toStdString());
         sala->setPortataRichiesta(lineEditPortataRichiesta->text().toInt());
-        sala->setPressioneRichiesta(lineEditPressioneRichiesta->text().toInt());
+        sala->setPressioneRichiesta(lineEditPressioneRichiesta->text().toFloat());
         sala->setImpianto(lineEditImpianto->text().toStdString());
 
         QMessageBox messageBox(this);

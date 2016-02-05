@@ -22,12 +22,12 @@ private:
     Cliente* proprietario;
     int kwTot;
     int portataTot;
-    int pressioneRichiesta;
+    float pressioneRichiesta;
     int portataRichiesta;
     string impianto;
     vector<Componente*> componenti;
 public:
-    SalaCompressori(string,Cliente*,int=0,int=0,int=0,int=0,string="");
+    SalaCompressori(string,Cliente*,int=0,int=0,float=0,int=0,string="");
     ~SalaCompressori();
 
     //get
@@ -35,7 +35,7 @@ public:
     Cliente* getProprietario() const;
     int getKwTot() const;
     int getPortataTot() const;
-    int getPressioneRichiesta() const;
+    float getPressioneRichiesta() const;
     int getPortataRichiesta() const;
     string getImpianto() const;
 
@@ -46,7 +46,7 @@ public:
     //set
     void setNome(string);
     void setProprietario(Cliente*);
-    void setPressioneRichiesta(int);
+    void setPressioneRichiesta(float);
     void setPortataRichiesta(int);
     void setImpianto(string);
     void setKwTot(int);

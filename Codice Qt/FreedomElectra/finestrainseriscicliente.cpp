@@ -105,7 +105,7 @@ void FinestraInserisciCliente::salva(){
         cli.setInd(i);
 
         bool inseribile=true;
-        for (unsigned int i=0;i<dbc->getDatabase().size();i++){
+        for (unsigned int i=0;i<dbc->getDatabase().size() && inseribile;i++){
             if(cli.getRagioneSociale() == dbc->getCliente(i).getRagioneSociale() && cli.getStabilimento()==dbc->getCliente(i).getStabilimento()){
                 QMessageBox messageBox(this);
                 messageBox.setText("Cliente gia presente");

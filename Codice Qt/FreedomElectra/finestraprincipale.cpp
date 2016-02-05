@@ -9,6 +9,7 @@ FinestraPrincipale::FinestraPrincipale(QDialog* parent): QDialog(parent){
 
     layout=new QVBoxLayout(this);
     labelTitolo=new QLabel("FreedomElectra by Electra System sas");
+    labelTitolo->setFont(QFont("Arial",20));
     bottoneInserisciCliente=new QPushButton("Inserisci Cliente",this);
     bottoneCercaCliente=new QPushButton("Cerca Cliente",this);
     bottoneEsci=new QPushButton("Esci",this);

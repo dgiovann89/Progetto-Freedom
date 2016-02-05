@@ -1,72 +1,12 @@
 #include "databasecomponenti.h"
 
-//Definizione classe Smartp
-
-//costruttore
-DatabaseComponenti::Smartp::Smartp(Nodo* p): it(p){
-    if(it)
-        it->riferimenti++;
-}
-
-//distruttore
-DatabaseComponenti::Smartp::~Smartp(){
-    if(it){
-        it->riferimenti--;
-        if(it->riferimenti==0)
-            delete it;
-    }
-}
-
-//costruttore di copia
-DatabaseComponenti::Smartp::Smartp(const Smartp & s):it(s.it){
-    if(it)
-        it->riferimenti--;
-}
-
-//assegnazione
-DatabaseComponenti::Smartp& DatabaseComponenti::Smartp::operator= (const Smartp &s){
-    if(*this!=s){
-        Nodo* t=it;
-        it=s.it;
-        if(it)
-            it->riferimenti++;
-        if(t){
-            t->riferimenti--;
-            if(t->riferimenti == 0)
-                delete t;
-        }
-    }
-    return *this;
-}
-
-//dereferenziazione
-DatabaseComponenti::Nodo& DatabaseComponenti::Smartp::operator*() const{
-    return const_cast <Nodo&>(*it);
-}
-
-//Operatore di accesso a membro
-DatabaseComponenti::Nodo* DatabaseComponenti::Smartp::operator->() const{
-    return it;
-}
-//operatore di uguaglianza
-bool DatabaseComponenti::Smartp::operator==(const Smartp& s) const{
-    return it==s.it;
-}
-
-//operatore di disuguaglianza
-bool DatabaseComponenti::Smartp::operator !=(const Smartp& s) const{
-    return it!=s.it;
-}
-
-//----------------------------------------------------
 //Definizioni classe Nodo
 
 //costruttore
-DatabaseComponenti::Nodo::Nodo(Componente* r): info(r), riferimenti(0) {}
+DatabaseComponenti::Nodo::Nodo(Componente* r): info(r) {}
 
 //costruttore
-DatabaseComponenti::Nodo::Nodo(Componente* r, const Smartp & s):info(r), next(s), riferimenti(0){}
-
+DatabaseComponenti::Nodo::Nodo(Componente* r, Nodo* s):info(r), next(s){}
 
 //----------------------------------------------------
 //definizioni classe Iteratore
@@ -83,7 +23,7 @@ bool DatabaseComponenti::Iteratore::operator!=(const Iteratore& i) const{
 //incremento prefisso
 DatabaseComponenti::Iteratore& DatabaseComponenti::Iteratore::operator++(){
     if(iit)
-        iit=iit->next.it;
+        iit=iit->next;
     return *this;
 }
 
@@ -91,7 +31,7 @@ DatabaseComponenti::Iteratore& DatabaseComponenti::Iteratore::operator++(){
 DatabaseComponenti::Iteratore& DatabaseComponenti::Iteratore::operator++(int){
     Iteratore aux=*this;
     if(iit)
-        iit=iit->next.it;
+        iit=iit->next;
     return aux;
 }
 
@@ -116,7 +56,7 @@ DatabaseComponenti::~DatabaseComponenti(){}
 //begin
 DatabaseComponenti::Iteratore DatabaseComponenti::begin() const{
     Iteratore temp;
-    temp.iit=primo.it;
+    temp.iit=primo;
     return temp;
 }
 
@@ -143,25 +83,22 @@ bool DatabaseComponenti::inserisciComponente(Componente* r){
 }
 
 //cancellazione di un Componente
-bool DatabaseComponenti::rimuoviComponente(Componente* r){
-    Iteratore it=this->begin(), itPrec=this->begin();
-    if(it.iit->info== r){ // se è il primo elemento
-        primo=primo->next;
-        return true;
+void DatabaseComponenti::rimuoviComponente(const Componente& r){
+    Nodo* p=primo, *prec=0;
+    while(p && !(p->info==&r)){
+        prec=p;
+        p=p->next;
     }
-    ++it;
-    while (it!=this->end()) { // scorro gli elementi successivi
-        if(it.iit->info==r){
-            itPrec.iit->next= it.iit->next;
-            return true;
-        }
-        ++it;
-        ++itPrec;
+    if(p){
+        if(!prec)
+            primo=p->next;
+        else
+            prec->next=p->next;
+        delete p;
     }
-    return false;
 }
 
-// cerca Riparazione (ritorna l'iteratore che punta al componente (se c'è)) e cerca per id
+// cerca Componente (ritorna l'iteratore che punta al componente (se c'è)) e cerca per id
 DatabaseComponenti::Iteratore DatabaseComponenti::cercaComponente(int idComp){
     Iteratore it= this->begin();
     while (it!= this->end()) {

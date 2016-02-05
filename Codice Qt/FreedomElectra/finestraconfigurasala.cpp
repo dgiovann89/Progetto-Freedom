@@ -168,7 +168,7 @@ void FinestraConfiguraSala::aggiornaKwSala(){
 
 void FinestraConfiguraSala::aggiornaCDPTot(){
     lineEditCadutaDiPressioneTot->setText(QString::number(0));
-    int pressione_parziale=0;
+    float pressione_parziale=0;
     for(unsigned int it=0;it<sala->getComponenti().size();++it){
         pressione_parziale = pressione_parziale + sala->getComponente(it)->getCadutaDiPressione();
     }
@@ -195,9 +195,22 @@ void FinestraConfiguraSala::aggiornaPortataTot(){
 }
 
 void FinestraConfiguraSala::aggiornaPressioneEff(){
-    int press_rich = lineEditPressioneRichiesta->text().toInt();
-    int cdp_tot = lineEditCadutaDiPressioneTot->text().toInt();
-    double press_eff = press_rich-cdp_tot;
+    float press_rich = lineEditPressioneRichiesta->text().toFloat();
+
+    float media_pressione_tot=0;
+    int num_comp = 0;
+    for(unsigned int it=0;it<sala->getComponenti().size();++it){
+        const Macchinario* macc = dynamic_cast <const Macchinario*>  (sala->getComponente(it));
+        if (macc)
+            if (macc->isCompressore()){
+                num_comp++;
+                media_pressione_tot = media_pressione_tot + sala->getComponente(it)->getPressione();
+            }
+    }
+    media_pressione_tot = media_pressione_tot/num_comp;
+
+    float cdp_tot = lineEditCadutaDiPressioneTot->text().toFloat();
+    double press_eff = media_pressione_tot-cdp_tot;
     lineEditPressioneEffettiva->setText(QString::number(press_eff));
     if (press_eff>=press_rich)
         lineEditPressioneEffettiva->setPalette(paletteVerde);
@@ -247,7 +260,7 @@ void FinestraConfiguraSala::eliminaComponente(){
         int riga=tabellaComponenti->currentRow();
         Componente* r=*(dbComp->cercaComponente(tabellaComponenti->item(riga,0)->text().toInt()));
         if(r){
-            dbComp->rimuoviComponente(r); //rimuove dal contenitore
+            dbComp->rimuoviComponente(*r); //rimuove dal contenitore
             sala->rimuoviComponente(riga); //rimuove dal vector
         }
         tabellaComponenti->clearContents();

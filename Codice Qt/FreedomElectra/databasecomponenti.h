@@ -15,35 +15,18 @@ using namespace std;
 class DatabaseComponenti{
     friend class Iteratore;
 private:
-    class Nodo; //dichiarazione incompleta
-
-    //dichiarazione Smartp
-    class Smartp{
-    public:
-        Nodo* it;
-        Smartp(Nodo* p = 0); //costruttore
-        ~Smartp(); //distruttore
-        Smartp(const Smartp&); //costruttore di copia
-
-        Smartp& operator=(const Smartp&); //assegnazione
-        Nodo& operator*() const; //dereferenziazione
-        Nodo* operator->() const; //accesso a membro
-        bool operator==(const Smartp&) const; //uguaglianza
-        bool operator!=(const Smartp&) const; //disuguaglianza
-    };
-
     //Dichiarazione Nodo
     class Nodo{
     public:
         Componente* info;
-        Smartp next;
-        int riferimenti;
+        Nodo* next;
+
 
         Nodo(Componente*); //costruttore
-        Nodo(Componente*, const Smartp&); //costruttore
+        Nodo(Componente*,Nodo*); //costruttore
     };
 
-    Smartp primo;
+    Nodo* primo;
 public:
     DatabaseComponenti();
     DatabaseComponenti(const DatabaseComponenti&);
@@ -69,7 +52,7 @@ public:
     bool isEmpty() const;
 
     bool inserisciComponente(Componente*);
-    bool rimuoviComponente(Componente*);
+    void rimuoviComponente(const Componente& );
 
     Iteratore cercaComponente(int);
 };

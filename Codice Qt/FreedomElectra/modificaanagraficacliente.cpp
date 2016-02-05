@@ -80,24 +80,60 @@ void ModificaAnagraficaCliente::salva(){
             lineEditTelefono->text()!="" && lineEditFax->text()!="" && lineEditEmail->text()!="" && lineEditStabilimento->text()!="" &&
             lineEditVia->text()!="" && lineEditCitta->text()!="" && lineEditCap->text()!="" && lineEditProvincia->text()!=""){
 
-        cl->setRagioneSociale(lineEditRagioneSociale->text().toStdString());
-        cl->setTelefono(lineEditTelefono->text().toStdString());
-        cl->setEmail(lineEditEmail->text().toStdString());
-        cl->setFax(lineEditFax->text().toStdString());
-        cl->setPIva(lineEditPIva->text().toStdString());
-        cl->setStabilimento(lineEditStabilimento->text().toStdString());
-        Indirizzo i;
-        i.setVia(lineEditVia->text().toStdString());
-        i.setCitta(lineEditCitta->text().toStdString());
-        i.setProvincia(lineEditProvincia->text().toStdString());
-        i.setCap(lineEditCap->text().toStdString());
-        cl->setInd(i);
-        dbc->saveClienti(DatabaseClienti::Json); // per la modifica (aggiorna) anagrafica cliente
-        QMessageBox messageBox(this);
-        messageBox.setText("Dati aggiornati correttamente");
-        messageBox.exec();
-        this->close();
-        //                FinestraCercaCliente::riempiTabellaClienti();
+        if (lineEditRagioneSociale->isUndoAvailable() || lineEditStabilimento->isUndoAvailable()){
+
+            string ragsoc = lineEditRagioneSociale->text().toStdString();
+            string stab = lineEditStabilimento->text().toStdString();
+
+            bool inseribile=true;
+            for (unsigned int i=0;i<dbc->getDatabase().size() && inseribile;i++){
+                if(ragsoc == dbc->getCliente(i).getRagioneSociale() && stab==dbc->getCliente(i).getStabilimento()){
+                    inseribile=false;
+                    QMessageBox messageBox(this);
+                    messageBox.setText("Cliente gia presente");
+                    messageBox.exec();
+                }
+            }
+            if (inseribile==true){
+                cl->setRagioneSociale(lineEditRagioneSociale->text().toStdString());
+                cl->setTelefono(lineEditTelefono->text().toStdString());
+                cl->setEmail(lineEditEmail->text().toStdString());
+                cl->setFax(lineEditFax->text().toStdString());
+                cl->setPIva(lineEditPIva->text().toStdString());
+                cl->setStabilimento(lineEditStabilimento->text().toStdString());
+                Indirizzo i;
+                i.setVia(lineEditVia->text().toStdString());
+                i.setCitta(lineEditCitta->text().toStdString());
+                i.setProvincia(lineEditProvincia->text().toStdString());
+                i.setCap(lineEditCap->text().toStdString());
+                cl->setInd(i);
+
+                dbc->saveClienti(DatabaseClienti::Json);
+                QMessageBox messageBox(this);
+                messageBox.setText("Dati aggiornati correttamente");
+                messageBox.exec();
+                this->close();
+            }
+        }
+        else{
+            cl->setTelefono(lineEditTelefono->text().toStdString());
+            cl->setEmail(lineEditEmail->text().toStdString());
+            cl->setFax(lineEditFax->text().toStdString());
+            cl->setPIva(lineEditPIva->text().toStdString());
+
+            Indirizzo i;
+            i.setVia(lineEditVia->text().toStdString());
+            i.setCitta(lineEditCitta->text().toStdString());
+            i.setProvincia(lineEditProvincia->text().toStdString());
+            i.setCap(lineEditCap->text().toStdString());
+            cl->setInd(i);
+
+            dbc->saveClienti(DatabaseClienti::Json);
+            QMessageBox messageBox(this);
+            messageBox.setText("Dati aggiornati correttamente");
+            messageBox.exec();
+            this->close();
+        }
     }
     else{
         QMessageBox messageBox(this);
